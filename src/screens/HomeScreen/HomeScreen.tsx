@@ -3,6 +3,7 @@ import {FlatList, ViewabilityConfig, ViewToken} from 'react-native';
 import FeedPost from '../../components/FeedPost/FeedPost';
 import posts from '../../data/posts.json';
 import {useRef, useState} from 'react';
+
 const HomeScreen = () => {
   const [activePostIndex, setActivePostIndex] = useState<string | null>(null);
 

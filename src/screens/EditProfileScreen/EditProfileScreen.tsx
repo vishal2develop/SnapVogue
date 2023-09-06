@@ -3,11 +3,7 @@ import React, {useState} from 'react';
 
 // Hooks
 import {useForm, Control, Controller} from 'react-hook-form';
-import {
-  Asset,
-  launchCamera,
-  launchImageLibrary,
-} from 'react-native-image-picker';
+import {Asset, launchImageLibrary} from 'react-native-image-picker';
 
 import user from '../../data/user.json';
 import colors from '../../theme/color';
