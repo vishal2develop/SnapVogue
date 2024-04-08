@@ -95,17 +95,9 @@ const EditProfileScreen = () => {
         mediaType: 'photo',
       },
       ({didCancel, errorCode, errorMessage, assets}) => {
-        console.log('111');
-
         if (!didCancel && !errorCode && assets && assets.length > 0) {
           console.log('asset:', assets);
           setSelectedPhoto(assets[0]);
-        } else {
-          console.log('didCancel:', didCancel);
-
-          console.log(errorCode);
-          console.log(errorMessage);
-          console.log('asse2:', assets);
         }
       },
     );

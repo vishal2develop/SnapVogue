@@ -8,10 +8,16 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import styles from './styles';
 import Comment from '../Comment';
 import {IPost} from '../../types/models';
-import {useState} from 'react';
 import DoublePressable from '../DoublePressable';
 import Carousel from '../Carousel';
 import VideoPlayer from '../VideoPlayer';
+
+// Hooks
+import {useNavigation} from '@react-navigation/native';
+import {useState} from 'react';
+
+import {FeedNavigationProp} from '../../navigation/types';
+// Interfaces
 interface IFeedPost {
   post: IPost;
   isVisible: boolean;
@@ -20,12 +26,21 @@ interface IFeedPost {
 const FeedPost = ({post, isVisible}: IFeedPost) => {
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
   const [isLiked, setisLiked] = useState(false);
+  const navigation = useNavigation<FeedNavigationProp>();
   const toggleDescriptionExpanded = () => {
     setIsDescriptionExpanded(existingValue => !existingValue);
   };
 
   const toggleLike = () => {
     setisLiked(existingValue => !existingValue);
+  };
+
+  const navigateToUserProfile = () => {
+    navigation.navigate('UserProfile', {userId: post.user.id});
+  };
+
+  const navigateToComments = () => {
+    navigation.navigate('Comments', {postId: post.id});
   };
 
   let content = null;
@@ -61,7 +76,9 @@ const FeedPost = ({post, isVisible}: IFeedPost) => {
           }}
           style={styles.userAvatar}
         />
-        <Text style={styles.userName}>{post.user.username}</Text>
+        <Text onPress={navigateToUserProfile} style={styles.userName}>
+          {post.user.username}
+        </Text>
         <Entypo
           name="dots-three-horizontal"
           size={16}
@@ -118,7 +135,7 @@ const FeedPost = ({post, isVisible}: IFeedPost) => {
         </Text>
 
         {/* Comments */}
-        <Text style={{color: colors.grey}}>
+        <Text style={{color: colors.grey}} onPress={navigateToComments}>
           View all {post.nofComments} comments
         </Text>
         {post.comments.map(comment => (
