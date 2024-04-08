@@ -1,4 +1,4 @@
-import {NavigationContainer} from '@react-navigation/native';
+import {LinkingOptions, NavigationContainer} from '@react-navigation/native';
 
 import React from 'react';
 import HomeScreen from '../screens/HomeScreen/HomeScreen';
@@ -12,9 +12,29 @@ import BottomTabNavigator from './BottomTabNavigator';
 import CommentScreen from '../screens/CommentScreen/CommentScreen';
 
 const stack = createNativeStackNavigator<RootNavigatorParamList>(); // Returns {Navigaotor, Screen}
+
+const linking: LinkingOptions<RootNavigatorParamList> = {
+  prefixes: ['instaclone://', 'https://instaclone.com'],
+  config: {
+    initialRouteName: 'Home',
+    screens: {
+      Comments: 'comments',
+      Home: {
+        screens: {
+          HomeStack: {
+            initialRouteName: 'Feed',
+            screens: {
+              UserProfile: 'user/:userId',
+            },
+          },
+        },
+      },
+    },
+  },
+};
 const Navigation = () => {
   return (
-    <NavigationContainer>
+    <NavigationContainer linking={linking}>
       <stack.Navigator
         initialRouteName="Home"
         screenOptions={{headerShown: true}}>
