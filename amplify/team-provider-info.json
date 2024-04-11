@@ -10,6 +10,11 @@
       "StackName": "amplify-instaclone-staging-156f3",
       "StackId": "arn:aws:cloudformation:us-east-1:528069407197:stack/amplify-instaclone-staging-156f3/715bc460-f69a-11ee-bd67-1261b950bfb5",
       "AmplifyAppId": "d37zyigviy8vc"
+    },
+    "categories": {
+      "auth": {
+        "Instaclone": {}
+      }
     }
   }
 }
