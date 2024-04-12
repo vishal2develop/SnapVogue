@@ -1,15 +1,14 @@
 import {LinkingOptions, NavigationContainer} from '@react-navigation/native';
 
 import React from 'react';
-import HomeScreen from '../screens/HomeScreen/HomeScreen';
-import ProfileScreen from '../screens/ProfileScreen/ProfileScreen';
 
-import {RootNavigatorParamList} from './types';
+import {RootNavigatorParamList} from '../types/navigation';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import BottomTabNavigator from './BottomTabNavigator';
 import CommentScreen from '../screens/CommentScreen/CommentScreen';
+import AuthStackNavigator from './AuthStackNavigator';
 
 const stack = createNativeStackNavigator<RootNavigatorParamList>(); // Returns {Navigaotor, Screen}
 
@@ -36,8 +35,13 @@ const Navigation = () => {
   return (
     <NavigationContainer linking={linking}>
       <stack.Navigator
-        initialRouteName="Home"
+        initialRouteName="Auth"
         screenOptions={{headerShown: true}}>
+        <stack.Screen
+          name="Auth"
+          component={AuthStackNavigator}
+          options={{headerShown: false}}
+        />
         <stack.Screen
           name="Home"
           component={BottomTabNavigator}

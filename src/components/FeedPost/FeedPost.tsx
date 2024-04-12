@@ -16,7 +16,7 @@ import VideoPlayer from '../VideoPlayer';
 import {useNavigation} from '@react-navigation/native';
 import {useState} from 'react';
 
-import {FeedNavigationProp} from '../../navigation/types';
+import {FeedNavigationProp} from '../../types/navigation';
 // Interfaces
 interface IFeedPost {
   post: IPost;

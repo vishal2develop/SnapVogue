@@ -5,7 +5,7 @@ import user from '../../data/user.json';
 import styles from './styles';
 import Button from '../../components/Button';
 import {useNavigation} from '@react-navigation/native';
-import {ProfileNavigationProp} from '../../navigation/types';
+import {ProfileNavigationProp} from '../../types/navigation';
 
 import {signOut} from 'aws-amplify/auth';
 const ProfileHeader = () => {

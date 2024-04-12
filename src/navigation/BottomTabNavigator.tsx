@@ -14,7 +14,7 @@ import {
 
 import colors from '../theme/color';
 import ProfileStackNavigator from './ProfileStackNavigator';
-import {BottomTabNavigatorParamList} from './types';
+import {BottomTabNavigatorParamList} from '../types/navigation';
 import SearchTabNavigator from './SearchTabNavigator';
 
 const Tab = createBottomTabNavigator<BottomTabNavigatorParamList>();
