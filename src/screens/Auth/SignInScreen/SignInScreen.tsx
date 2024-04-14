@@ -15,7 +15,6 @@ import {useForm} from 'react-hook-form';
 import {SignInNavigationProp} from '../../../types/navigation';
 import {signIn, signOut} from 'aws-amplify/auth';
 import {useState} from 'react';
-import {useAuthContext} from '../../../contexts/AuthContext';
 type SignInData = {
   username: string;
   password: string;
@@ -25,7 +24,6 @@ const SignInScreen = () => {
   const {height} = useWindowDimensions();
   const [isLoading, setIsLoading] = useState(false);
   const navigation = useNavigation<SignInNavigationProp>();
-  const {setUser} = useAuthContext();
 
   const {control, handleSubmit, reset} = useForm<SignInData>();
   // signOut();
@@ -36,9 +34,7 @@ const SignInScreen = () => {
     }
     setIsLoading(true);
     try {
-      const cognitoUser = await signIn({username, password});
-      // TODO: Save User Data in context
-      setUser(cognitoUser);
+      await signIn({username, password});
     } catch (error) {
       console.log('error:', error);
 

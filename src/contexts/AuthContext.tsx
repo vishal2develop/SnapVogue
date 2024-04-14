@@ -15,12 +15,10 @@ type UserType = SignInOutput | AuthUser | null | undefined;
 
 type AuthContextType = {
   user: UserType;
-  setUser: Dispatch<SetStateAction<UserType>>;
 };
 
 const AuthContext = createContext<AuthContextType>({
   user: undefined,
-  setUser: () => {},
 });
 
 // context provider. This will be consumed by other components
@@ -64,11 +62,7 @@ const AuthContextProvider = ({children}: {children: ReactNode}) => {
     };
   }, []);
 
-  return (
-    <AuthContext.Provider value={{user, setUser}}>
-      {children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={{user}}>{children}</AuthContext.Provider>;
 };
 
 export default AuthContextProvider;
