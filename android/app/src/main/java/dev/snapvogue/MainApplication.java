@@ -1,4 +1,4 @@
-package com.instagram;
+package dev.snapvogue;
 import android.content.res.Configuration;
 import expo.modules.ApplicationLifecycleDispatcher;
 import expo.modules.ReactNativeHostWrapper;
