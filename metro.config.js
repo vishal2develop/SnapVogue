@@ -1,11 +1,10 @@
-const {getDefaultConfig, mergeConfig} = require('@react-native/metro-config');
+const {getDefaultConfig} = require('expo/metro-config');
+const exclusionList = require('metro-config/src/defaults/exclusionList');
 
-/**
- * Metro configuration
- * https://facebook.github.io/metro/docs/configuration
- *
- * @type {import('metro-config').MetroConfig}
- */
-const config = {};
+const config = getDefaultConfig(__dirname);
 
-module.exports = mergeConfig(getDefaultConfig(__dirname), config);
+config.resolver.blacklistRE = exclusionList([
+  /amplify\/#current-cloud-backend\/.*/,
+]);
+
+module.exports = config;
