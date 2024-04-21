@@ -5,10 +5,11 @@ import colors from '../../theme/color';
 import {useState} from 'react';
 
 import styles from './styles';
-import {IComment} from '../../types/models';
+import {Comment as CommentType} from '../../API';
+import {DEFAULT_USER_IMAGE} from '../../config';
 
 interface ICommentProps {
-  comment: IComment;
+  comment: CommentType;
   includeDetails?: boolean;
 }
 
@@ -20,7 +21,7 @@ const Comment = ({comment, includeDetails = false}: ICommentProps) => {
       {includeDetails && (
         <Image
           source={{
-            uri: comment.user.image,
+            uri: comment.User?.image || DEFAULT_USER_IMAGE,
           }}
           style={styles.userAvatar}
         />
@@ -29,7 +30,7 @@ const Comment = ({comment, includeDetails = false}: ICommentProps) => {
       {/* Second Column - User Comment */}
       <View style={styles.middleColumn}>
         <Text style={styles.commentText}>
-          <Text style={styles.bold}>{comment.user.username}</Text>{' '}
+          <Text style={styles.bold}>{comment.User?.username}</Text>{' '}
           {comment.comment}
         </Text>
 
