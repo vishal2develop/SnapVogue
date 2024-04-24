@@ -1,12 +1,13 @@
 /**
  * @type {import('@types/aws-lambda').APIGatewayProxyHandler}
  */
-import {DynamoDBClient} from '@aws-sdk/client-dynamodb';
-import {
+
+const {DynamoDBClient} = require('@aws-sdk/client-dynamodb');
+const {
   DynamoDBDocumentClient,
   GetCommand,
   PutCommand,
-} from '@aws-sdk/lib-dynamodb';
+} = require('@aws-sdk/lib-dynamodb');
 
 const client = new DynamoDBClient({});
 const documentClient = DynamoDBDocumentClient.from(client);
