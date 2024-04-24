@@ -11,6 +11,10 @@ import {
 const client = new DynamoDBClient({});
 const documentClient = DynamoDBDocumentClient.from(client);
 
+const env = process.env.ENV;
+const AppSyncId = process.env.API_INSTACLONE_GRAPHQLAPIIDOUTPUT;
+const TableName = `User-${AppSyncId}-${env}`;
+
 exports.handler = async (event, context) => {
   // insert code to be executed by your lambda trigger
   console.log('Hey, Inside Post Confirmation Lambda!!!');
@@ -27,7 +31,13 @@ exports.handler = async (event, context) => {
     email,
   };
 
-  // Check if already exists
+  // Check if already exists -> If not save user to ddb
+  if (!(await checkIfUserExists(newUser.id))) {
+    await saveUser(newUser);
+    console.log(`User ${newUser.id} has been saved to the DB`);
+  } else {
+    console.log(`User ${newUser.id} already exists`);
+  }
 
   return event;
 };
@@ -53,21 +63,18 @@ const checkIfUserExists = async id => {
 const saveUser = async user => {
   const date = new Date();
   const dateStr = date.toISOString();
-  const timestamp = date.getTime();
   const params = {
     TableName,
     Item: {
       ...user,
       createdAt: dateStr,
       updatedAt: dateStr,
-      _lastChangedAt: timestamp,
-      _version: 1,
       __typename: 'User',
     },
   };
   try {
     const saveUserCommand = new PutCommand(params);
-    await documentClient.put(saveUserCommand);
+    await documentClient.send(saveUserCommand);
   } catch (e) {
     console.log(e);
   }

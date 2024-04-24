@@ -1,4 +1,10 @@
-/**
+/* Amplify Params - DO NOT EDIT
+	API_INSTACLONE_GRAPHQLAPIENDPOINTOUTPUT
+	API_INSTACLONE_GRAPHQLAPIIDOUTPUT
+	API_INSTACLONE_GRAPHQLAPIKEYOUTPUT
+	ENV
+	REGION
+Amplify Params - DO NOT EDIT *//**
  * @fileoverview
  *
  * This CloudFormation Trigger creates a handler which awaits the other handlers

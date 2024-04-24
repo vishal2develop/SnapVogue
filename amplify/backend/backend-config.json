@@ -67,6 +67,17 @@
   "function": {
     "InstaclonePostConfirmation": {
       "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput",
+            "GraphQLAPIKeyOutput"
+          ],
+          "category": "api",
+          "resourceName": "Instaclone"
+        }
+      ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     }
