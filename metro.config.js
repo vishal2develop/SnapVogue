@@ -7,4 +7,6 @@ config.resolver.blacklistRE = exclusionList([
   /amplify\/#current-cloud-backend\/.*/,
 ]);
 
+config.resolver.sourceExts.push('cjs');
+
 module.exports = config;
