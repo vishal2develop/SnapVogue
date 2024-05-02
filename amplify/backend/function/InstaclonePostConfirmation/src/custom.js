@@ -30,6 +30,9 @@ exports.handler = async (event, context) => {
     id: sub,
     name,
     email,
+    nofPosts: 0,
+    nofFollowers: 0,
+    nofFollowings: 0,
   };
 
   // Check if already exists -> If not save user to ddb

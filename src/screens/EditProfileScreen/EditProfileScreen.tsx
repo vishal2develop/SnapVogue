@@ -8,7 +8,7 @@ import {Asset, launchImageLibrary} from 'react-native-image-picker';
 import user from '../../data/user.json';
 import colors from '../../theme/color';
 import fonts from '../../theme/fonts';
-import {IUser} from '../../types/models';
+import {User} from '../../API';
 
 const URL_REGEX =
   /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
@@ -16,8 +16,8 @@ const URL_REGEX =
 type IEditableUserFields = 'name' | 'username' | 'website' | 'bio';
 
 // Create a mutable data structure for User.
-// As IUser interface contains other attributes that should remain uneditable.
-type IEditableUser = Pick<IUser, IEditableUserFields>;
+// As User interface contains other attributes that should remain uneditable.
+type IEditableUser = Pick<User, IEditableUserFields>;
 
 interface ICustomInput {
   label: string;
@@ -45,7 +45,7 @@ const CustomInput = ({
             <TextInput
               onChangeText={onChange}
               onBlur={onBlur}
-              value={value}
+              value={value || ''}
               style={[
                 styles.input,
                 {borderColor: error ? colors.error : colors.border},
@@ -68,12 +68,7 @@ const CustomInput = ({
 const EditProfileScreen = () => {
   const [selectedPhoto, setSelectedPhoto] = useState<null | Asset>(null);
   // Building a Type safe form
-  const {
-    handleSubmit,
-    control,
-    formState: {errors},
-    reset,
-  } = useForm<IEditableUser>({
+  const {handleSubmit, control, reset} = useForm<IEditableUser>({
     defaultValues: {
       name: user.name,
       username: user.username,
@@ -94,7 +89,7 @@ const EditProfileScreen = () => {
       {
         mediaType: 'photo',
       },
-      ({didCancel, errorCode, errorMessage, assets}) => {
+      ({didCancel, errorCode, assets}) => {
         if (!didCancel && !errorCode && assets && assets.length > 0) {
           console.log('asset:', assets);
           setSelectedPhoto(assets[0]);

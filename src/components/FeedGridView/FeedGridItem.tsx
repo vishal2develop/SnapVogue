@@ -1,17 +1,17 @@
 import {View, Image} from 'react-native';
 import React from 'react';
-import {IPost} from '../../types/models';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import colors from '../../theme/color';
+import {Post} from '../../API';
 
 interface IFeedGridItem {
-  post: IPost;
+  post: Post;
 }
 
 const FeedGridItem = ({post}: IFeedGridItem) => {
   return (
     <View style={{flex: 1, padding: 1, aspectRatio: 1, maxWidth: '33.33%'}}>
-      <Image source={{uri: post.image || post.images[0]}} style={{flex: 1}} />
+      <Image source={{uri: post.image || post.images?.[0]}} style={{flex: 1}} />
       {/* To display the collections icon on the post, in case the post contains multiple photos */}
       {post.images && (
         <MaterialIcons
