@@ -2,7 +2,6 @@ import React from 'react';
 
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screens/HomeScreen/HomeScreen';
-import ProfileScreen from '../screens/ProfileScreen/ProfileScreen';
 import PostUploadScreen from '../screens/PostUploadScreen/PostUploadScreen';
 import HomeStackNavigator from './HomeStackNavigator';
 
