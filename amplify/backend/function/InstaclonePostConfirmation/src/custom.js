@@ -25,15 +25,21 @@ exports.handler = async (event, context) => {
     return;
   }
   const {sub, name, email} = event.request.userAttributes;
+  const {userName} = event;
+  console.log('userName:', userName);
+  console.log('sub:', sub);
 
   const newUser = {
     id: sub,
     name,
     email,
+    username: userName,
     nofPosts: 0,
     nofFollowers: 0,
     nofFollowings: 0,
   };
+
+  console.log('newUser:', JSON.stringify(newUser));
 
   // Check if already exists -> If not save user to ddb
   if (!(await checkIfUserExists(newUser.id))) {

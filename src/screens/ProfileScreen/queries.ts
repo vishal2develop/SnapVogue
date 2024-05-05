@@ -16,7 +16,7 @@ export const getUser = gql`
       Posts {
         nextToken
         items {
-          Id
+          id
           image
           images
           video

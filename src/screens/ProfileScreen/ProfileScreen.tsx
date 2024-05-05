@@ -7,7 +7,11 @@ import {useRoute} from '@react-navigation/native';
 import {MyProfileRouteProp, UserProfileRouteProp} from '../../types/navigation';
 import {useQuery} from '@apollo/client';
 import {getUser} from './queries';
-import {GetPostQueryVariables, GetUserQuery} from '../../API';
+import {
+  GetPostQueryVariables,
+  GetUserQuery,
+  GetUserQueryVariables,
+} from '../../API';
 import ApiErrorMessage from '../../components/ApiErrorMessage';
 import {useAuthContext} from '../../contexts/AuthContext';
 
@@ -18,13 +22,13 @@ const ProfileScreen = () => {
   // >();
 
   const {userId: authUserId} = useAuthContext();
-  const userId = route.params?.userId || authUserId;
+  // console.log('userIdL', authUserId);
 
-  console.log('userId:', userId);
+  const userId = route.params?.userId || authUserId;
 
   const {data, loading, error, refetch} = useQuery<
     GetUserQuery,
-    GetPostQueryVariables
+    GetUserQueryVariables
   >(getUser, {variables: {id: userId}});
 
   const user = data?.getUser;

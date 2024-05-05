@@ -24,14 +24,19 @@ const AuthContext = createContext<AuthContextType>({
 // context provider. This will be consumed by other components
 const AuthContextProvider = ({children}: {children: ReactNode}) => {
   const [user, setUser] = useState<UserType>(undefined);
+  const [userId, setUserId] = useState<string>('');
+
   console.log('user:', user);
 
   const checkUser = async () => {
     try {
       const {userId, username, signInDetails} = await getCurrentUser();
       console.log('username:', username);
+      // console.log('userId:', userId);
+      // console.log('signInDetails:', signInDetails);
 
       setUser(username);
+      setUserId(userId);
     } catch (e) {
       console.log('error:', (e as Error).message);
 
@@ -63,7 +68,7 @@ const AuthContextProvider = ({children}: {children: ReactNode}) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{user, userId: user?.attributes?.sub}}>
+    <AuthContext.Provider value={{user, userId: userId}}>
       {children}
     </AuthContext.Provider>
   );

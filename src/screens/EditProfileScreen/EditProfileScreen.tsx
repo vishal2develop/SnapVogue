@@ -1,5 +1,12 @@
-import {View, Text, StyleSheet, Image, TextInput} from 'react-native';
-import React, {useState} from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TextInput,
+  ActivityIndicator,
+} from 'react-native';
+import React, {useState, useEffect} from 'react';
 
 // Hooks
 import {useForm, Control, Controller} from 'react-hook-form';
@@ -8,12 +15,17 @@ import {Asset, launchImageLibrary} from 'react-native-image-picker';
 import user from '../../data/user.json';
 import colors from '../../theme/color';
 import fonts from '../../theme/fonts';
-import {User} from '../../API';
+import {GetUserQuery, GetUserQueryVariables, User} from '../../API';
+import {useQuery} from '@apollo/client';
+import {getUser} from './queries';
+import ApiErrorMessage from '../../components/ApiErrorMessage';
+import {useAuthContext} from '../../contexts/AuthContext';
+import {DEFAULT_USER_IMAGE} from '../../config';
 
 const URL_REGEX =
   /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
 
-type IEditableUserFields = 'name' | 'username' | 'website' | 'bio';
+type IEditableUserFields = 'name' | 'username' | 'website' | 'bio' | 'image';
 
 // Create a mutable data structure for User.
 // As User interface contains other attributes that should remain uneditable.
@@ -67,18 +79,45 @@ const CustomInput = ({
 
 const EditProfileScreen = () => {
   const [selectedPhoto, setSelectedPhoto] = useState<null | Asset>(null);
-  // Building a Type safe form
-  const {handleSubmit, control, reset} = useForm<IEditableUser>({
-    defaultValues: {
-      name: user.name,
-      username: user.username,
-      website: user.website,
-      bio: user.bio,
-    },
-  });
-  /**
+
+  /** Building a Type safe form
    * control - Form inputs are managed using the Controller component
    */
+  const {handleSubmit, control, reset, setValue} = useForm<IEditableUser>();
+
+  const {userId} = useAuthContext();
+
+  const {data, loading, error, refetch} = useQuery<
+    GetUserQuery,
+    GetUserQueryVariables
+  >(getUser, {variables: {id: userId}});
+
+  const user = data?.getUser;
+
+  useEffect(() => {
+    if (user) {
+      setValue('name', user.name);
+      setValue('bio', user.bio);
+      setValue('username', user.username);
+      setValue('website', user.website);
+      setValue('image', user.image);
+    }
+  }, [user, setValue]);
+
+  if (loading) {
+    return <ActivityIndicator />;
+  }
+
+  if (error) {
+    return (
+      <ApiErrorMessage
+        title="Error fetching posts"
+        message={error?.message || 'User not found!!'}
+        onRetry={() => refetch()}
+      />
+    );
+  }
+
   const onSubmit = (data: IEditableUser) => {
     console.log('Submitted', data);
     reset();
@@ -101,7 +140,7 @@ const EditProfileScreen = () => {
   return (
     <View style={styles.page}>
       <Image
-        source={{uri: selectedPhoto?.uri || user.image}}
+        source={{uri: selectedPhoto?.uri || user?.image || DEFAULT_USER_IMAGE}}
         style={styles.avatar}
       />
       <Text onPress={onChangePhoto} style={styles.textButton}>
@@ -179,6 +218,7 @@ const styles = StyleSheet.create({
   },
   input: {
     borderBottomWidth: 1,
+    minHeight: 50,
   },
   errorText: {
     color: colors.error,
