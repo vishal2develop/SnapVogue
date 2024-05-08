@@ -11,7 +11,7 @@ import {useRef, useState} from 'react';
 
 import {useQuery} from '@apollo/client';
 import {listPosts} from './queries';
-import {ListPostsQuery, ListPostsQueryVariables} from '../../API';
+import {ListPostsQuery, ListPostsQueryVariables, Post} from '../../API';
 import ApiErrorMessage from '../../components/ApiErrorMessage';
 
 const HomeScreen = () => {
@@ -59,14 +59,21 @@ const HomeScreen = () => {
       <ApiErrorMessage title="Error fetching posts" message={error.message} />
     );
   }
-
-  const posts = data?.listPosts?.items || [];
+  // Filtering out users that are deleted & dont have user info
+  const posts = (data?.listPosts?.items || []).filter(
+    user => user && user?.User,
+  );
 
   return (
     <FlatList
       data={posts}
       renderItem={({item}) =>
-        item && <FeedPost post={item} isVisible={activePostIndex === item.id} />
+        item && (
+          <FeedPost
+            post={item as Post}
+            isVisible={activePostIndex === item.id}
+          />
+        )
       }
       keyExtractor={item => item?.id || ''}
       showsVerticalScrollIndicator={false}

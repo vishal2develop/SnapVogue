@@ -5,6 +5,7 @@ import {
   Image,
   TextInput,
   ActivityIndicator,
+  Alert,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 
@@ -12,20 +13,29 @@ import React, {useState, useEffect} from 'react';
 import {useForm, Control, Controller} from 'react-hook-form';
 import {Asset, launchImageLibrary} from 'react-native-image-picker';
 
-import user from '../../data/user.json';
 import colors from '../../theme/color';
 import fonts from '../../theme/fonts';
-import {GetUserQuery, GetUserQueryVariables, User} from '../../API';
-import {useQuery} from '@apollo/client';
-import {getUser} from './queries';
+import {
+  GetUserQuery,
+  GetUserQueryVariables,
+  UpdateUserMutation,
+  UpdateUserMutationVariables,
+  DeleteUserMutation,
+  DeleteUserMutationVariables,
+  User,
+} from '../../API';
+import {useMutation, useQuery} from '@apollo/client';
+import {getUser, updateUser, deleteUser} from './queries';
 import ApiErrorMessage from '../../components/ApiErrorMessage';
 import {useAuthContext} from '../../contexts/AuthContext';
 import {DEFAULT_USER_IMAGE} from '../../config';
+import {useNavigation} from '@react-navigation/native';
+import {signOut, deleteUser as removeUser} from 'aws-amplify/auth';
 
 const URL_REGEX =
   /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
 
-type IEditableUserFields = 'name' | 'username' | 'website' | 'bio' | 'image';
+type IEditableUserFields = 'name' | 'username' | 'website' | 'bio';
 
 // Create a mutable data structure for User.
 // As User interface contains other attributes that should remain uneditable.
@@ -44,48 +54,51 @@ const CustomInput = ({
   label,
   multiline = false,
   rules = {},
-}: ICustomInput) => (
-  <Controller
-    control={control}
-    name={name}
-    rules={rules}
-    render={({field: {onChange, value, onBlur}, fieldState: {error}}) => {
-      return (
-        <View style={styles.inputContainer}>
-          <Text style={styles.label}>{label}</Text>
-          <View style={{flex: 1}}>
-            <TextInput
-              onChangeText={onChange}
-              onBlur={onBlur}
-              value={value || ''}
-              style={[
-                styles.input,
-                {borderColor: error ? colors.error : colors.border},
-              ]}
-              placeholder="Hello"
-              multiline={multiline}
-            />
-            {error && (
-              <Text style={styles.errorText}>
-                {error.message || 'Field is required'}
-              </Text>
-            )}
+}: ICustomInput) => {
+  return (
+    <Controller
+      control={control}
+      name={name}
+      rules={rules}
+      render={({field: {onChange, value, onBlur}, fieldState: {error}}) => {
+        return (
+          <View style={styles.inputContainer}>
+            <Text style={styles.label}>{label}</Text>
+            <View style={{flex: 1}}>
+              <TextInput
+                onChangeText={onChange}
+                onBlur={onBlur}
+                value={value || ''}
+                style={[
+                  styles.input,
+                  {borderColor: error ? colors.error : colors.border},
+                ]}
+                placeholder="Hello"
+                multiline={multiline}
+              />
+              {error && (
+                <Text style={styles.errorText}>
+                  {error.message || 'Field is required'}
+                </Text>
+              )}
+            </View>
           </View>
-        </View>
-      );
-    }}
-  />
-);
+        );
+      }}
+    />
+  );
+};
 
 const EditProfileScreen = () => {
   const [selectedPhoto, setSelectedPhoto] = useState<null | Asset>(null);
+  const navigation = useNavigation();
 
   /** Building a Type safe form
    * control - Form inputs are managed using the Controller component
    */
-  const {handleSubmit, control, reset, setValue} = useForm<IEditableUser>();
+  const {handleSubmit, control, setValue} = useForm<IEditableUser>();
 
-  const {userId} = useAuthContext();
+  const {userId, user: authUser} = useAuthContext();
 
   const {data, loading, error, refetch} = useQuery<
     GetUserQuery,
@@ -94,13 +107,21 @@ const EditProfileScreen = () => {
 
   const user = data?.getUser;
 
+  const [
+    executeUpdateUser,
+    {data: updateData, loading: updateLoading, error: updateError},
+  ] = useMutation<UpdateUserMutation, UpdateUserMutationVariables>(updateUser);
+
+  const [executeDeleteUser, {loading: deleteLoading, error: deleteError}] =
+    useMutation<DeleteUserMutation, DeleteUserMutationVariables>(deleteUser);
+
   useEffect(() => {
     if (user) {
       setValue('name', user.name);
       setValue('bio', user.bio);
       setValue('username', user.username);
       setValue('website', user.website);
-      setValue('image', user.image);
+      // setValue('image', user.image);
     }
   }, [user, setValue]);
 
@@ -108,19 +129,63 @@ const EditProfileScreen = () => {
     return <ActivityIndicator />;
   }
 
-  if (error) {
+  if (error || updateError || deleteError) {
     return (
       <ApiErrorMessage
-        title="Error fetching posts"
-        message={error?.message || 'User not found!!'}
+        title="Error fetching or updating the user"
+        message={error?.message || updateError?.message || deleteError?.message}
         onRetry={() => refetch()}
       />
     );
   }
 
-  const onSubmit = (data: IEditableUser) => {
-    console.log('Submitted', data);
-    reset();
+  const onSubmit = async (formData: IEditableUser) => {
+    console.log('Submitted', formData);
+    await executeUpdateUser({
+      variables: {
+        input: {
+          id: userId,
+          ...formData,
+        },
+      },
+    });
+    navigation.canGoBack() && navigation.goBack();
+  };
+
+  const confirmDeleteUser = () => {
+    Alert.alert(
+      'Delete Account',
+      'Are you sure you want to delete your account?',
+      [
+        {
+          text: 'Cancel',
+          style: 'cancel',
+        },
+        {
+          text: 'Yes, delete',
+          style: 'destructive',
+          onPress: startDeleting,
+        },
+      ],
+    );
+  };
+
+  const startDeleting = async () => {
+    try {
+      // delete user from DB
+      await executeDeleteUser({
+        variables: {
+          input: {
+            id: userId,
+          },
+        },
+      });
+      // delete user from cognito & signout
+      await removeUser();
+      await signOut();
+    } catch (err) {
+      console.log('Error', (err as Error).message);
+    }
   };
 
   const onChangePhoto = () => {
@@ -152,7 +217,6 @@ const EditProfileScreen = () => {
         control={control}
         rules={{
           required: 'Name is required',
-          maxLength: {value: 100, message: 'Name cannot exceed 100 characters'},
         }}
         label="Name"
       />
@@ -172,7 +236,6 @@ const EditProfileScreen = () => {
         name="website"
         control={control}
         rules={{
-          required: 'Website is required',
           pattern: {value: URL_REGEX, message: 'Invalid URL'},
         }}
         label="Website"
@@ -189,7 +252,12 @@ const EditProfileScreen = () => {
       {/* Wrapping our onSubmit function with handleSubmit from react-hook-form
        to validate fields first. Then our onSubmit will be called*/}
       <Text onPress={handleSubmit(onSubmit)} style={styles.textButton}>
-        Submit
+        {updateLoading ? 'Submitting' : 'Submit'}
+      </Text>
+      <Text
+        onPress={confirmDeleteUser}
+        style={[styles.textButton, styles.deleteButton]}>
+        {deleteLoading ? 'Deleting user' : 'Delete User'}
       </Text>
     </View>
   );
@@ -206,6 +274,11 @@ const styles = StyleSheet.create({
     fontSize: fonts.size.md,
     fontWeight: fonts.weight.semi,
     margin: 10,
+  },
+  deleteButton: {
+    marginTop: 50,
+    textTransform: 'uppercase',
+    color: colors.error,
   },
   inputContainer: {
     flexDirection: 'row',
