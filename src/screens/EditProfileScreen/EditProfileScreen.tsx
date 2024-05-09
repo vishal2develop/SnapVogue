@@ -13,9 +13,11 @@ import {
   UpdateUserMutationVariables,
   DeleteUserMutation,
   DeleteUserMutationVariables,
+  UsersByUsernameQuery,
+  UsersByUsernameQueryVariables,
 } from '../../API';
-import {useMutation, useQuery} from '@apollo/client';
-import {getUser, updateUser, deleteUser} from './queries';
+import {useMutation, useQuery, useLazyQuery} from '@apollo/client';
+import {getUser, updateUser, deleteUser, usersByUsername} from './queries';
 import ApiErrorMessage from '../../components/ApiErrorMessage';
 import {useAuthContext} from '../../contexts/AuthContext';
 import {DEFAULT_USER_IMAGE} from '../../config';
@@ -29,9 +31,6 @@ const EditProfileScreen = () => {
   const [selectedPhoto, setSelectedPhoto] = useState<null | Asset>(null);
   const navigation = useNavigation();
 
-  /** Building a Type safe form
-   * control - Form inputs are managed using the Controller component
-   */
   const {handleSubmit, control, setValue} = useForm<IEditableUser>();
 
   const {userId} = useAuthContext();
@@ -42,6 +41,11 @@ const EditProfileScreen = () => {
   >(getUser, {variables: {id: userId}});
 
   const user = data?.getUser;
+
+  const [getUsersByUsername] = useLazyQuery<
+    UsersByUsernameQuery,
+    UsersByUsernameQueryVariables
+  >(usersByUsername);
 
   const [executeUpdateUser, {loading: updateLoading, error: updateError}] =
     useMutation<UpdateUserMutation, UpdateUserMutationVariables>(updateUser);
@@ -136,6 +140,28 @@ const EditProfileScreen = () => {
     );
   };
 
+  const validateUsername = async (username: string) => {
+    // query the database based on the usersByUsername
+
+    try {
+      const response = await getUsersByUsername({variables: {username}});
+
+      if (response.error) {
+        Alert.alert('Failed to fetch username');
+        return 'Failed to fetch username';
+      }
+      const users = response.data?.usersByUsername?.items;
+      if (users && users.length > 0 && users?.[0]?.id !== userId) {
+        return 'Username is already taken';
+      }
+    } catch (e) {
+      Alert.alert('Failed to fetch username');
+    }
+    // if there are any users with this username, then return the error
+
+    return true;
+  };
+
   return (
     <View style={styles.page}>
       <Image
@@ -163,6 +189,7 @@ const EditProfileScreen = () => {
             value: 3,
             message: 'Username length should be more than 3',
           },
+          validate: validateUsername,
         }}
         label="Username"
       />

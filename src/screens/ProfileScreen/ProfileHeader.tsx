@@ -14,8 +14,9 @@ interface IProfileHeader {
   user: User;
 }
 const ProfileHeader = ({user}: IProfileHeader) => {
-  const {userId} = useAuthContext();
+  const {userId, user: authUser} = useAuthContext();
   const navigation = useNavigation<ProfileNavigationProp>();
+
   return (
     <View style={styles.root}>
       <View style={styles.headerRow}>
