@@ -60,6 +60,29 @@ export type ProfileNavigationProp = NativeStackNavigationProp<
   'Profile'
 >;
 
+export type UploadStackNavigatorParamList = {
+  Camera: undefined;
+  Create: {
+    image?: string;
+    images?: string;
+    video?: string;
+  };
+};
+
+export type CameraNavigationProp = NativeStackNavigationProp<
+  UploadStackNavigatorParamList,
+  'Camera'
+>;
+
+export type CreateNavigationProp = NativeStackNavigationProp<
+  UploadStackNavigatorParamList,
+  'Create'
+>;
+
+export type CreateRouteProp = RouteProp<
+  UploadStackNavigatorParamList,
+  'Create'
+>;
 // Auth Stack Navigator
 export type AuthStackNavigatorParamList = {
   'Sign in': undefined;
