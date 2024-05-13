@@ -64,7 +64,7 @@ export type UploadStackNavigatorParamList = {
   Camera: undefined;
   Create: {
     image?: string;
-    images?: string;
+    images?: string[];
     video?: string;
   };
 };

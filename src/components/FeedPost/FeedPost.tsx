@@ -75,7 +75,7 @@ const FeedPost = ({post, isVisible}: IFeedPost) => {
       <View style={styles.header}>
         <Image
           source={{
-            uri: post.User?.image,
+            uri: post.User?.image || DEFAULT_USER_IMAGE,
           }}
           style={styles.userAvatar}
         />
