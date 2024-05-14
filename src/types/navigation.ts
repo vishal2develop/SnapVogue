@@ -33,6 +33,7 @@ export type MyProfileRouteProp = RouteProp<
 export type HomeStackNavigatorParamList = {
   Feed: undefined;
   UserProfile: {userId: string};
+  UpdatePost: {id: string};
 };
 
 export type UserProfileNavigationProp = NativeStackNavigationProp<
@@ -43,6 +44,11 @@ export type UserProfileNavigationProp = NativeStackNavigationProp<
 export type UserProfileRouteProp = RouteProp<
   HomeStackNavigatorParamList,
   'UserProfile'
+>;
+
+export type UpdatePostRouteProp = RouteProp<
+  HomeStackNavigatorParamList,
+  'UpdatePost'
 >;
 
 export type FeedNavigationProp = NativeStackNavigationProp<

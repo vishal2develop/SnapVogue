@@ -1,17 +1,36 @@
-import {View, Image, StyleSheet, TextInput, Alert} from 'react-native';
-import React, {useState} from 'react';
+import {
+  View,
+  Image,
+  StyleSheet,
+  TextInput,
+  Alert,
+  ActivityIndicator,
+} from 'react-native';
+import React, {useState, useEffect} from 'react';
 import {useNavigation, useRoute} from '@react-navigation/native';
-import {CreateNavigationProp, CreateRouteProp} from '../../types/navigation';
+import {
+  CreateNavigationProp,
+  CreateRouteProp,
+  UpdatePostRouteProp,
+} from '../../types/navigation';
 import colors from '../../theme/color';
 import Button from '../../components/Button';
-import {createPost} from './queries';
-import {useMutation} from '@apollo/client';
-import {CreatePostMutation, CreatePostMutationVariables} from '../../API';
+import {createPost, getPost, updatePost} from './queries';
+import {useMutation, useQuery} from '@apollo/client';
+import {
+  CreatePostMutation,
+  CreatePostMutationVariables,
+  GetPostQuery,
+  GetPostQueryVariables,
+  UpdatePostMutation,
+  UpdatePostMutationVariables,
+} from '../../API';
 import {useAuthContext} from '../../contexts/AuthContext';
 import Carousel from '../../components/Carousel';
 import VideoPlayer from '../../components/VideoPlayer';
+import ApiErrorMessage from '../../components/ApiErrorMessage';
 
-const CreatePostScreen = () => {
+const UpdatePostScreen = () => {
   const [description, setDescription] = useState('');
   // const [location, setLocation] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -19,31 +38,32 @@ const CreatePostScreen = () => {
 
   const navigation = useNavigation<CreateNavigationProp>();
 
-  const route = useRoute<CreateRouteProp>();
-  const {image, images, video} = route.params;
+  const route = useRoute<UpdatePostRouteProp>();
+  const {id} = route.params;
 
-  const [doCreatePost] = useMutation<
-    CreatePostMutation,
-    CreatePostMutationVariables
-  >(createPost);
+  const [doUpdatePost, {error: updateError, data: updateData}] = useMutation<
+    UpdatePostMutation,
+    UpdatePostMutationVariables
+  >(updatePost);
 
-  let content;
+  const {data, loading, error} = useQuery<GetPostQuery, GetPostQueryVariables>(
+    getPost,
+    {variables: {id: id}},
+  );
 
-  if (image) {
-    content = (
-      <Image
-        source={{
-          uri: image,
-        }}
-        style={styles.image}
-        resizeMode={'contain'}
-      />
-    );
-  } else if (images) {
-    content = <Carousel images={images} />;
-  } else if (video) {
-    content = <VideoPlayer uri={video} />;
-  }
+  const post = data?.getPost;
+
+  useEffect(() => {
+    if (post) {
+      setDescription(post?.description || '');
+    }
+  }, [post]);
+
+  useEffect(() => {
+    if (updateData) {
+      navigation.canGoBack() && navigation.goBack();
+    }
+  }, [updateData, navigation]);
 
   const submit = async () => {
     if (isSubmitting) {
@@ -52,45 +72,34 @@ const CreatePostScreen = () => {
     setIsSubmitting(true);
 
     try {
-      // const input = {
-      //   id: string | null,
-      //   description: string | null,
-      //   image: string | null,
-      //   images: Array<string> | null,
-      //   video: string | null,
-      //   nofComments: number,
-      //   nofLikes: number,
-      //   userID: string,
-      // };
-
-      const response = await doCreatePost({
-        variables: {
-          input: {
-            description: description,
-            image: image,
-            images: images,
-            video: video,
-            nofComments: 0,
-            nofLikes: 0,
-            userID: userId,
-          },
-        },
+      if (!post) {
+        return;
+      }
+      await doUpdatePost({
+        variables: {input: {id: post?.id, description: description}},
       });
       setIsSubmitting(false);
-      navigation.popToTop();
-      navigation.navigate('HomeStack');
-
-      console.log('Response:', response);
     } catch (err) {
       Alert.alert('Error uploading post', (err as Error).message);
       console.log((err as Error).message);
     }
   };
 
+  if (loading) {
+    return <ActivityIndicator />;
+  }
+
+  if (error) {
+    return (
+      <ApiErrorMessage
+        title="Failed to fetch the post"
+        message={error?.message || updateError?.message}
+      />
+    );
+  }
+
   return (
     <View style={styles.root}>
-      <View style={styles.content}>{content}</View>
-
       {/* <Image
         source={{uri: image}}
         style={styles.image}
@@ -157,4 +166,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CreatePostScreen;
+export default UpdatePostScreen;
