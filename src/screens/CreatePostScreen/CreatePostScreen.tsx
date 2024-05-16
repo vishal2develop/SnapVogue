@@ -52,17 +52,6 @@ const CreatePostScreen = () => {
     setIsSubmitting(true);
 
     try {
-      // const input = {
-      //   id: string | null,
-      //   description: string | null,
-      //   image: string | null,
-      //   images: Array<string> | null,
-      //   video: string | null,
-      //   nofComments: number,
-      //   nofLikes: number,
-      //   userID: string,
-      // };
-
       const response = await doCreatePost({
         variables: {
           input: {

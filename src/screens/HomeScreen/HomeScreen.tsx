@@ -68,12 +68,7 @@ const HomeScreen = () => {
     <FlatList
       data={posts}
       renderItem={({item}) =>
-        item && (
-          <FeedPost
-            post={item as Post}
-            isVisible={activePostIndex === item.id}
-          />
-        )
+        item && <FeedPost post={item} isVisible={activePostIndex === item.id} />
       }
       keyExtractor={item => item?.id || ''}
       showsVerticalScrollIndicator={false}

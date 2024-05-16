@@ -44,7 +44,7 @@ const UpdatePostScreen = () => {
   const [doUpdatePost, {error: updateError, data: updateData}] = useMutation<
     UpdatePostMutation,
     UpdatePostMutationVariables
-  >(updatePost);
+  >(updatePost, {refetchQueries: ['ListPosts']});
 
   const {data, loading, error} = useQuery<GetPostQuery, GetPostQueryVariables>(
     getPost,

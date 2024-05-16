@@ -13,11 +13,20 @@ import VideoPlayer from '../VideoPlayer';
 // Hooks
 import {useNavigation} from '@react-navigation/native';
 import {useState} from 'react';
+import useLikeService from '../../services/LikeService/LikeService';
 
 import {FeedNavigationProp} from '../../types/navigation';
-import {Post} from '../../API';
+
 import {DEFAULT_USER_IMAGE} from '../../config';
 import PostMenu from './PostMenu';
+import {Post} from '../../API';
+// import {
+//   createLike,
+//   deleteLike,
+//   likesForPostByUser,
+//   updatePost,
+// } from './queries';
+
 // Interfaces
 interface IFeedPost {
   post: Post;
@@ -26,20 +35,79 @@ interface IFeedPost {
 
 const FeedPost = ({post, isVisible}: IFeedPost) => {
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
-  const [isLiked, setisLiked] = useState(false);
+  const {toggleLike, isLiked} = useLikeService(post);
+
   const navigation = useNavigation<FeedNavigationProp>();
+
   const toggleDescriptionExpanded = () => {
     setIsDescriptionExpanded(existingValue => !existingValue);
   };
 
-  const toggleLike = () => {
-    setisLiked(existingValue => !existingValue);
-  };
+  // const [doCreateLike] = useMutation<
+  //   CreateLikeMutation,
+  //   CreateLikeMutationVariables
+  // >(createLike, {
+  //   variables: {
+  //     input: {
+  //       userID: userId,
+  //       postID: post.id,
+  //     },
+  //   },
+  //   refetchQueries: ['LikesForPostByUser'],
+  // });
+
+  // const {data: usersLikeData} = useQuery<
+  //   LikesForPostByUserQuery,
+  //   LikesForPostByUserQueryVariables
+  // >(likesForPostByUser, {variables: {postID: post.id, userID: {eq: userId}}});
+
+  // const [doUpdatePost] = useMutation<
+  //   UpdatePostMutation,
+  //   UpdatePostMutationVariables
+  // >(updatePost);
+
+  // const [doDeleteLike] = useMutation<
+  //   DeleteLikeMutation,
+  //   DeleteLikeMutationVariables
+  // >(deleteLike, {refetchQueries: ['ListPosts', 'LikesForPostByUser']});
+
+  // console.log(':usersLikeData:', usersLikeData);
+
+  // const userLike = usersLikeData?.likesForPostByUser?.items?.[0];
+
+  const postLikes = post.Likes?.items || [];
+  console.log('postLikes:', postLikes);
+
+  // const incrementNoOfLikes = (amount: 1 | -1) => {
+  //   doUpdatePost({
+  //     variables: {input: {id: post.id, nofLikes: post.nofLikes + amount}},
+  //   });
+  // };
+
+  // const toggleLike = () => {
+  //   try {
+  //     if (userLike) {
+  //       // delete userLike
+  //       doDeleteLike({variables: {input: {id: userLike?.id}}});
+  //       incrementNoOfLikes(-1);
+  //     } else {
+  //       // Create User Like
+  //       doCreateLike();
+  //       incrementNoOfLikes(1);
+  //     }
+  //   } catch (err) {
+  //     console.log('Error:', (err as Error).message);
+  //   }
+  // };
 
   const navigateToUserProfile = () => {
     if (post.User) {
       navigation.navigate('UserProfile', {userId: post.User.id});
     }
+  };
+
+  const navigateToLikes = () => {
+    navigation.navigate('PostLikes', {id: post.id});
   };
 
   const navigateToComments = () => {
@@ -120,11 +188,43 @@ const FeedPost = ({post, isVisible}: IFeedPost) => {
             color={colors.black}
           />
         </View>
+
         {/* Likes */}
-        <Text style={styles.text}>
+        {postLikes.length === 0 ? (
+          <Text>Be the first to like the post</Text>
+        ) : (
+          <Text style={styles.text} onPress={navigateToLikes}>
+            Liked by{' '}
+            <Text style={styles.bold}>{postLikes[0]?.User?.username}</Text>
+            {postLikes.length > 1 && (
+              <>
+                {' '}
+                and <Text style={styles.bold}>{post.nofLikes - 1} others</Text>
+              </>
+            )}
+          </Text>
+        )}
+
+        {/* <Text style={styles.text} onPress={navigateToLikes}>
           Liked by <Text style={styles.bold}>thelostlaces</Text> and{' '}
           <Text style={styles.bold}>{post.nofLikes} others</Text>
-        </Text>
+        </Text> */}
+
+        {/* {postLikes.length === 0 ? (
+          <Text>Be the first to like the post</Text>
+        ) : (
+          <Text style={styles.text} onPress={navigateToLikes}>
+            Liked by{' '}
+            <Text style={styles.bold}>{postLikes[0]?.User?.username}</Text>
+            {postLikes.length > 1 && (
+              <>
+                {' '}
+                and <Text style={styles.bold}>{post.nofLikes - 1} others</Text>
+              </>
+            )}
+          </Text>
+        )} */}
+
         {/* Post Description */}
         <Text style={styles.text} numberOfLines={isDescriptionExpanded ? 0 : 3}>
           <Text style={styles.bold}>{post.User?.username}</Text>{' '}
