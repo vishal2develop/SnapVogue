@@ -2,6 +2,8 @@ import {View, Text, Image, TextInput, StyleSheet} from 'react-native';
 import React, {useState} from 'react';
 import colors from '../../theme/color';
 import fonts from '../../theme/fonts';
+import useCommentsService from '../../services/CommentsService/CommentsService';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 interface IInput {
   postId: string;
@@ -9,13 +11,16 @@ interface IInput {
 
 const Input = ({postId}: IInput) => {
   const [newComment, setNewComment] = useState('');
+  const insets = useSafeAreaInsets();
+
+  const {onCreateComment} = useCommentsService(postId);
 
   const onPost = () => {
-    console.warn('Posting the comment');
+    onCreateComment(newComment);
     setNewComment('');
   };
   return (
-    <View style={styles.root}>
+    <View style={[styles.root, {paddingBottom: insets.bottom}]}>
       <Image
         source={{
           uri: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/2.jpg',
@@ -30,7 +35,9 @@ const Input = ({postId}: IInput) => {
         onChangeText={setNewComment}
         multiline
       />
-      <Text style={styles.button} onPress={onPost}>
+      <Text
+        style={[styles.button, {bottom: insets.bottom + 7}]}
+        onPress={onPost}>
         POST
       </Text>
     </View>

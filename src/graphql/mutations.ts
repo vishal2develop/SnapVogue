@@ -254,6 +254,7 @@ export const createComment = /* GraphQL */ `mutation CreateComment(
 ) {
   createComment(input: $input, condition: $condition) {
     id
+    createdAt
     comment
     userID
     postID
@@ -286,16 +287,29 @@ export const createComment = /* GraphQL */ `mutation CreateComment(
     }
     Post {
       id
-      name
-      email
-      username
-      bio
-      website
-      nofPosts
-      nofFollowers
-      nofFollowings
+      description
       image
-      Posts {
+      images
+      video
+      nofComments
+      nofLikes
+      userID
+      User {
+        id
+        name
+        email
+        username
+        bio
+        website
+        nofPosts
+        nofFollowers
+        nofFollowings
+        image
+        createdAt
+        updatedAt
+        __typename
+      }
+      Likes {
         nextToken
         __typename
       }
@@ -303,15 +317,10 @@ export const createComment = /* GraphQL */ `mutation CreateComment(
         nextToken
         __typename
       }
-      Likes {
-        nextToken
-        __typename
-      }
       createdAt
       updatedAt
       __typename
     }
-    createdAt
     updatedAt
     __typename
   }
@@ -326,6 +335,7 @@ export const updateComment = /* GraphQL */ `mutation UpdateComment(
 ) {
   updateComment(input: $input, condition: $condition) {
     id
+    createdAt
     comment
     userID
     postID
@@ -358,16 +368,29 @@ export const updateComment = /* GraphQL */ `mutation UpdateComment(
     }
     Post {
       id
-      name
-      email
-      username
-      bio
-      website
-      nofPosts
-      nofFollowers
-      nofFollowings
+      description
       image
-      Posts {
+      images
+      video
+      nofComments
+      nofLikes
+      userID
+      User {
+        id
+        name
+        email
+        username
+        bio
+        website
+        nofPosts
+        nofFollowers
+        nofFollowings
+        image
+        createdAt
+        updatedAt
+        __typename
+      }
+      Likes {
         nextToken
         __typename
       }
@@ -375,15 +398,10 @@ export const updateComment = /* GraphQL */ `mutation UpdateComment(
         nextToken
         __typename
       }
-      Likes {
-        nextToken
-        __typename
-      }
       createdAt
       updatedAt
       __typename
     }
-    createdAt
     updatedAt
     __typename
   }
@@ -398,6 +416,7 @@ export const deleteComment = /* GraphQL */ `mutation DeleteComment(
 ) {
   deleteComment(input: $input, condition: $condition) {
     id
+    createdAt
     comment
     userID
     postID
@@ -430,16 +449,29 @@ export const deleteComment = /* GraphQL */ `mutation DeleteComment(
     }
     Post {
       id
-      name
-      email
-      username
-      bio
-      website
-      nofPosts
-      nofFollowers
-      nofFollowings
+      description
       image
-      Posts {
+      images
+      video
+      nofComments
+      nofLikes
+      userID
+      User {
+        id
+        name
+        email
+        username
+        bio
+        website
+        nofPosts
+        nofFollowers
+        nofFollowings
+        image
+        createdAt
+        updatedAt
+        __typename
+      }
+      Likes {
         nextToken
         __typename
       }
@@ -447,15 +479,10 @@ export const deleteComment = /* GraphQL */ `mutation DeleteComment(
         nextToken
         __typename
       }
-      Likes {
-        nextToken
-        __typename
-      }
       createdAt
       updatedAt
       __typename
     }
-    createdAt
     updatedAt
     __typename
   }
@@ -519,10 +546,10 @@ export const createPost = /* GraphQL */ `mutation CreatePost(
     Comments {
       items {
         id
+        createdAt
         comment
         userID
         postID
-        createdAt
         updatedAt
         __typename
       }
@@ -593,10 +620,10 @@ export const updatePost = /* GraphQL */ `mutation UpdatePost(
     Comments {
       items {
         id
+        createdAt
         comment
         userID
         postID
-        createdAt
         updatedAt
         __typename
       }
@@ -667,10 +694,10 @@ export const deletePost = /* GraphQL */ `mutation DeletePost(
     Comments {
       items {
         id
+        createdAt
         comment
         userID
         postID
-        createdAt
         updatedAt
         __typename
       }
@@ -721,10 +748,10 @@ export const createUser = /* GraphQL */ `mutation CreateUser(
     Comments {
       items {
         id
+        createdAt
         comment
         userID
         postID
-        createdAt
         updatedAt
         __typename
       }
@@ -787,10 +814,10 @@ export const updateUser = /* GraphQL */ `mutation UpdateUser(
     Comments {
       items {
         id
+        createdAt
         comment
         userID
         postID
-        createdAt
         updatedAt
         __typename
       }
@@ -853,10 +880,10 @@ export const deleteUser = /* GraphQL */ `mutation DeleteUser(
     Comments {
       items {
         id
+        createdAt
         comment
         userID
         postID
-        createdAt
         updatedAt
         __typename
       }

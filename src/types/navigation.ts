@@ -94,6 +94,9 @@ export type CreateRouteProp = RouteProp<
   UploadStackNavigatorParamList,
   'Create'
 >;
+
+export type CommentsRouteProp = RouteProp<RootNavigatorParamList, 'Comments'>;
+
 // Auth Stack Navigator
 export type AuthStackNavigatorParamList = {
   'Sign in': undefined;

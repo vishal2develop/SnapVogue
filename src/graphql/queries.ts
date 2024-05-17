@@ -250,6 +250,7 @@ export const likesForPostByUser = /* GraphQL */ `query LikesForPostByUser(
 export const getComment = /* GraphQL */ `query GetComment($id: ID!) {
   getComment(id: $id) {
     id
+    createdAt
     comment
     userID
     postID
@@ -282,16 +283,29 @@ export const getComment = /* GraphQL */ `query GetComment($id: ID!) {
     }
     Post {
       id
-      name
-      email
-      username
-      bio
-      website
-      nofPosts
-      nofFollowers
-      nofFollowings
+      description
       image
-      Posts {
+      images
+      video
+      nofComments
+      nofLikes
+      userID
+      User {
+        id
+        name
+        email
+        username
+        bio
+        website
+        nofPosts
+        nofFollowers
+        nofFollowings
+        image
+        createdAt
+        updatedAt
+        __typename
+      }
+      Likes {
         nextToken
         __typename
       }
@@ -299,15 +313,10 @@ export const getComment = /* GraphQL */ `query GetComment($id: ID!) {
         nextToken
         __typename
       }
-      Likes {
-        nextToken
-        __typename
-      }
       createdAt
       updatedAt
       __typename
     }
-    createdAt
     updatedAt
     __typename
   }
@@ -324,6 +333,7 @@ export const listComments = /* GraphQL */ `query ListComments(
   listComments(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
+      createdAt
       comment
       userID
       postID
@@ -344,20 +354,17 @@ export const listComments = /* GraphQL */ `query ListComments(
       }
       Post {
         id
-        name
-        email
-        username
-        bio
-        website
-        nofPosts
-        nofFollowers
-        nofFollowings
+        description
         image
+        images
+        video
+        nofComments
+        nofLikes
+        userID
         createdAt
         updatedAt
         __typename
       }
-      createdAt
       updatedAt
       __typename
     }
@@ -385,6 +392,7 @@ export const commentsByUserID = /* GraphQL */ `query CommentsByUserID(
   ) {
     items {
       id
+      createdAt
       comment
       userID
       postID
@@ -405,20 +413,17 @@ export const commentsByUserID = /* GraphQL */ `query CommentsByUserID(
       }
       Post {
         id
-        name
-        email
-        username
-        bio
-        website
-        nofPosts
-        nofFollowers
-        nofFollowings
+        description
         image
+        images
+        video
+        nofComments
+        nofLikes
+        userID
         createdAt
         updatedAt
         __typename
       }
-      createdAt
       updatedAt
       __typename
     }
@@ -430,15 +435,17 @@ export const commentsByUserID = /* GraphQL */ `query CommentsByUserID(
   APITypes.CommentsByUserIDQueryVariables,
   APITypes.CommentsByUserIDQuery
 >;
-export const commentsByPostID = /* GraphQL */ `query CommentsByPostID(
+export const commentsByPost = /* GraphQL */ `query CommentsByPost(
   $postID: ID!
+  $createdAt: ModelStringKeyConditionInput
   $sortDirection: ModelSortDirection
   $filter: ModelCommentFilterInput
   $limit: Int
   $nextToken: String
 ) {
-  commentsByPostID(
+  commentsByPost(
     postID: $postID
+    createdAt: $createdAt
     sortDirection: $sortDirection
     filter: $filter
     limit: $limit
@@ -446,6 +453,7 @@ export const commentsByPostID = /* GraphQL */ `query CommentsByPostID(
   ) {
     items {
       id
+      createdAt
       comment
       userID
       postID
@@ -466,20 +474,17 @@ export const commentsByPostID = /* GraphQL */ `query CommentsByPostID(
       }
       Post {
         id
-        name
-        email
-        username
-        bio
-        website
-        nofPosts
-        nofFollowers
-        nofFollowings
+        description
         image
+        images
+        video
+        nofComments
+        nofLikes
+        userID
         createdAt
         updatedAt
         __typename
       }
-      createdAt
       updatedAt
       __typename
     }
@@ -488,8 +493,8 @@ export const commentsByPostID = /* GraphQL */ `query CommentsByPostID(
   }
 }
 ` as GeneratedQuery<
-  APITypes.CommentsByPostIDQueryVariables,
-  APITypes.CommentsByPostIDQuery
+  APITypes.CommentsByPostQueryVariables,
+  APITypes.CommentsByPostQuery
 >;
 export const getPost = /* GraphQL */ `query GetPost($id: ID!) {
   getPost(id: $id) {
@@ -543,10 +548,10 @@ export const getPost = /* GraphQL */ `query GetPost($id: ID!) {
     Comments {
       items {
         id
+        createdAt
         comment
         userID
         postID
-        createdAt
         updatedAt
         __typename
       }
@@ -696,10 +701,10 @@ export const getUser = /* GraphQL */ `query GetUser($id: ID!) {
     Comments {
       items {
         id
+        createdAt
         comment
         userID
         postID
-        createdAt
         updatedAt
         __typename
       }
