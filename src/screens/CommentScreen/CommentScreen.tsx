@@ -17,23 +17,36 @@ const CommentScreen = () => {
   const route = useRoute<CommentsRouteProp>();
   const {postId} = route.params;
   const [newComments, setNewComments] = useState<CommentType[]>([]);
+  const [isFetchingMore, setIsFetchingMore] = useState(false);
 
-  const {data, loading, error} = useQuery<
+  const {data, loading, error, fetchMore} = useQuery<
     CommentsByPostQuery,
     CommentsByPostQueryVariables
   >(commentsByPost, {
     variables: {
       postID: postId,
       sortDirection: ModelSortDirection.DESC,
+      limit: 20,
     },
   });
 
   const comments = data?.commentsByPost?.items || [];
+  const nextToken = data?.commentsByPost?.nextToken;
 
   const isNewComment = (comment: CommentType) => {
     let comments = newComments.some(c => c.id === comment.id);
     console.log('commentS:', comments);
     return comments;
+  };
+
+  const loadMore = async () => {
+    console.log('loading more posts');
+    if (!nextToken || isFetchingMore) {
+      return;
+    }
+    setIsFetchingMore(true);
+    await fetchMore({variables: {nextToken}});
+    setIsFetchingMore(false);
   };
 
   if (loading) {
@@ -56,12 +69,13 @@ const CommentScreen = () => {
           item && <Comment comment={item} includeDetails={true} />
         }
         style={{padding: 10}}
-        inverted
+        inverted={comments?.length > 0 && true}
         keyExtractor={item => item?.id || ''}
         showsVerticalScrollIndicator={false}
         ListEmptyComponent={() => (
           <Text>No comments. Be the first comment</Text>
         )}
+        onEndReached={() => loadMore()}
       />
       <Input postId={postId} />
     </View>

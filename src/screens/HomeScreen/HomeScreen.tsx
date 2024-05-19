@@ -20,13 +20,18 @@ import ApiErrorMessage from '../../components/ApiErrorMessage';
 
 const HomeScreen = () => {
   const [activePostIndex, setActivePostIndex] = useState<string | null>(null);
+  const [isFetchingMore, setIsFetchingMore] = useState(false);
 
   // new way to query data using useQuery
-  const {data, loading, error, refetch} = useQuery<
+  const {data, loading, error, refetch, fetchMore} = useQuery<
     PostsByDateQuery,
     PostsByDateQueryVariables
   >(postsByDate, {
-    variables: {type: 'POST', sortDirection: ModelSortDirection.DESC},
+    variables: {
+      type: 'POST',
+      sortDirection: ModelSortDirection.DESC,
+      limit: 10,
+    },
   });
 
   // Old way to query data
@@ -43,6 +48,12 @@ const HomeScreen = () => {
   //   fetchPosts();
   // }, []);
 
+  const posts = (data?.postsByDate?.items || []).filter(
+    user => user && user?.User,
+  );
+
+  const nextToken = data?.postsByDate?.nextToken;
+
   const viewabilityConfig: ViewabilityConfig = {
     itemVisiblePercentThreshold: 51,
   };
@@ -56,6 +67,15 @@ const HomeScreen = () => {
     },
   );
 
+  const loadMore = async () => {
+    if (!nextToken || isFetchingMore) {
+      return;
+    }
+    setIsFetchingMore(true);
+    await fetchMore({variables: {nextToken}});
+    setIsFetchingMore(false);
+  };
+
   if (loading) {
     return <ActivityIndicator />;
   }
@@ -66,9 +86,6 @@ const HomeScreen = () => {
     );
   }
   // Filtering out users that are deleted & dont have user info
-  const posts = (data?.postsByDate?.items || []).filter(
-    user => user && user?.User,
-  );
 
   return (
     <FlatList
@@ -80,8 +97,9 @@ const HomeScreen = () => {
       showsVerticalScrollIndicator={false}
       onViewableItemsChanged={onViewableItemsChanged.current}
       viewabilityConfig={viewabilityConfig}
-      onRefresh={refetch}
+      onRefresh={() => refetch()}
       refreshing={loading}
+      onEndReached={loadMore}
     />
   );
 };
