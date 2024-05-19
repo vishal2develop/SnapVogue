@@ -42,6 +42,8 @@ export const onCreateLike = /* GraphQL */ `subscription OnCreateLike($filter: Mo
     }
     Post {
       id
+      createdAt
+      type
       description
       image
       images
@@ -72,7 +74,6 @@ export const onCreateLike = /* GraphQL */ `subscription OnCreateLike($filter: Mo
         nextToken
         __typename
       }
-      createdAt
       updatedAt
       __typename
     }
@@ -119,6 +120,8 @@ export const onUpdateLike = /* GraphQL */ `subscription OnUpdateLike($filter: Mo
     }
     Post {
       id
+      createdAt
+      type
       description
       image
       images
@@ -149,7 +152,6 @@ export const onUpdateLike = /* GraphQL */ `subscription OnUpdateLike($filter: Mo
         nextToken
         __typename
       }
-      createdAt
       updatedAt
       __typename
     }
@@ -196,6 +198,8 @@ export const onDeleteLike = /* GraphQL */ `subscription OnDeleteLike($filter: Mo
     }
     Post {
       id
+      createdAt
+      type
       description
       image
       images
@@ -226,7 +230,6 @@ export const onDeleteLike = /* GraphQL */ `subscription OnDeleteLike($filter: Mo
         nextToken
         __typename
       }
-      createdAt
       updatedAt
       __typename
     }
@@ -275,6 +278,8 @@ export const onCreateComment = /* GraphQL */ `subscription OnCreateComment($filt
     }
     Post {
       id
+      createdAt
+      type
       description
       image
       images
@@ -305,7 +310,6 @@ export const onCreateComment = /* GraphQL */ `subscription OnCreateComment($filt
         nextToken
         __typename
       }
-      createdAt
       updatedAt
       __typename
     }
@@ -353,6 +357,8 @@ export const onUpdateComment = /* GraphQL */ `subscription OnUpdateComment($filt
     }
     Post {
       id
+      createdAt
+      type
       description
       image
       images
@@ -383,7 +389,6 @@ export const onUpdateComment = /* GraphQL */ `subscription OnUpdateComment($filt
         nextToken
         __typename
       }
-      createdAt
       updatedAt
       __typename
     }
@@ -431,6 +436,8 @@ export const onDeleteComment = /* GraphQL */ `subscription OnDeleteComment($filt
     }
     Post {
       id
+      createdAt
+      type
       description
       image
       images
@@ -461,7 +468,6 @@ export const onDeleteComment = /* GraphQL */ `subscription OnDeleteComment($filt
         nextToken
         __typename
       }
-      createdAt
       updatedAt
       __typename
     }
@@ -476,6 +482,8 @@ export const onDeleteComment = /* GraphQL */ `subscription OnDeleteComment($filt
 export const onCreatePost = /* GraphQL */ `subscription OnCreatePost($filter: ModelSubscriptionPostFilterInput) {
   onCreatePost(filter: $filter) {
     id
+    createdAt
+    type
     description
     image
     images
@@ -535,7 +543,6 @@ export const onCreatePost = /* GraphQL */ `subscription OnCreatePost($filter: Mo
       nextToken
       __typename
     }
-    createdAt
     updatedAt
     __typename
   }
@@ -547,6 +554,8 @@ export const onCreatePost = /* GraphQL */ `subscription OnCreatePost($filter: Mo
 export const onUpdatePost = /* GraphQL */ `subscription OnUpdatePost($filter: ModelSubscriptionPostFilterInput) {
   onUpdatePost(filter: $filter) {
     id
+    createdAt
+    type
     description
     image
     images
@@ -606,7 +615,6 @@ export const onUpdatePost = /* GraphQL */ `subscription OnUpdatePost($filter: Mo
       nextToken
       __typename
     }
-    createdAt
     updatedAt
     __typename
   }
@@ -618,6 +626,8 @@ export const onUpdatePost = /* GraphQL */ `subscription OnUpdatePost($filter: Mo
 export const onDeletePost = /* GraphQL */ `subscription OnDeletePost($filter: ModelSubscriptionPostFilterInput) {
   onDeletePost(filter: $filter) {
     id
+    createdAt
+    type
     description
     image
     images
@@ -677,7 +687,6 @@ export const onDeletePost = /* GraphQL */ `subscription OnDeletePost($filter: Mo
       nextToken
       __typename
     }
-    createdAt
     updatedAt
     __typename
   }
@@ -701,6 +710,8 @@ export const onCreateUser = /* GraphQL */ `subscription OnCreateUser($filter: Mo
     Posts {
       items {
         id
+        createdAt
+        type
         description
         image
         images
@@ -708,7 +719,6 @@ export const onCreateUser = /* GraphQL */ `subscription OnCreateUser($filter: Mo
         nofComments
         nofLikes
         userID
-        createdAt
         updatedAt
         __typename
       }
@@ -764,6 +774,8 @@ export const onUpdateUser = /* GraphQL */ `subscription OnUpdateUser($filter: Mo
     Posts {
       items {
         id
+        createdAt
+        type
         description
         image
         images
@@ -771,7 +783,6 @@ export const onUpdateUser = /* GraphQL */ `subscription OnUpdateUser($filter: Mo
         nofComments
         nofLikes
         userID
-        createdAt
         updatedAt
         __typename
       }
@@ -827,6 +838,8 @@ export const onDeleteUser = /* GraphQL */ `subscription OnDeleteUser($filter: Mo
     Posts {
       items {
         id
+        createdAt
+        type
         description
         image
         images
@@ -834,7 +847,6 @@ export const onDeleteUser = /* GraphQL */ `subscription OnDeleteUser($filter: Mo
         nofComments
         nofLikes
         userID
-        createdAt
         updatedAt
         __typename
       }

@@ -10,8 +10,12 @@ import FeedPost from '../../components/FeedPost/FeedPost';
 import {useRef, useState} from 'react';
 
 import {useQuery} from '@apollo/client';
-import {listPosts} from './queries';
-import {ListPostsQuery, ListPostsQueryVariables, Post} from '../../API';
+import {postsByDate} from './queries';
+import {
+  ModelSortDirection,
+  PostsByDateQuery,
+  PostsByDateQueryVariables,
+} from '../../API';
 import ApiErrorMessage from '../../components/ApiErrorMessage';
 
 const HomeScreen = () => {
@@ -19,9 +23,11 @@ const HomeScreen = () => {
 
   // new way to query data using useQuery
   const {data, loading, error, refetch} = useQuery<
-    ListPostsQuery,
-    ListPostsQueryVariables
-  >(listPosts);
+    PostsByDateQuery,
+    PostsByDateQueryVariables
+  >(postsByDate, {
+    variables: {type: 'POST', sortDirection: ModelSortDirection.DESC},
+  });
 
   // Old way to query data
   // const [posts, setPosts] = useState([]);

@@ -9,6 +9,7 @@ import Comment from '../Comment';
 import DoublePressable from '../DoublePressable';
 import Carousel from '../Carousel';
 import VideoPlayer from '../VideoPlayer';
+import dayjs from 'dayjs';
 
 // Hooks
 import {useNavigation} from '@react-navigation/native';
@@ -243,7 +244,9 @@ const FeedPost = ({post, isVisible}: IFeedPost) => {
         )}
 
         {/* Posted Date */}
-        <Text style={{color: colors.grey, marginTop: 5}}>{post.createdAt}</Text>
+        <Text style={{color: colors.grey, marginTop: 5}}>
+          {dayjs(post.createdAt).fromNow()}
+        </Text>
       </View>
     </View>
   );

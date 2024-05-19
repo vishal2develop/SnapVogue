@@ -8,6 +8,9 @@ import AuthContextProvider from './src/contexts/AuthContext';
 import Client from './src/apollo/Client';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {MenuProvider} from 'react-native-popup-menu';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import * as dayjs from 'dayjs';
+dayjs.extend(relativeTime);
 
 Amplify.configure(amplifyconfig);
 

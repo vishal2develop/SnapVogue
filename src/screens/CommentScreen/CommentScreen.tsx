@@ -24,6 +24,7 @@ const CommentScreen = () => {
   >(commentsByPost, {
     variables: {
       postID: postId,
+      sortDirection: ModelSortDirection.DESC,
     },
   });
 
@@ -55,6 +56,7 @@ const CommentScreen = () => {
           item && <Comment comment={item} includeDetails={true} />
         }
         style={{padding: 10}}
+        inverted
         keyExtractor={item => item?.id || ''}
         showsVerticalScrollIndicator={false}
         ListEmptyComponent={() => (

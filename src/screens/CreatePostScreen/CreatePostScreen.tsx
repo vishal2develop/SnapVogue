@@ -57,6 +57,7 @@ const CreatePostScreen = () => {
           input: {
             description: description,
             image: image,
+            type: 'POST',
             images: images,
             video: video,
             nofComments: 0,

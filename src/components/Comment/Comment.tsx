@@ -3,6 +3,7 @@ import {View, Text, Image, Pressable, StyleSheet} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import colors from '../../theme/color';
 import {useState} from 'react';
+import dayjs from 'dayjs';
 
 // import styles from './styles';
 import {Comment as CommentType} from '../../API';
@@ -49,9 +50,9 @@ const Comment = ({
         {includeDetails && (
           <View style={styles.footer}>
             {isNew && <Text style={styles.new}>new</Text>}
-            {/* <Text style={styles.footerText}>
+            <Text style={styles.footerText}>
               {dayjs(comment.createdAt).fromNow()}
-            </Text> */}
+            </Text>
             <Text style={styles.footerText}>5 Likes</Text>
             <Text style={styles.footerText}>Reply</Text>
           </View>
