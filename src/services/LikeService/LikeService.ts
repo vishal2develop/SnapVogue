@@ -44,7 +44,7 @@ const useLikeService = (post: Post) => {
   const [doDeleteLike] = useMutation<
     DeleteLikeMutation,
     DeleteLikeMutationVariables
-  >(deleteLike, {refetchQueries: ['ListPosts', 'LikesForPostByUser']});
+  >(deleteLike, {refetchQueries: ['PostsByDate', 'LikesForPostByUser']});
 
   const userLike = usersLikeData?.likesForPostByUser?.items?.[0];
 

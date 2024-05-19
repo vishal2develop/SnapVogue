@@ -25,7 +25,7 @@ const CreatePostScreen = () => {
   const [doCreatePost] = useMutation<
     CreatePostMutation,
     CreatePostMutationVariables
-  >(createPost);
+  >(createPost, {refetchQueries: ['PostsByDate']});
 
   let content;
 

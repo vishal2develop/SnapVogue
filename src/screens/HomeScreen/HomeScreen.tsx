@@ -66,7 +66,7 @@ const HomeScreen = () => {
     );
   }
   // Filtering out users that are deleted & dont have user info
-  const posts = (data?.listPosts?.items || []).filter(
+  const posts = (data?.postsByDate?.items || []).filter(
     user => user && user?.User,
   );
 
