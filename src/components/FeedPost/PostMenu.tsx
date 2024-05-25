@@ -34,8 +34,7 @@ const PostMenu = ({post}: IPostMenu) => {
 
   const startDeletingPost = async () => {
     try {
-      const response = await doDeletePost();
-      console.log('response:', response);
+      await doDeletePost();
     } catch (e) {
       Alert.alert('Failed to delete post', (e as Error).message);
     }

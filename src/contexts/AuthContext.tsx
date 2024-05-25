@@ -1,4 +1,10 @@
-import {SignInOutput, getCurrentUser, AuthUser} from 'aws-amplify/auth';
+import {
+  SignInOutput,
+  getCurrentUser,
+  AuthUser,
+  fetchAuthSession,
+  JWT,
+} from 'aws-amplify/auth';
 import React, {
   createContext,
   ReactNode,
@@ -10,37 +16,45 @@ import {Hub} from 'aws-amplify/utils';
 import {HubCallback} from '@aws-amplify/core';
 
 type UserType = SignInOutput | AuthUser | null | undefined;
+type UserJwtTokenType = string;
 
 type AuthContextType = {
   user: UserType;
   userId: string;
+  userJwtToken: UserJwtTokenType;
 };
-
 const AuthContext = createContext<AuthContextType>({
   user: undefined,
   userId: '',
+  userJwtToken: '',
 });
 
 // context provider. This will be consumed by other components
 const AuthContextProvider = ({children}: {children: ReactNode}) => {
   const [user, setUser] = useState<UserType>(undefined);
   const [userId, setUserId] = useState<string>('');
+  const [userJwtToken, setUserJwtToken] = useState<UserJwtTokenType>('');
 
   console.log('user:', user);
 
   const checkUser = async () => {
     try {
-      const {userId, username, signInDetails} = await getCurrentUser();
+      const {userId, username} = await getCurrentUser();
+      const {tokens} = await fetchAuthSession();
       console.log('username:', username);
       // console.log('userId:', userId);
       // console.log('signInDetails:', signInDetails);
-
+      const jwtToken = (tokens?.accessToken || '') as string;
       setUser(username);
+      setUserJwtToken(jwtToken);
+
       setUserId(userId);
     } catch (e) {
       console.log('error:', (e as Error).message);
 
       setUser(null);
+      setUserId('');
+      setUserJwtToken('');
     }
   };
 
@@ -55,6 +69,8 @@ const AuthContextProvider = ({children}: {children: ReactNode}) => {
 
       if (event === 'signedOut') {
         setUser(null);
+        setUserId('');
+        setUserJwtToken('');
       }
       if (event === 'signedIn') {
         (async () => await checkUser())();
@@ -68,7 +84,8 @@ const AuthContextProvider = ({children}: {children: ReactNode}) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{user, userId: userId}}>
+    <AuthContext.Provider
+      value={{user, userId: userId, userJwtToken: userJwtToken}}>
       {children}
     </AuthContext.Provider>
   );
