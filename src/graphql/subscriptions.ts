@@ -2,13 +2,94 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-import * as APITypes from "../API";
+import * as APITypes from '../API';
 type GeneratedSubscription<InputType, OutputType> = string & {
   __generatedSubscriptionInput: InputType;
   __generatedSubscriptionOutput: OutputType;
 };
 
-export const onCreateLike = /* GraphQL */ `subscription OnCreateLike($filter: ModelSubscriptionLikeFilterInput) {
+export const onCreateCommentByPostId =
+  /* GraphQL */ `subscription OnCreateCommentByPostId($postID: ID!) {
+  onCreateCommentByPostId(postID: $postID) {
+    id
+    createdAt
+    comment
+    userID
+    postID
+    User {
+      id
+      name
+      email
+      username
+      bio
+      website
+      nofPosts
+      nofFollowers
+      nofFollowings
+      image
+      Posts {
+        nextToken
+        __typename
+      }
+      Comments {
+        nextToken
+        __typename
+      }
+      Likes {
+        nextToken
+        __typename
+      }
+      createdAt
+      updatedAt
+      __typename
+    }
+    Post {
+      id
+      createdAt
+      type
+      description
+      image
+      images
+      video
+      nofComments
+      nofLikes
+      userID
+      User {
+        id
+        name
+        email
+        username
+        bio
+        website
+        nofPosts
+        nofFollowers
+        nofFollowings
+        image
+        createdAt
+        updatedAt
+        __typename
+      }
+      Likes {
+        nextToken
+        __typename
+      }
+      Comments {
+        nextToken
+        __typename
+      }
+      updatedAt
+      __typename
+    }
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedSubscription<
+    APITypes.OnCreateCommentByPostIdSubscriptionVariables,
+    APITypes.OnCreateCommentByPostIdSubscription
+  >;
+export const onCreateLike =
+  /* GraphQL */ `subscription OnCreateLike($filter: ModelSubscriptionLikeFilterInput) {
   onCreateLike(filter: $filter) {
     id
     userID
@@ -83,10 +164,11 @@ export const onCreateLike = /* GraphQL */ `subscription OnCreateLike($filter: Mo
   }
 }
 ` as GeneratedSubscription<
-  APITypes.OnCreateLikeSubscriptionVariables,
-  APITypes.OnCreateLikeSubscription
->;
-export const onUpdateLike = /* GraphQL */ `subscription OnUpdateLike($filter: ModelSubscriptionLikeFilterInput) {
+    APITypes.OnCreateLikeSubscriptionVariables,
+    APITypes.OnCreateLikeSubscription
+  >;
+export const onUpdateLike =
+  /* GraphQL */ `subscription OnUpdateLike($filter: ModelSubscriptionLikeFilterInput) {
   onUpdateLike(filter: $filter) {
     id
     userID
@@ -161,10 +243,11 @@ export const onUpdateLike = /* GraphQL */ `subscription OnUpdateLike($filter: Mo
   }
 }
 ` as GeneratedSubscription<
-  APITypes.OnUpdateLikeSubscriptionVariables,
-  APITypes.OnUpdateLikeSubscription
->;
-export const onDeleteLike = /* GraphQL */ `subscription OnDeleteLike($filter: ModelSubscriptionLikeFilterInput) {
+    APITypes.OnUpdateLikeSubscriptionVariables,
+    APITypes.OnUpdateLikeSubscription
+  >;
+export const onDeleteLike =
+  /* GraphQL */ `subscription OnDeleteLike($filter: ModelSubscriptionLikeFilterInput) {
   onDeleteLike(filter: $filter) {
     id
     userID
@@ -239,10 +322,11 @@ export const onDeleteLike = /* GraphQL */ `subscription OnDeleteLike($filter: Mo
   }
 }
 ` as GeneratedSubscription<
-  APITypes.OnDeleteLikeSubscriptionVariables,
-  APITypes.OnDeleteLikeSubscription
->;
-export const onCreateComment = /* GraphQL */ `subscription OnCreateComment($filter: ModelSubscriptionCommentFilterInput) {
+    APITypes.OnDeleteLikeSubscriptionVariables,
+    APITypes.OnDeleteLikeSubscription
+  >;
+export const onCreateComment =
+  /* GraphQL */ `subscription OnCreateComment($filter: ModelSubscriptionCommentFilterInput) {
   onCreateComment(filter: $filter) {
     id
     createdAt
@@ -318,10 +402,11 @@ export const onCreateComment = /* GraphQL */ `subscription OnCreateComment($filt
   }
 }
 ` as GeneratedSubscription<
-  APITypes.OnCreateCommentSubscriptionVariables,
-  APITypes.OnCreateCommentSubscription
->;
-export const onUpdateComment = /* GraphQL */ `subscription OnUpdateComment($filter: ModelSubscriptionCommentFilterInput) {
+    APITypes.OnCreateCommentSubscriptionVariables,
+    APITypes.OnCreateCommentSubscription
+  >;
+export const onUpdateComment =
+  /* GraphQL */ `subscription OnUpdateComment($filter: ModelSubscriptionCommentFilterInput) {
   onUpdateComment(filter: $filter) {
     id
     createdAt
@@ -397,10 +482,11 @@ export const onUpdateComment = /* GraphQL */ `subscription OnUpdateComment($filt
   }
 }
 ` as GeneratedSubscription<
-  APITypes.OnUpdateCommentSubscriptionVariables,
-  APITypes.OnUpdateCommentSubscription
->;
-export const onDeleteComment = /* GraphQL */ `subscription OnDeleteComment($filter: ModelSubscriptionCommentFilterInput) {
+    APITypes.OnUpdateCommentSubscriptionVariables,
+    APITypes.OnUpdateCommentSubscription
+  >;
+export const onDeleteComment =
+  /* GraphQL */ `subscription OnDeleteComment($filter: ModelSubscriptionCommentFilterInput) {
   onDeleteComment(filter: $filter) {
     id
     createdAt
@@ -476,10 +562,11 @@ export const onDeleteComment = /* GraphQL */ `subscription OnDeleteComment($filt
   }
 }
 ` as GeneratedSubscription<
-  APITypes.OnDeleteCommentSubscriptionVariables,
-  APITypes.OnDeleteCommentSubscription
->;
-export const onCreatePost = /* GraphQL */ `subscription OnCreatePost($filter: ModelSubscriptionPostFilterInput) {
+    APITypes.OnDeleteCommentSubscriptionVariables,
+    APITypes.OnDeleteCommentSubscription
+  >;
+export const onCreatePost =
+  /* GraphQL */ `subscription OnCreatePost($filter: ModelSubscriptionPostFilterInput) {
   onCreatePost(filter: $filter) {
     id
     createdAt
@@ -548,10 +635,11 @@ export const onCreatePost = /* GraphQL */ `subscription OnCreatePost($filter: Mo
   }
 }
 ` as GeneratedSubscription<
-  APITypes.OnCreatePostSubscriptionVariables,
-  APITypes.OnCreatePostSubscription
->;
-export const onUpdatePost = /* GraphQL */ `subscription OnUpdatePost($filter: ModelSubscriptionPostFilterInput) {
+    APITypes.OnCreatePostSubscriptionVariables,
+    APITypes.OnCreatePostSubscription
+  >;
+export const onUpdatePost =
+  /* GraphQL */ `subscription OnUpdatePost($filter: ModelSubscriptionPostFilterInput) {
   onUpdatePost(filter: $filter) {
     id
     createdAt
@@ -620,10 +708,11 @@ export const onUpdatePost = /* GraphQL */ `subscription OnUpdatePost($filter: Mo
   }
 }
 ` as GeneratedSubscription<
-  APITypes.OnUpdatePostSubscriptionVariables,
-  APITypes.OnUpdatePostSubscription
->;
-export const onDeletePost = /* GraphQL */ `subscription OnDeletePost($filter: ModelSubscriptionPostFilterInput) {
+    APITypes.OnUpdatePostSubscriptionVariables,
+    APITypes.OnUpdatePostSubscription
+  >;
+export const onDeletePost =
+  /* GraphQL */ `subscription OnDeletePost($filter: ModelSubscriptionPostFilterInput) {
   onDeletePost(filter: $filter) {
     id
     createdAt
@@ -692,10 +781,11 @@ export const onDeletePost = /* GraphQL */ `subscription OnDeletePost($filter: Mo
   }
 }
 ` as GeneratedSubscription<
-  APITypes.OnDeletePostSubscriptionVariables,
-  APITypes.OnDeletePostSubscription
->;
-export const onCreateUser = /* GraphQL */ `subscription OnCreateUser($filter: ModelSubscriptionUserFilterInput) {
+    APITypes.OnDeletePostSubscriptionVariables,
+    APITypes.OnDeletePostSubscription
+  >;
+export const onCreateUser =
+  /* GraphQL */ `subscription OnCreateUser($filter: ModelSubscriptionUserFilterInput) {
   onCreateUser(filter: $filter) {
     id
     name
@@ -756,10 +846,11 @@ export const onCreateUser = /* GraphQL */ `subscription OnCreateUser($filter: Mo
   }
 }
 ` as GeneratedSubscription<
-  APITypes.OnCreateUserSubscriptionVariables,
-  APITypes.OnCreateUserSubscription
->;
-export const onUpdateUser = /* GraphQL */ `subscription OnUpdateUser($filter: ModelSubscriptionUserFilterInput) {
+    APITypes.OnCreateUserSubscriptionVariables,
+    APITypes.OnCreateUserSubscription
+  >;
+export const onUpdateUser =
+  /* GraphQL */ `subscription OnUpdateUser($filter: ModelSubscriptionUserFilterInput) {
   onUpdateUser(filter: $filter) {
     id
     name
@@ -820,10 +911,11 @@ export const onUpdateUser = /* GraphQL */ `subscription OnUpdateUser($filter: Mo
   }
 }
 ` as GeneratedSubscription<
-  APITypes.OnUpdateUserSubscriptionVariables,
-  APITypes.OnUpdateUserSubscription
->;
-export const onDeleteUser = /* GraphQL */ `subscription OnDeleteUser($filter: ModelSubscriptionUserFilterInput) {
+    APITypes.OnUpdateUserSubscriptionVariables,
+    APITypes.OnUpdateUserSubscription
+  >;
+export const onDeleteUser =
+  /* GraphQL */ `subscription OnDeleteUser($filter: ModelSubscriptionUserFilterInput) {
   onDeleteUser(filter: $filter) {
     id
     name
@@ -884,6 +976,6 @@ export const onDeleteUser = /* GraphQL */ `subscription OnDeleteUser($filter: Mo
   }
 }
 ` as GeneratedSubscription<
-  APITypes.OnDeleteUserSubscriptionVariables,
-  APITypes.OnDeleteUserSubscription
->;
+    APITypes.OnDeleteUserSubscriptionVariables,
+    APITypes.OnDeleteUserSubscription
+  >;

@@ -71,6 +71,12 @@ const Comment = ({
 };
 
 const styles = StyleSheet.create({
+  userAvatar: {
+    width: 35,
+    aspectRatio: 1,
+    borderRadius: 25,
+    marginRight: 5,
+  },
   comment: {
     flexDirection: 'row',
     alignItems: 'center',

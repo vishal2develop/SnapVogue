@@ -2,14 +2,16 @@ import {View, FlatList, ActivityIndicator, Text} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import Comment from '../../components/Comment/Comment';
 import Input from './Input';
-import {useQuery} from '@apollo/client';
+import {useQuery, useSubscription} from '@apollo/client';
 import {
   Comment as CommentType,
   CommentsByPostQuery,
   CommentsByPostQueryVariables,
   ModelSortDirection,
+  OnCreateCommentByPostIdSubscription,
+  OnCreateCommentByPostIdSubscriptionVariables,
 } from '../../API';
-import {commentsByPost} from './queries';
+import {commentsByPost, onCreateCommentByPostId} from './queries';
 import {useRoute} from '@react-navigation/native';
 import {CommentsRouteProp} from '../../types/navigation';
 import ApiErrorMessage from '../../components/ApiErrorMessage';
@@ -30,13 +32,25 @@ const CommentScreen = () => {
     },
   });
 
+  const {data: newCommentsData} = useSubscription<
+    OnCreateCommentByPostIdSubscription,
+    OnCreateCommentByPostIdSubscriptionVariables
+  >(onCreateCommentByPostId, {variables: {postID: postId}});
+
   const comments = data?.commentsByPost?.items || [];
   const nextToken = data?.commentsByPost?.nextToken;
 
+  useEffect(() => {
+    if (newCommentsData?.onCreateCommentByPostId) {
+      setNewComments(existingNewComments => [
+        newCommentsData.onCreateCommentByPostId as CommentType,
+        ...existingNewComments,
+      ]);
+    }
+  }, [newCommentsData]);
+
   const isNewComment = (comment: CommentType) => {
-    let comments = newComments.some(c => c.id === comment.id);
-    console.log('commentS:', comments);
-    return comments;
+    return newComments.some(c => c.id === comment.id);
   };
 
   const loadMore = async () => {
@@ -64,12 +78,18 @@ const CommentScreen = () => {
   return (
     <View style={{flex: 1}}>
       <FlatList
-        data={[...comments]}
+        data={[...newComments, ...comments]}
         renderItem={({item}) =>
-          item && <Comment comment={item} includeDetails={true} />
+          item && (
+            <Comment
+              comment={item}
+              includeDetails={true}
+              isNew={isNewComment(item)}
+            />
+          )
         }
         style={{padding: 10}}
-        inverted={comments?.length > 0 && true}
+        inverted={(comments?.length > 0 || newComments.length > 0) && true}
         keyExtractor={item => item?.id || ''}
         showsVerticalScrollIndicator={false}
         ListEmptyComponent={() => (

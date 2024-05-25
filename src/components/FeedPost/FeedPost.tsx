@@ -77,7 +77,6 @@ const FeedPost = ({post, isVisible}: IFeedPost) => {
   // const userLike = usersLikeData?.likesForPostByUser?.items?.[0];
 
   const postLikes = post.Likes?.items || [];
-  console.log('postLikes:', postLikes);
 
   // const incrementNoOfLikes = (amount: 1 | -1) => {
   //   doUpdatePost({
