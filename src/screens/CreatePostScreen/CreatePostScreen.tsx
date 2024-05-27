@@ -1,4 +1,4 @@
-import {View, Image, StyleSheet, TextInput, Alert} from 'react-native';
+import {View, Image, StyleSheet, TextInput, Alert, Text} from 'react-native';
 import React, {useState} from 'react';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {CreateNavigationProp, CreateRouteProp} from '../../types/navigation';
@@ -6,15 +6,24 @@ import colors from '../../theme/color';
 import Button from '../../components/Button';
 import {createPost} from './queries';
 import {useMutation} from '@apollo/client';
-import {CreatePostMutation, CreatePostMutationVariables} from '../../API';
+import {
+  CreatePostInput,
+  CreatePostMutation,
+  CreatePostMutationVariables,
+} from '../../API';
 import {useAuthContext} from '../../contexts/AuthContext';
 import Carousel from '../../components/Carousel';
 import VideoPlayer from '../../components/VideoPlayer';
+import {uploadData} from 'aws-amplify/storage';
+import {v4 as uuidv4} from 'uuid';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 const CreatePostScreen = () => {
   const [description, setDescription] = useState('');
   // const [location, setLocation] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [progress, setProgress] = useState(0);
+
   const {userId} = useAuthContext();
 
   const navigation = useNavigation<CreateNavigationProp>();
@@ -51,41 +60,81 @@ const CreatePostScreen = () => {
     }
     setIsSubmitting(true);
 
+    const input: CreatePostInput = {
+      type: 'POST',
+      description,
+      image: undefined,
+      images: undefined,
+      video: undefined,
+      nofComments: 0,
+      nofLikes: 0,
+      userID: userId,
+    };
+
+    // upload the media files to S3 and get the key
+    if (image) {
+      input.image = await uploadMedia(image);
+    }
+    // } else if (images) {
+    //   const imageKeys = await Promise.all(
+    //     images.map(img => uploadMedia(img)),
+    //   );
+    //   input.images = imageKeys.filter(key => key) as string[];
+    // } else if (video) {
+    //   input.video = await uploadMedia(video);
+    // }
+
     try {
-      const response = await doCreatePost({
+      await doCreatePost({
         variables: {
-          input: {
-            description: description,
-            image: image,
-            type: 'POST',
-            images: images,
-            video: video,
-            nofComments: 0,
-            nofLikes: 0,
-            userID: userId,
-          },
+          input: input,
         },
       });
       setIsSubmitting(false);
       navigation.popToTop();
       navigation.navigate('HomeStack');
-
-      console.log('Response:', response);
     } catch (err) {
       Alert.alert('Error uploading post', (err as Error).message);
       console.log((err as Error).message);
+      setIsSubmitting(false);
+    }
+  };
+
+  const uploadMedia = async (uri: string) => {
+    try {
+      // get the blob of the file from uri
+      const response = await fetch(uri);
+      const blob = await response.blob();
+
+      const uriParts = uri.split('.');
+      const extension = uriParts[uriParts.length - 1];
+
+      const key = `${uuidv4()}.${extension}`;
+      console.log('key:', key);
+
+      // upload the file (blob) to S3
+      const s3Response = await uploadData({
+        key: key,
+        data: blob,
+        options: {
+          onProgress: ({transferredBytes, totalBytes}) => {
+            setProgress(transferredBytes / totalBytes);
+          },
+          contentEncoding: 'compress',
+        },
+      }).result;
+      console.log('s3Response:', s3Response);
+
+      return s3Response.key;
+    } catch (e) {
+      Alert.alert('Error uploading the file');
     }
   };
 
   return (
-    <View style={styles.root}>
+    <KeyboardAwareScrollView contentContainerStyle={styles.root}>
       <View style={styles.content}>{content}</View>
 
-      {/* <Image
-        source={{uri: image}}
-        style={styles.image}
-        resizeMode={'contain'}
-      /> */}
       <TextInput
         value={description}
         onChangeText={setDescription}
@@ -105,7 +154,13 @@ const CreatePostScreen = () => {
         text={isSubmitting ? 'Submitting...' : 'Submit'}
         onPress={submit}
       />
-    </View>
+      {isSubmitting && (
+        <View style={styles.progressContainer}>
+          <View style={[styles.progress, {width: `${progress * 100}%`}]} />
+          <Text>Uploading {Math.floor(progress * 100)}%</Text>
+        </View>
+      )}
+    </KeyboardAwareScrollView>
   );
 };
 

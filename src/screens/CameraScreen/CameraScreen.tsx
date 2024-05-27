@@ -12,6 +12,8 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import colors from '../../theme/color';
 import {useNavigation} from '@react-navigation/native';
 import {CameraNavigationProp} from '../../types/navigation';
+import {Asset, launchImageLibrary} from 'react-native-image-picker';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 const flashModes = [
   FlashMode.off,
@@ -30,9 +32,14 @@ const flashModeToIcon = {
 const CameraScreen = () => {
   const [hasPermissions, setHasPermissions] = useState<boolean | null>(null);
   const [cameraType, setCameraType] = useState(CameraType.back);
+  const [selectedPhoto, setSelectedPhoto] = useState<null | Asset>(null);
+
   const [flash, setFlash] = useState(FlashMode.torch);
   const [isCameraReady, setIsCameraReady] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
+
+  const inset = useSafeAreaInsets();
+
   const navigation = useNavigation<CameraNavigationProp>();
 
   const camera = useRef<Camera>(null);
@@ -78,6 +85,9 @@ const CameraScreen = () => {
       skipProcessing: true, // on android, the processing step messes the orientation on some deivces
     };
     const result = await camera.current.takePictureAsync(options);
+    navigation.navigate('Create', {
+      image: result.uri,
+    });
   };
 
   const startRecording = async () => {
@@ -104,15 +114,33 @@ const CameraScreen = () => {
     setIsRecording(false);
   };
 
-  const navigaeToCreateScreen = () => {
-    navigation.navigate('Create', {
-      image: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/2.jpg',
-    });
-  };
+  // const navigaeToCreateScreen = () => {
+  // navigation.navigate('Create', {
+  //   image: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/2.jpg',
+  // });
+  // };
 
   const stopRecording = () => {
     camera.current?.stopRecording();
     setIsRecording(false);
+  };
+
+  const openImageGallery = () => {
+    launchImageLibrary(
+      {
+        mediaType: 'photo',
+      },
+      ({didCancel, errorCode, assets}) => {
+        if (!didCancel && !errorCode && assets && assets.length > 0) {
+          console.log('asset:', assets);
+          if (assets.length === 1) {
+            navigation.navigate('Create', {
+              image: assets[0].uri,
+            });
+          }
+        }
+      },
+    );
   };
 
   if (hasPermissions === null) {
@@ -132,7 +160,7 @@ const CameraScreen = () => {
         onCameraReady={() => setIsCameraReady(true)}
         ref={camera}
       />
-      <View style={[styles.buttonsContainer, {top: 25}]}>
+      <View style={[styles.buttonsContainer, {top: inset.top + 25}]}>
         <MaterialIcons name="close" size={30} color={colors.white} />
         <Pressable onPress={toggleFlash}>
           <MaterialIcons
@@ -144,7 +172,9 @@ const CameraScreen = () => {
         <MaterialIcons name="settings" size={30} color={colors.white} />
       </View>
       <View style={[styles.buttonsContainer, {bottom: 25}]}>
-        <MaterialIcons name="photo-library" size={30} color={colors.white} />
+        <Pressable onPress={openImageGallery}>
+          <MaterialIcons name="photo-library" size={30} color={colors.white} />
+        </Pressable>
         {isCameraReady && (
           <Pressable
             onPress={takePicture}
@@ -165,13 +195,13 @@ const CameraScreen = () => {
             color={colors.white}
           />
         </Pressable>
-        <Pressable onPress={navigaeToCreateScreen}>
+        {/* <Pressable onPress={navigaeToCreateScreen}>
           <MaterialIcons
             name="arrow-forward-ios"
             size={30}
             color={colors.white}
           />
-        </Pressable>
+        </Pressable> */}
       </View>
     </View>
   );

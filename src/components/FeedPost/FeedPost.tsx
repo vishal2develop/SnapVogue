@@ -21,6 +21,7 @@ import {FeedNavigationProp} from '../../types/navigation';
 import {DEFAULT_USER_IMAGE} from '../../config';
 import PostMenu from './PostMenu';
 import {Post} from '../../API';
+import Content from './Content';
 // import {
 //   createLike,
 //   deleteLike,
@@ -114,29 +115,6 @@ const FeedPost = ({post, isVisible}: IFeedPost) => {
     navigation.navigate('Comments', {postId: post.id});
   };
 
-  let content = null;
-
-  if (post.image) {
-    content = (
-      <DoublePressable onDoublePress={toggleLike}>
-        <Image
-          source={{
-            uri: post.image,
-          }}
-          style={styles.image}
-        />
-      </DoublePressable>
-    );
-  } else if (post.images) {
-    content = <Carousel images={post.images} onDoublePress={toggleLike} />;
-  } else if (post.video) {
-    content = (
-      <DoublePressable onDoublePress={toggleLike}>
-        <VideoPlayer uri={post.video} paused={!isVisible} />
-      </DoublePressable>
-    );
-  }
-
   return (
     <View style={styles.post}>
       {/* Post Header */}
@@ -154,7 +132,9 @@ const FeedPost = ({post, isVisible}: IFeedPost) => {
         <PostMenu post={post} />
       </View>
       {/* Post Content */}
-      {content}
+      <DoublePressable onDoublePress={toggleLike}>
+        <Content post={post} isVisible={isVisible} />
+      </DoublePressable>
 
       {/* Post Footer */}
       <View style={styles.footer}>
