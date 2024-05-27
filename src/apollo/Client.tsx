@@ -50,7 +50,7 @@ const Client = ({children}: IClient) => {
 
   // Using useMemo so that a new Apollo client is not created on every re-render
   const client = useMemo(() => {
-    const jwtToken = userJwtToken || '';
+    const jwtToken = userJwtToken.toString() || '';
 
     const auth: AuthOptions = {
       type: appSyncConfig.aws_appsync_authenticationType as AUTH_TYPE.AMAZON_COGNITO_USER_POOLS,

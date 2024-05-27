@@ -18,7 +18,6 @@ import ApiErrorMessage from '../../components/ApiErrorMessage';
 const CommentScreen = () => {
   const route = useRoute<CommentsRouteProp>();
   const {postId} = route.params;
-  console.log('postId:', postId);
 
   const [newComments, setNewComments] = useState<CommentType[]>([]);
   const [isFetchingMore, setIsFetchingMore] = useState(false);
@@ -41,7 +40,6 @@ const CommentScreen = () => {
 
   const comments = data?.commentsByPost?.items || [];
   const nextToken = data?.commentsByPost?.nextToken;
-  console.log('newCommentsData:', newCommentsData);
 
   useEffect(() => {
     if (newCommentsData?.onCreateCommentByPostId) {

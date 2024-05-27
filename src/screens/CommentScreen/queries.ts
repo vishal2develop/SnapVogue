@@ -57,6 +57,7 @@ export const onCreateCommentByPostId = gql`
       User {
         id
         image
+        email
         username
         name
       }
@@ -65,3 +66,28 @@ export const onCreateCommentByPostId = gql`
     }
   }
 `;
+
+// export const onCreateCommentByPostIdSubscription = gql`
+//   subscription OnCreateCommentByPostIdSubscription($postID: ID!) {
+//     onCreateCommentByPostIdSubscription(postID: $postID) {
+//       id
+//       comment
+//       userID
+//       postID
+//       Post {
+//         id
+//         nofComments
+//         createdAt
+//         updatedAt
+//       }
+//       User {
+//         id
+//         image
+//         username
+//         name
+//       }
+//       createdAt
+//       updatedAt
+//     }
+//   }
+// `;

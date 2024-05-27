@@ -58,7 +58,7 @@ type User
   @auth(rules: [{allow: private, operations: [read]}, {allow: owner}]) {
   id: ID!
   name: String!
-  email: String!
+  email: String @auth(rules: [{allow: owner}])
   username: String
     @index(name: "usersByUsername", queryField: "usersByUsername")
   bio: String
