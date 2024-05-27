@@ -12,7 +12,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import colors from '../../theme/color';
 import {useNavigation} from '@react-navigation/native';
 import {CameraNavigationProp} from '../../types/navigation';
-import {Asset, launchImageLibrary} from 'react-native-image-picker';
+import {launchImageLibrary} from 'react-native-image-picker';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 const flashModes = [
@@ -32,7 +32,6 @@ const flashModeToIcon = {
 const CameraScreen = () => {
   const [hasPermissions, setHasPermissions] = useState<boolean | null>(null);
   const [cameraType, setCameraType] = useState(CameraType.back);
-  const [selectedPhoto, setSelectedPhoto] = useState<null | Asset>(null);
 
   const [flash, setFlash] = useState(FlashMode.torch);
   const [isCameraReady, setIsCameraReady] = useState(false);
@@ -103,7 +102,7 @@ const CameraScreen = () => {
     setIsRecording(true);
     try {
       const result = await camera.current?.recordAsync(options);
-      console.log('Recording result:', result);
+      navigation.navigate('Create', {video: result.uri});
     } catch (error) {
       console.log('Recording error:', error);
     }
@@ -114,12 +113,6 @@ const CameraScreen = () => {
     setIsRecording(false);
   };
 
-  // const navigaeToCreateScreen = () => {
-  // navigation.navigate('Create', {
-  //   image: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/2.jpg',
-  // });
-  // };
-
   const stopRecording = () => {
     camera.current?.stopRecording();
     setIsRecording(false);
@@ -128,16 +121,37 @@ const CameraScreen = () => {
   const openImageGallery = () => {
     launchImageLibrary(
       {
-        mediaType: 'photo',
+        mediaType: 'mixed',
+        selectionLimit: 3,
       },
       ({didCancel, errorCode, assets}) => {
         if (!didCancel && !errorCode && assets && assets.length > 0) {
-          console.log('asset:', assets);
+          const params: {
+            image?: string;
+            images?: string[];
+            video?: string;
+            videos?: string[];
+          } = {};
+
           if (assets.length === 1) {
-            navigation.navigate('Create', {
-              image: assets[0].uri,
-            });
+            const field = assets[0].type?.startsWith('video')
+              ? 'video'
+              : 'image';
+
+            params[field] = assets[0].uri;
+          } else if (assets.length > 1) {
+
+            const field = assets[0].type?.startsWith('video')
+              ? 'videos'
+              : 'images';
+
+            if (field === 'videos') {
+              params.videos = assets.map(asset => asset.uri) as string[];
+            } else {
+              params.images = assets.map(asset => asset.uri) as string[];
+            }
           }
+          navigation.navigate('Create', params);
         }
       },
     );
@@ -195,13 +209,6 @@ const CameraScreen = () => {
             color={colors.white}
           />
         </Pressable>
-        {/* <Pressable onPress={navigaeToCreateScreen}>
-          <MaterialIcons
-            name="arrow-forward-ios"
-            size={30}
-            color={colors.white}
-          />
-        </Pressable> */}
       </View>
     </View>
   );

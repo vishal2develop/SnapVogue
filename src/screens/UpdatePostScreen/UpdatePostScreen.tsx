@@ -26,8 +26,7 @@ import {
   UpdatePostMutationVariables,
 } from '../../API';
 import {useAuthContext} from '../../contexts/AuthContext';
-import Carousel from '../../components/Carousel';
-import VideoPlayer from '../../components/VideoPlayer';
+
 import ApiErrorMessage from '../../components/ApiErrorMessage';
 
 const UpdatePostScreen = () => {

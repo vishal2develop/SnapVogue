@@ -31,7 +31,6 @@ const PostLikesScreen = () => {
   }
 
   const likes = data?.likesForPostByUser?.items || [];
-  console.log('likes:', likes);
 
   return (
     <FlatList

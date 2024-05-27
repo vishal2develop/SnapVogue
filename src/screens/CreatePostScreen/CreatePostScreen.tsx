@@ -29,7 +29,7 @@ const CreatePostScreen = () => {
   const navigation = useNavigation<CreateNavigationProp>();
 
   const route = useRoute<CreateRouteProp>();
-  const {image, images, video} = route.params;
+  const {image, images, video, videos} = route.params;
 
   const [doCreatePost] = useMutation<
     CreatePostMutation,
@@ -52,6 +52,8 @@ const CreatePostScreen = () => {
     content = <Carousel images={images} />;
   } else if (video) {
     content = <VideoPlayer uri={video} />;
+  } else if (videos) {
+    content = <VideoPlayer uris={videos} />;
   }
 
   const submit = async () => {
@@ -74,15 +76,12 @@ const CreatePostScreen = () => {
     // upload the media files to S3 and get the key
     if (image) {
       input.image = await uploadMedia(image);
+    } else if (images) {
+      const imageKeys = await Promise.all(images.map(img => uploadMedia(img)));
+      input.images = imageKeys.filter(key => key) as string[];
+    } else if (video) {
+      input.video = await uploadMedia(video);
     }
-    // } else if (images) {
-    //   const imageKeys = await Promise.all(
-    //     images.map(img => uploadMedia(img)),
-    //   );
-    //   input.images = imageKeys.filter(key => key) as string[];
-    // } else if (video) {
-    //   input.video = await uploadMedia(video);
-    // }
 
     try {
       await doCreatePost({
@@ -110,7 +109,6 @@ const CreatePostScreen = () => {
       const extension = uriParts[uriParts.length - 1];
 
       const key = `${uuidv4()}.${extension}`;
-      console.log('key:', key);
 
       // upload the file (blob) to S3
       const s3Response = await uploadData({
@@ -123,7 +121,6 @@ const CreatePostScreen = () => {
           contentEncoding: 'compress',
         },
       }).result;
-      console.log('s3Response:', s3Response);
 
       return s3Response.key;
     } catch (e) {

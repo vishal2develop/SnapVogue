@@ -6,10 +6,12 @@ import {
   StyleSheet,
   ViewabilityConfig,
   ViewToken,
+  Text,
 } from 'react-native';
 import React, {useRef, useState} from 'react';
 import colors from '../../theme/color';
 import DoublePressable from '../DoublePressable';
+import {GetUrlInput, GetUrlOutput} from 'aws-amplify/storage';
 
 interface ICarousel {
   images: string[];
@@ -36,14 +38,16 @@ const Carousel = ({images, onDoublePress = () => {}}: ICarousel) => {
     <View>
       <FlatList
         data={images}
-        renderItem={({item}) => (
-          <DoublePressable onDoublePress={onDoublePress}>
-            <Image
-              source={{uri: item}}
-              style={{width: width, aspectRatio: 1}}
-            />
-          </DoublePressable>
-        )}
+        renderItem={({item}) =>
+          item && (
+            <DoublePressable onDoublePress={onDoublePress}>
+              <Image
+                source={{uri: item.href}}
+                style={[styles.image, {width}]}
+              />
+            </DoublePressable>
+          )
+        }
         horizontal
         pagingEnabled // to scroll to next image even if we dont scroll fully
         onViewableItemsChanged={onViewableItemsChanged.current}
@@ -53,15 +57,13 @@ const Carousel = ({images, onDoublePress = () => {}}: ICarousel) => {
         {images.map((_, index) => (
           <View
             key={index}
-            style={{
-              width: 10,
-              aspectRatio: 1,
-              borderRadius: 5,
-              backgroundColor:
-                activeImageIndex === index ? colors.primary : colors.white,
-              margin: 10,
-              marginHorizontal: 5,
-            }}
+            style={[
+              styles.dot,
+              {
+                backgroundColor:
+                  activeImageIndex === index ? colors.primary : colors.white,
+              },
+            ]}
           />
         ))}
       </View>
@@ -72,12 +74,23 @@ const Carousel = ({images, onDoublePress = () => {}}: ICarousel) => {
 // Function to define dynamicStyles based on params
 
 const styles = StyleSheet.create({
+  image: {
+    aspectRatio: 1,
+  },
   dotsContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
     position: 'absolute',
     bottom: 0,
     width: '100%',
+  },
+  dot: {
+    width: 7,
+    height: 7,
+    borderRadius: 5,
+    backgroundColor: 'white',
+    marginHorizontal: 3,
+    margin: 10,
   },
 });
 

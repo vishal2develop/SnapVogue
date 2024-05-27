@@ -7,8 +7,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import styles from './styles';
 import Comment from '../Comment';
 import DoublePressable from '../DoublePressable';
-import Carousel from '../Carousel';
-import VideoPlayer from '../VideoPlayer';
+
 import dayjs from 'dayjs';
 
 // Hooks

@@ -78,7 +78,6 @@ const EditProfileScreen = () => {
   }
 
   const onSubmit = async (formData: IEditableUser) => {
-    console.log('Submitted', formData);
     await executeUpdateUser({
       variables: {
         input: {
@@ -133,7 +132,6 @@ const EditProfileScreen = () => {
       },
       ({didCancel, errorCode, assets}) => {
         if (!didCancel && !errorCode && assets && assets.length > 0) {
-          console.log('asset:', assets);
           setSelectedPhoto(assets[0]);
         }
       },

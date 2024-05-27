@@ -77,6 +77,7 @@ export type UploadStackNavigatorParamList = {
     image?: string;
     images?: string[];
     video?: string;
+    videos?: string[];
   };
 };
 
