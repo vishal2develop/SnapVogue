@@ -42,9 +42,8 @@ const AuthContextProvider = ({children}: {children: ReactNode}) => {
       const {userId, username} = await getCurrentUser();
       const {tokens} = await fetchAuthSession();
       console.log('username:', username);
-      // console.log('userId:', userId);
-      // console.log('signInDetails:', signInDetails);
-      const jwtToken = (tokens?.accessToken || '') as string;
+
+      const jwtToken = tokens?.accessToken.toString() || '';
       setUser(username);
       setUserJwtToken(jwtToken);
 

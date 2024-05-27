@@ -24,6 +24,9 @@
       },
       "api": {
         "Instaclone": {}
+      },
+      "storage": {
+        "storage": {}
       }
     }
   }

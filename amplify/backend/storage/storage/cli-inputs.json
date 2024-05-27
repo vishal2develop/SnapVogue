@@ -1,0 +1,14 @@
+{
+  "resourceName": "storage",
+  "policyUUID": "22fd7549",
+  "bucketName": "snapvogue-media",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}
