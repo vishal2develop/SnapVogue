@@ -40,7 +40,7 @@ const CommentScreen = () => {
   >(onCreateCommentByPostId, {variables: {postID: postId}});
 
   const comments = data?.commentsByPost?.items || [];
-  console.log('commentsL', comments);
+  // console.log('commentsL', comments);
 
   const nextToken = data?.commentsByPost?.nextToken;
 

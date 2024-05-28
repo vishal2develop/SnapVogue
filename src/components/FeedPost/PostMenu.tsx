@@ -18,7 +18,8 @@ import {
 import {useAuthContext} from '../../contexts/AuthContext';
 import {useNavigation} from '@react-navigation/native';
 import {FeedNavigationProp} from '../../types/navigation';
-
+import {remove} from 'aws-amplify/storage';
+// e2a1a6f1-1d54-4d02-9d1d-afa328db0dfc
 interface IPostMenu {
   post: Post;
 }
@@ -33,6 +34,23 @@ const PostMenu = ({post}: IPostMenu) => {
   >(deletePost, {variables: {input: {id: post.id}}});
 
   const startDeletingPost = async () => {
+    try {
+      if (post.image) {
+        console.log('post.image', post.image);
+
+        await remove({key: post.image});
+      }
+      if (post.video) {
+        console.log('post.video', post.video);
+
+        await remove({key: post.video});
+      }
+      if (post.images) {
+        await Promise.all(post.images.map(img => remove({key: img})));
+      }
+    } catch (err) {
+      Alert.alert('Failed to delete media', (err as Error).message);
+    }
     try {
       await doDeletePost();
     } catch (e) {
