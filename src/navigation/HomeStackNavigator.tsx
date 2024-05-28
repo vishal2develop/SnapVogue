@@ -44,8 +44,8 @@ const HeaderTitle = () => {
     <View>
       <Image
         source={logo}
-        resizeMode="contain"
-        style={{width: 150, height: 40}}
+        resizeMode="cover"
+        style={{width: 180, height: 50}}
       />
     </View>
   );
