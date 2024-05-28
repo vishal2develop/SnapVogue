@@ -57,7 +57,6 @@ export const onCreateCommentByPostId = gql`
       User {
         id
         image
-        email
         username
         name
       }

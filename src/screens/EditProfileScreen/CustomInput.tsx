@@ -4,7 +4,7 @@ import {Control, Controller} from 'react-hook-form';
 import styles from './styles';
 import colors from '../../theme/color';
 
-type IEditableUserFields = 'name' | 'username' | 'website' | 'bio';
+type IEditableUserFields = 'name' | 'username' | 'website' | 'bio' | 'image';
 
 // Create a mutable data structure for User.
 // As User interface contains other attributes that should remain uneditable.

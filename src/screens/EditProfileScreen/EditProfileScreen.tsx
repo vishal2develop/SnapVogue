@@ -15,6 +15,7 @@ import {
   DeleteUserMutationVariables,
   UsersByUsernameQuery,
   UsersByUsernameQueryVariables,
+  UpdateUserInput,
 } from '../../API';
 import {useMutation, useQuery, useLazyQuery} from '@apollo/client';
 import {getUser, updateUser, deleteUser, usersByUsername} from './queries';
@@ -24,6 +25,9 @@ import {DEFAULT_USER_IMAGE} from '../../config';
 import {useNavigation} from '@react-navigation/native';
 import {signOut, deleteUser as removeUser} from 'aws-amplify/auth';
 import CustomInput, {IEditableUser} from './CustomInput';
+import {uploadData} from 'aws-amplify/storage';
+import {v4 as uuidv4} from 'uuid';
+
 const URL_REGEX =
   /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
 
@@ -41,6 +45,7 @@ const EditProfileScreen = () => {
   >(getUser, {variables: {id: userId}});
 
   const user = data?.getUser;
+  console.log('user?.image:', user?.image);
 
   const [getUsersByUsername] = useLazyQuery<
     UsersByUsernameQuery,
@@ -59,7 +64,7 @@ const EditProfileScreen = () => {
       setValue('bio', user.bio);
       setValue('username', user.username);
       setValue('website', user.website);
-      // setValue('image', user.image);
+      setValue('image', user.image);
     }
   }, [user, setValue]);
 
@@ -78,15 +83,37 @@ const EditProfileScreen = () => {
   }
 
   const onSubmit = async (formData: IEditableUser) => {
+    const input: UpdateUserInput = {
+      id: userId,
+      ...formData,
+    };
+    if (selectedPhoto?.uri) {
+      input.image = await uploadMedia(selectedPhoto.uri);
+    }
     await executeUpdateUser({
-      variables: {
-        input: {
-          id: userId,
-          ...formData,
-        },
-      },
+      variables: {input},
     });
     navigation.canGoBack() && navigation.goBack();
+  };
+
+  const uploadMedia = async (uri: string) => {
+    try {
+      // get the blob of the file from uri
+      const response = await fetch(uri);
+      const blob = await response.blob();
+
+      const uriParts = uri.split('.');
+      const extension = uriParts[uriParts.length - 1];
+
+      // upload the file (blob) to S3
+      const s3Response = await uploadData({
+        key: `${uuidv4()}.${extension}`,
+        data: blob,
+      }).result;
+      return s3Response.key;
+    } catch (e) {
+      Alert.alert('Error uploading the file');
+    }
   };
 
   const confirmDeleteUser = () => {
@@ -108,6 +135,9 @@ const EditProfileScreen = () => {
   };
 
   const startDeleting = async () => {
+    if (!user) {
+      return;
+    }
     try {
       // delete user from DB
       await executeDeleteUser({
@@ -163,7 +193,9 @@ const EditProfileScreen = () => {
   return (
     <View style={styles.page}>
       <Image
-        source={{uri: selectedPhoto?.uri || user?.image || DEFAULT_USER_IMAGE}}
+        source={{
+          uri: selectedPhoto?.uri || user?.image?.href || DEFAULT_USER_IMAGE,
+        }}
         style={styles.avatar}
       />
       <Text onPress={onChangePhoto} style={styles.textButton}>

@@ -31,6 +31,7 @@ const CommentScreen = () => {
       sortDirection: ModelSortDirection.DESC,
       limit: 20,
     },
+    fetchPolicy: 'no-cache',
   });
 
   const {data: newCommentsData} = useSubscription<
@@ -39,6 +40,8 @@ const CommentScreen = () => {
   >(onCreateCommentByPostId, {variables: {postID: postId}});
 
   const comments = data?.commentsByPost?.items || [];
+  console.log('commentsL', comments);
+
   const nextToken = data?.commentsByPost?.nextToken;
 
   useEffect(() => {
@@ -90,7 +93,7 @@ const CommentScreen = () => {
           )
         }
         style={{padding: 10}}
-        inverted={(comments?.length > 0 || newComments?.length > 0) && true}
+        inverted
         keyExtractor={item => item?.id || ''}
         showsVerticalScrollIndicator={false}
         ListEmptyComponent={() => (

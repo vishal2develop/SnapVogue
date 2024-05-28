@@ -85,7 +85,6 @@ export const createComment = gql`
       User {
         id
         image
-        email
         username
         name
       }

@@ -9,6 +9,7 @@ import dayjs from 'dayjs';
 import {Comment as CommentType} from '../../API';
 import {DEFAULT_USER_IMAGE} from '../../config';
 import fonts from '../../theme/fonts';
+import UserImage from '../UserImage';
 
 interface ICommentProps {
   comment: CommentType;
@@ -21,6 +22,8 @@ const Comment = ({
   includeDetails = false,
   isNew = false,
 }: ICommentProps) => {
+  // console.log('comment:', comment);
+
   const [isLiked, setIsLiked] = useState(false);
 
   const toggleLike = () => {
@@ -31,12 +34,7 @@ const Comment = ({
     <View style={styles.comment}>
       {/* First Column - User Image */}
       {includeDetails && (
-        <Image
-          source={{
-            uri: comment.User?.image || DEFAULT_USER_IMAGE,
-          }}
-          style={styles.userAvatar}
-        />
+        <UserImage imageKey={comment?.User?.image || undefined} width={40} />
       )}
 
       {/* Second Column - User Comment */}

@@ -21,6 +21,7 @@ import {DEFAULT_USER_IMAGE} from '../../config';
 import PostMenu from './PostMenu';
 import {Post} from '../../API';
 import Content from './Content';
+import UserImage from '../UserImage';
 // import {
 //   createLike,
 //   deleteLike,
@@ -118,12 +119,14 @@ const FeedPost = ({post, isVisible}: IFeedPost) => {
     <View style={styles.post}>
       {/* Post Header */}
       <View style={styles.header}>
-        <Image
+        {/* <Image
           source={{
-            uri: post.User?.image || DEFAULT_USER_IMAGE,
+            uri: post.User?.image.href || DEFAULT_USER_IMAGE,
           }}
           style={styles.userAvatar}
-        />
+        /> */}
+        <UserImage imageKey={post?.User?.image || undefined} />
+
         <Text onPress={navigateToUserProfile} style={styles.userName}>
           {post.User?.username}
         </Text>

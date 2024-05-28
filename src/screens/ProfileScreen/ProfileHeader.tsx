@@ -1,5 +1,5 @@
 import {View, Text, Image} from 'react-native';
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 
 import styles from './styles';
 import Button from '../../components/Button';
@@ -9,22 +9,32 @@ import {User} from '../../API';
 import {signOut} from 'aws-amplify/auth';
 import {DEFAULT_USER_IMAGE} from '../../config';
 import {useAuthContext} from '../../contexts/AuthContext';
+import {getUrl} from 'aws-amplify/storage';
+import UserImage from '../../components/UserImage';
 
 interface IProfileHeader {
   user: User;
 }
 const ProfileHeader = ({user}: IProfileHeader) => {
   const {userId, user: authUser} = useAuthContext();
+  const [imageUri, setImageUri] = useState<string | null>(null);
   const navigation = useNavigation<ProfileNavigationProp>();
+
+  // useEffect(() => {
+  //   async function fetchProfileImage() {
+  //     if (user.image) {
+  //       const imageKey = (await getUrl({key: user.image})).url;
+  //       setImageUri(imageKey.href);
+  //     }
+  //   }
+  //   fetchProfileImage();
+  // }, [user]);
 
   return (
     <View style={styles.root}>
       <View style={styles.headerRow}>
         {/* Profile Image */}
-        <Image
-          source={{uri: user.image || DEFAULT_USER_IMAGE}}
-          style={styles.avatar}
-        />
+        <UserImage imageKey={user.image} width={100} />
 
         {/* Post, Followers, Following number */}
 
