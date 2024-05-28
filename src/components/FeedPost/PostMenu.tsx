@@ -19,7 +19,6 @@ import {useAuthContext} from '../../contexts/AuthContext';
 import {useNavigation} from '@react-navigation/native';
 import {FeedNavigationProp} from '../../types/navigation';
 import {remove} from 'aws-amplify/storage';
-// e2a1a6f1-1d54-4d02-9d1d-afa328db0dfc
 interface IPostMenu {
   post: Post;
 }
