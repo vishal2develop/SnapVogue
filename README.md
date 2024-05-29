@@ -3,11 +3,13 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
 ## Screenshots
 
 <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
-  <img src="/Screenshots/HomeScreen.png" alt="Movies Screen" width="200" height=""/>
-  <img src="/Screenshots/ProfileScreen.png" alt="TV Screen" width="200" />
-  <img src="/Screenshots/EditProfileScreen.png" alt="Share Screen" width="200" />
+  <img src="/Screenshots/SignInScreen.png" alt="Home Screen" width="200" height=""/>
+  <img src="/Screenshots/SignUpScreen.png" alt="Home Screen" width="200" height=""/>
+  <img src="/Screenshots/HomeScreen.png" alt="Home Screen" width="200" height=""/>
+  <img src="/Screenshots/ProfileScreen.png" alt="Profile Screen" width="200" />
+  <img src="/Screenshots/EditProfileScreen.png" alt="Edit Profile Screen" width="200" />
   <img src="/Screenshots/SearchScreen.png" alt="Search Screen" width="200" />
-  <img src="/Screenshots/CommentScreen.png" alt="Detail Screen" width="200" height=""/>
+  <img src="/Screenshots/CommentScreen.png" alt="Comment Screen" width="200" height=""/>
 </div>
 
 # Getting Started
