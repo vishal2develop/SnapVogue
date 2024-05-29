@@ -1,8 +1,18 @@
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
+## Screenshots
+
+<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+  <img src="/Screenshots/HomeScreen.png" alt="Movies Screen" width="200" height=""/>
+  <img src="/Screenshots/ProfileScreen.png" alt="TV Screen" width="200" />
+  <img src="/Screenshots/EditProfileScreen.png" alt="Share Screen" width="200" />
+  <img src="/Screenshots/SearchScreen.png" alt="Search Screen" width="200" />
+  <img src="/Screenshots/CommentScreen.png" alt="Detail Screen" width="200" height=""/>
+</div>
+
 # Getting Started
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+> **Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
 ## Step 1: Start the Metro Server
 
