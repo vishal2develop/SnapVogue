@@ -2,14 +2,13 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-import * as APITypes from '../API';
+import * as APITypes from "../API";
 type GeneratedSubscription<InputType, OutputType> = string & {
   __generatedSubscriptionInput: InputType;
   __generatedSubscriptionOutput: OutputType;
 };
 
-export const onCreateCommentByPostId =
-  /* GraphQL */ `subscription OnCreateCommentByPostId($postID: ID!) {
+export const onCreateCommentByPostId = /* GraphQL */ `subscription OnCreateCommentByPostId($postID: ID!) {
   onCreateCommentByPostId(postID: $postID) {
     id
     createdAt
@@ -89,9 +88,9 @@ export const onCreateCommentByPostId =
   }
 }
 ` as GeneratedSubscription<
-    APITypes.OnCreateCommentByPostIdSubscriptionVariables,
-    APITypes.OnCreateCommentByPostIdSubscription
-  >;
+  APITypes.OnCreateCommentByPostIdSubscriptionVariables,
+  APITypes.OnCreateCommentByPostIdSubscription
+>;
 export const onCreateLike = /* GraphQL */ `subscription OnCreateLike(
   $filter: ModelSubscriptionLikeFilterInput
   $owner: String

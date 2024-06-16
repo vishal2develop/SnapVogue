@@ -3,3372 +3,3374 @@
 //  This file was automatically generated and should not be edited.
 
 export type CreateLikeInput = {
-  id?: string | null;
-  userID: string;
-  postID: string;
+  id?: string | null,
+  userID: string,
+  postID: string,
 };
 
 export type ModelLikeConditionInput = {
-  userID?: ModelIDInput | null;
-  postID?: ModelIDInput | null;
-  and?: Array<ModelLikeConditionInput | null> | null;
-  or?: Array<ModelLikeConditionInput | null> | null;
-  not?: ModelLikeConditionInput | null;
-  createdAt?: ModelStringInput | null;
-  updatedAt?: ModelStringInput | null;
-  owner?: ModelStringInput | null;
+  userID?: ModelIDInput | null,
+  postID?: ModelIDInput | null,
+  and?: Array< ModelLikeConditionInput | null > | null,
+  or?: Array< ModelLikeConditionInput | null > | null,
+  not?: ModelLikeConditionInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
+  owner?: ModelStringInput | null,
 };
 
 export type ModelIDInput = {
-  ne?: string | null;
-  eq?: string | null;
-  le?: string | null;
-  lt?: string | null;
-  ge?: string | null;
-  gt?: string | null;
-  contains?: string | null;
-  notContains?: string | null;
-  between?: Array<string | null> | null;
-  beginsWith?: string | null;
-  attributeExists?: boolean | null;
-  attributeType?: ModelAttributeTypes | null;
-  size?: ModelSizeInput | null;
+  ne?: string | null,
+  eq?: string | null,
+  le?: string | null,
+  lt?: string | null,
+  ge?: string | null,
+  gt?: string | null,
+  contains?: string | null,
+  notContains?: string | null,
+  between?: Array< string | null > | null,
+  beginsWith?: string | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+  size?: ModelSizeInput | null,
 };
 
 export enum ModelAttributeTypes {
-  binary = 'binary',
-  binarySet = 'binarySet',
-  bool = 'bool',
-  list = 'list',
-  map = 'map',
-  number = 'number',
-  numberSet = 'numberSet',
-  string = 'string',
-  stringSet = 'stringSet',
-  _null = '_null',
+  binary = "binary",
+  binarySet = "binarySet",
+  bool = "bool",
+  list = "list",
+  map = "map",
+  number = "number",
+  numberSet = "numberSet",
+  string = "string",
+  stringSet = "stringSet",
+  _null = "_null",
 }
 
+
 export type ModelSizeInput = {
-  ne?: number | null;
-  eq?: number | null;
-  le?: number | null;
-  lt?: number | null;
-  ge?: number | null;
-  gt?: number | null;
-  between?: Array<number | null> | null;
+  ne?: number | null,
+  eq?: number | null,
+  le?: number | null,
+  lt?: number | null,
+  ge?: number | null,
+  gt?: number | null,
+  between?: Array< number | null > | null,
 };
 
 export type ModelStringInput = {
-  ne?: string | null;
-  eq?: string | null;
-  le?: string | null;
-  lt?: string | null;
-  ge?: string | null;
-  gt?: string | null;
-  contains?: string | null;
-  notContains?: string | null;
-  between?: Array<string | null> | null;
-  beginsWith?: string | null;
-  attributeExists?: boolean | null;
-  attributeType?: ModelAttributeTypes | null;
-  size?: ModelSizeInput | null;
+  ne?: string | null,
+  eq?: string | null,
+  le?: string | null,
+  lt?: string | null,
+  ge?: string | null,
+  gt?: string | null,
+  contains?: string | null,
+  notContains?: string | null,
+  between?: Array< string | null > | null,
+  beginsWith?: string | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+  size?: ModelSizeInput | null,
 };
 
 export type Like = {
-  __typename: 'Like';
-  id: string;
-  userID: string;
-  postID: string;
-  User?: User | null;
-  Post?: Post | null;
-  createdAt: string;
-  updatedAt: string;
-  owner?: string | null;
+  __typename: "Like",
+  id: string,
+  userID: string,
+  postID: string,
+  User?: User | null,
+  Post?: Post | null,
+  createdAt: string,
+  updatedAt: string,
+  owner?: string | null,
 };
 
 export type User = {
-  __typename: 'User';
-  id: string;
-  name: string;
-  email?: string | null;
-  username?: string | null;
-  bio?: string | null;
-  website?: string | null;
-  nofPosts: number;
-  nofFollowers: number;
-  nofFollowings: number;
-  image?: string | null;
-  Posts?: ModelPostConnection | null;
-  Comments?: ModelCommentConnection | null;
-  Likes?: ModelLikeConnection | null;
-  createdAt: string;
-  updatedAt: string;
-  owner?: string | null;
+  __typename: "User",
+  id: string,
+  name: string,
+  email?: string | null,
+  username?: string | null,
+  bio?: string | null,
+  website?: string | null,
+  nofPosts: number,
+  nofFollowers: number,
+  nofFollowings: number,
+  image?: string | null,
+  Posts?: ModelPostConnection | null,
+  Comments?: ModelCommentConnection | null,
+  Likes?: ModelLikeConnection | null,
+  createdAt: string,
+  updatedAt: string,
+  owner?: string | null,
 };
 
 export type ModelPostConnection = {
-  __typename: 'ModelPostConnection';
-  items: Array<Post | null>;
-  nextToken?: string | null;
+  __typename: "ModelPostConnection",
+  items:  Array<Post | null >,
+  nextToken?: string | null,
 };
 
 export type Post = {
-  __typename: 'Post';
-  id: string;
-  createdAt: string;
-  type: string;
-  description?: string | null;
-  image?: string | null;
-  images?: Array<string> | null;
-  video?: string | null;
-  nofComments: number;
-  nofLikes: number;
-  userID: string;
-  User?: User | null;
-  Likes?: ModelLikeConnection | null;
-  Comments?: ModelCommentConnection | null;
-  updatedAt: string;
-  owner?: string | null;
+  __typename: "Post",
+  id: string,
+  createdAt: string,
+  type: string,
+  description?: string | null,
+  image?: string | null,
+  images?: Array< string > | null,
+  video?: string | null,
+  nofComments: number,
+  nofLikes: number,
+  userID: string,
+  User?: User | null,
+  Likes?: ModelLikeConnection | null,
+  Comments?: ModelCommentConnection | null,
+  updatedAt: string,
+  owner?: string | null,
 };
 
 export type ModelLikeConnection = {
-  __typename: 'ModelLikeConnection';
-  items: Array<Like | null>;
-  nextToken?: string | null;
+  __typename: "ModelLikeConnection",
+  items:  Array<Like | null >,
+  nextToken?: string | null,
 };
 
 export type ModelCommentConnection = {
-  __typename: 'ModelCommentConnection';
-  items: Array<Comment | null>;
-  nextToken?: string | null;
+  __typename: "ModelCommentConnection",
+  items:  Array<Comment | null >,
+  nextToken?: string | null,
 };
 
 export type Comment = {
-  __typename: 'Comment';
-  id: string;
-  createdAt: string;
-  comment: string;
-  userID: string;
-  postID: string;
-  User?: User | null;
-  Post?: Post | null;
-  updatedAt: string;
-  owner?: string | null;
+  __typename: "Comment",
+  id: string,
+  createdAt: string,
+  comment: string,
+  userID: string,
+  postID: string,
+  User?: User | null,
+  Post?: Post | null,
+  updatedAt: string,
+  owner?: string | null,
 };
 
 export type UpdateLikeInput = {
-  id: string;
-  userID?: string | null;
-  postID?: string | null;
+  id: string,
+  userID?: string | null,
+  postID?: string | null,
 };
 
 export type DeleteLikeInput = {
-  id: string;
+  id: string,
 };
 
 export type CreateCommentInput = {
-  id?: string | null;
-  createdAt?: string | null;
-  comment: string;
-  userID: string;
-  postID: string;
+  id?: string | null,
+  createdAt?: string | null,
+  comment: string,
+  userID: string,
+  postID: string,
 };
 
 export type ModelCommentConditionInput = {
-  createdAt?: ModelStringInput | null;
-  comment?: ModelStringInput | null;
-  userID?: ModelIDInput | null;
-  postID?: ModelIDInput | null;
-  and?: Array<ModelCommentConditionInput | null> | null;
-  or?: Array<ModelCommentConditionInput | null> | null;
-  not?: ModelCommentConditionInput | null;
-  updatedAt?: ModelStringInput | null;
-  owner?: ModelStringInput | null;
+  createdAt?: ModelStringInput | null,
+  comment?: ModelStringInput | null,
+  userID?: ModelIDInput | null,
+  postID?: ModelIDInput | null,
+  and?: Array< ModelCommentConditionInput | null > | null,
+  or?: Array< ModelCommentConditionInput | null > | null,
+  not?: ModelCommentConditionInput | null,
+  updatedAt?: ModelStringInput | null,
+  owner?: ModelStringInput | null,
 };
 
 export type UpdateCommentInput = {
-  id: string;
-  createdAt?: string | null;
-  comment?: string | null;
-  userID?: string | null;
-  postID?: string | null;
+  id: string,
+  createdAt?: string | null,
+  comment?: string | null,
+  userID?: string | null,
+  postID?: string | null,
 };
 
 export type DeleteCommentInput = {
-  id: string;
+  id: string,
 };
 
 export type CreatePostInput = {
-  id?: string | null;
-  createdAt?: string | null;
-  type: string;
-  description?: string | null;
-  image?: string | null;
-  images?: Array<string> | null;
-  video?: string | null;
-  nofComments: number;
-  nofLikes: number;
-  userID: string;
+  id?: string | null,
+  createdAt?: string | null,
+  type: string,
+  description?: string | null,
+  image?: string | null,
+  images?: Array< string > | null,
+  video?: string | null,
+  nofComments: number,
+  nofLikes: number,
+  userID: string,
 };
 
 export type ModelPostConditionInput = {
-  createdAt?: ModelStringInput | null;
-  type?: ModelStringInput | null;
-  description?: ModelStringInput | null;
-  image?: ModelStringInput | null;
-  images?: ModelStringInput | null;
-  video?: ModelStringInput | null;
-  nofComments?: ModelIntInput | null;
-  nofLikes?: ModelIntInput | null;
-  userID?: ModelIDInput | null;
-  and?: Array<ModelPostConditionInput | null> | null;
-  or?: Array<ModelPostConditionInput | null> | null;
-  not?: ModelPostConditionInput | null;
-  updatedAt?: ModelStringInput | null;
-  owner?: ModelStringInput | null;
+  createdAt?: ModelStringInput | null,
+  type?: ModelStringInput | null,
+  description?: ModelStringInput | null,
+  image?: ModelStringInput | null,
+  images?: ModelStringInput | null,
+  video?: ModelStringInput | null,
+  nofComments?: ModelIntInput | null,
+  nofLikes?: ModelIntInput | null,
+  userID?: ModelIDInput | null,
+  and?: Array< ModelPostConditionInput | null > | null,
+  or?: Array< ModelPostConditionInput | null > | null,
+  not?: ModelPostConditionInput | null,
+  updatedAt?: ModelStringInput | null,
+  owner?: ModelStringInput | null,
 };
 
 export type ModelIntInput = {
-  ne?: number | null;
-  eq?: number | null;
-  le?: number | null;
-  lt?: number | null;
-  ge?: number | null;
-  gt?: number | null;
-  between?: Array<number | null> | null;
-  attributeExists?: boolean | null;
-  attributeType?: ModelAttributeTypes | null;
+  ne?: number | null,
+  eq?: number | null,
+  le?: number | null,
+  lt?: number | null,
+  ge?: number | null,
+  gt?: number | null,
+  between?: Array< number | null > | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
 };
 
 export type UpdatePostInput = {
-  id: string;
-  createdAt?: string | null;
-  type?: string | null;
-  description?: string | null;
-  image?: string | null;
-  images?: Array<string> | null;
-  video?: string | null;
-  nofComments?: number | null;
-  nofLikes?: number | null;
-  userID?: string | null;
+  id: string,
+  createdAt?: string | null,
+  type?: string | null,
+  description?: string | null,
+  image?: string | null,
+  images?: Array< string > | null,
+  video?: string | null,
+  nofComments?: number | null,
+  nofLikes?: number | null,
+  userID?: string | null,
 };
 
 export type DeletePostInput = {
-  id: string;
+  id: string,
 };
 
 export type CreateUserInput = {
-  id?: string | null;
-  name: string;
-  email?: string | null;
-  username?: string | null;
-  bio?: string | null;
-  website?: string | null;
-  nofPosts: number;
-  nofFollowers: number;
-  nofFollowings: number;
-  image?: string | null;
+  id?: string | null,
+  name: string,
+  email?: string | null,
+  username?: string | null,
+  bio?: string | null,
+  website?: string | null,
+  nofPosts: number,
+  nofFollowers: number,
+  nofFollowings: number,
+  image?: string | null,
 };
 
 export type ModelUserConditionInput = {
-  name?: ModelStringInput | null;
-  email?: ModelStringInput | null;
-  username?: ModelStringInput | null;
-  bio?: ModelStringInput | null;
-  website?: ModelStringInput | null;
-  nofPosts?: ModelIntInput | null;
-  nofFollowers?: ModelIntInput | null;
-  nofFollowings?: ModelIntInput | null;
-  image?: ModelStringInput | null;
-  and?: Array<ModelUserConditionInput | null> | null;
-  or?: Array<ModelUserConditionInput | null> | null;
-  not?: ModelUserConditionInput | null;
-  createdAt?: ModelStringInput | null;
-  updatedAt?: ModelStringInput | null;
-  owner?: ModelStringInput | null;
+  name?: ModelStringInput | null,
+  email?: ModelStringInput | null,
+  username?: ModelStringInput | null,
+  bio?: ModelStringInput | null,
+  website?: ModelStringInput | null,
+  nofPosts?: ModelIntInput | null,
+  nofFollowers?: ModelIntInput | null,
+  nofFollowings?: ModelIntInput | null,
+  image?: ModelStringInput | null,
+  and?: Array< ModelUserConditionInput | null > | null,
+  or?: Array< ModelUserConditionInput | null > | null,
+  not?: ModelUserConditionInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
+  owner?: ModelStringInput | null,
 };
 
 export type UpdateUserInput = {
-  id: string;
-  name?: string | null;
-  email?: string | null;
-  username?: string | null;
-  bio?: string | null;
-  website?: string | null;
-  nofPosts?: number | null;
-  nofFollowers?: number | null;
-  nofFollowings?: number | null;
-  image?: string | null;
+  id: string,
+  name?: string | null,
+  email?: string | null,
+  username?: string | null,
+  bio?: string | null,
+  website?: string | null,
+  nofPosts?: number | null,
+  nofFollowers?: number | null,
+  nofFollowings?: number | null,
+  image?: string | null,
 };
 
 export type DeleteUserInput = {
-  id: string;
+  id: string,
 };
 
 export type ModelLikeFilterInput = {
-  id?: ModelIDInput | null;
-  userID?: ModelIDInput | null;
-  postID?: ModelIDInput | null;
-  createdAt?: ModelStringInput | null;
-  updatedAt?: ModelStringInput | null;
-  and?: Array<ModelLikeFilterInput | null> | null;
-  or?: Array<ModelLikeFilterInput | null> | null;
-  not?: ModelLikeFilterInput | null;
-  owner?: ModelStringInput | null;
+  id?: ModelIDInput | null,
+  userID?: ModelIDInput | null,
+  postID?: ModelIDInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
+  and?: Array< ModelLikeFilterInput | null > | null,
+  or?: Array< ModelLikeFilterInput | null > | null,
+  not?: ModelLikeFilterInput | null,
+  owner?: ModelStringInput | null,
 };
 
 export enum ModelSortDirection {
-  ASC = 'ASC',
-  DESC = 'DESC',
+  ASC = "ASC",
+  DESC = "DESC",
 }
 
+
 export type ModelIDKeyConditionInput = {
-  eq?: string | null;
-  le?: string | null;
-  lt?: string | null;
-  ge?: string | null;
-  gt?: string | null;
-  between?: Array<string | null> | null;
-  beginsWith?: string | null;
+  eq?: string | null,
+  le?: string | null,
+  lt?: string | null,
+  ge?: string | null,
+  gt?: string | null,
+  between?: Array< string | null > | null,
+  beginsWith?: string | null,
 };
 
 export type ModelCommentFilterInput = {
-  id?: ModelIDInput | null;
-  createdAt?: ModelStringInput | null;
-  comment?: ModelStringInput | null;
-  userID?: ModelIDInput | null;
-  postID?: ModelIDInput | null;
-  updatedAt?: ModelStringInput | null;
-  and?: Array<ModelCommentFilterInput | null> | null;
-  or?: Array<ModelCommentFilterInput | null> | null;
-  not?: ModelCommentFilterInput | null;
-  owner?: ModelStringInput | null;
+  id?: ModelIDInput | null,
+  createdAt?: ModelStringInput | null,
+  comment?: ModelStringInput | null,
+  userID?: ModelIDInput | null,
+  postID?: ModelIDInput | null,
+  updatedAt?: ModelStringInput | null,
+  and?: Array< ModelCommentFilterInput | null > | null,
+  or?: Array< ModelCommentFilterInput | null > | null,
+  not?: ModelCommentFilterInput | null,
+  owner?: ModelStringInput | null,
 };
 
 export type ModelStringKeyConditionInput = {
-  eq?: string | null;
-  le?: string | null;
-  lt?: string | null;
-  ge?: string | null;
-  gt?: string | null;
-  between?: Array<string | null> | null;
-  beginsWith?: string | null;
+  eq?: string | null,
+  le?: string | null,
+  lt?: string | null,
+  ge?: string | null,
+  gt?: string | null,
+  between?: Array< string | null > | null,
+  beginsWith?: string | null,
 };
 
 export type ModelPostFilterInput = {
-  id?: ModelIDInput | null;
-  createdAt?: ModelStringInput | null;
-  type?: ModelStringInput | null;
-  description?: ModelStringInput | null;
-  image?: ModelStringInput | null;
-  images?: ModelStringInput | null;
-  video?: ModelStringInput | null;
-  nofComments?: ModelIntInput | null;
-  nofLikes?: ModelIntInput | null;
-  userID?: ModelIDInput | null;
-  updatedAt?: ModelStringInput | null;
-  and?: Array<ModelPostFilterInput | null> | null;
-  or?: Array<ModelPostFilterInput | null> | null;
-  not?: ModelPostFilterInput | null;
-  owner?: ModelStringInput | null;
+  id?: ModelIDInput | null,
+  createdAt?: ModelStringInput | null,
+  type?: ModelStringInput | null,
+  description?: ModelStringInput | null,
+  image?: ModelStringInput | null,
+  images?: ModelStringInput | null,
+  video?: ModelStringInput | null,
+  nofComments?: ModelIntInput | null,
+  nofLikes?: ModelIntInput | null,
+  userID?: ModelIDInput | null,
+  updatedAt?: ModelStringInput | null,
+  and?: Array< ModelPostFilterInput | null > | null,
+  or?: Array< ModelPostFilterInput | null > | null,
+  not?: ModelPostFilterInput | null,
+  owner?: ModelStringInput | null,
 };
 
 export type ModelUserFilterInput = {
-  id?: ModelIDInput | null;
-  name?: ModelStringInput | null;
-  email?: ModelStringInput | null;
-  username?: ModelStringInput | null;
-  bio?: ModelStringInput | null;
-  website?: ModelStringInput | null;
-  nofPosts?: ModelIntInput | null;
-  nofFollowers?: ModelIntInput | null;
-  nofFollowings?: ModelIntInput | null;
-  image?: ModelStringInput | null;
-  createdAt?: ModelStringInput | null;
-  updatedAt?: ModelStringInput | null;
-  and?: Array<ModelUserFilterInput | null> | null;
-  or?: Array<ModelUserFilterInput | null> | null;
-  not?: ModelUserFilterInput | null;
-  owner?: ModelStringInput | null;
+  id?: ModelIDInput | null,
+  name?: ModelStringInput | null,
+  email?: ModelStringInput | null,
+  username?: ModelStringInput | null,
+  bio?: ModelStringInput | null,
+  website?: ModelStringInput | null,
+  nofPosts?: ModelIntInput | null,
+  nofFollowers?: ModelIntInput | null,
+  nofFollowings?: ModelIntInput | null,
+  image?: ModelStringInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
+  and?: Array< ModelUserFilterInput | null > | null,
+  or?: Array< ModelUserFilterInput | null > | null,
+  not?: ModelUserFilterInput | null,
+  owner?: ModelStringInput | null,
 };
 
 export type ModelUserConnection = {
-  __typename: 'ModelUserConnection';
-  items: Array<User | null>;
-  nextToken?: string | null;
+  __typename: "ModelUserConnection",
+  items:  Array<User | null >,
+  nextToken?: string | null,
 };
 
 export type ModelSubscriptionLikeFilterInput = {
-  id?: ModelSubscriptionIDInput | null;
-  userID?: ModelSubscriptionIDInput | null;
-  postID?: ModelSubscriptionIDInput | null;
-  createdAt?: ModelSubscriptionStringInput | null;
-  updatedAt?: ModelSubscriptionStringInput | null;
-  and?: Array<ModelSubscriptionLikeFilterInput | null> | null;
-  or?: Array<ModelSubscriptionLikeFilterInput | null> | null;
-  owner?: ModelStringInput | null;
+  id?: ModelSubscriptionIDInput | null,
+  userID?: ModelSubscriptionIDInput | null,
+  postID?: ModelSubscriptionIDInput | null,
+  createdAt?: ModelSubscriptionStringInput | null,
+  updatedAt?: ModelSubscriptionStringInput | null,
+  and?: Array< ModelSubscriptionLikeFilterInput | null > | null,
+  or?: Array< ModelSubscriptionLikeFilterInput | null > | null,
+  owner?: ModelStringInput | null,
 };
 
 export type ModelSubscriptionIDInput = {
-  ne?: string | null;
-  eq?: string | null;
-  le?: string | null;
-  lt?: string | null;
-  ge?: string | null;
-  gt?: string | null;
-  contains?: string | null;
-  notContains?: string | null;
-  between?: Array<string | null> | null;
-  beginsWith?: string | null;
-  in?: Array<string | null> | null;
-  notIn?: Array<string | null> | null;
+  ne?: string | null,
+  eq?: string | null,
+  le?: string | null,
+  lt?: string | null,
+  ge?: string | null,
+  gt?: string | null,
+  contains?: string | null,
+  notContains?: string | null,
+  between?: Array< string | null > | null,
+  beginsWith?: string | null,
+  in?: Array< string | null > | null,
+  notIn?: Array< string | null > | null,
 };
 
 export type ModelSubscriptionStringInput = {
-  ne?: string | null;
-  eq?: string | null;
-  le?: string | null;
-  lt?: string | null;
-  ge?: string | null;
-  gt?: string | null;
-  contains?: string | null;
-  notContains?: string | null;
-  between?: Array<string | null> | null;
-  beginsWith?: string | null;
-  in?: Array<string | null> | null;
-  notIn?: Array<string | null> | null;
+  ne?: string | null,
+  eq?: string | null,
+  le?: string | null,
+  lt?: string | null,
+  ge?: string | null,
+  gt?: string | null,
+  contains?: string | null,
+  notContains?: string | null,
+  between?: Array< string | null > | null,
+  beginsWith?: string | null,
+  in?: Array< string | null > | null,
+  notIn?: Array< string | null > | null,
 };
 
 export type ModelSubscriptionCommentFilterInput = {
-  id?: ModelSubscriptionIDInput | null;
-  createdAt?: ModelSubscriptionStringInput | null;
-  comment?: ModelSubscriptionStringInput | null;
-  userID?: ModelSubscriptionIDInput | null;
-  postID?: ModelSubscriptionIDInput | null;
-  updatedAt?: ModelSubscriptionStringInput | null;
-  and?: Array<ModelSubscriptionCommentFilterInput | null> | null;
-  or?: Array<ModelSubscriptionCommentFilterInput | null> | null;
-  owner?: ModelStringInput | null;
+  id?: ModelSubscriptionIDInput | null,
+  createdAt?: ModelSubscriptionStringInput | null,
+  comment?: ModelSubscriptionStringInput | null,
+  userID?: ModelSubscriptionIDInput | null,
+  postID?: ModelSubscriptionIDInput | null,
+  updatedAt?: ModelSubscriptionStringInput | null,
+  and?: Array< ModelSubscriptionCommentFilterInput | null > | null,
+  or?: Array< ModelSubscriptionCommentFilterInput | null > | null,
+  owner?: ModelStringInput | null,
 };
 
 export type ModelSubscriptionPostFilterInput = {
-  id?: ModelSubscriptionIDInput | null;
-  createdAt?: ModelSubscriptionStringInput | null;
-  type?: ModelSubscriptionStringInput | null;
-  description?: ModelSubscriptionStringInput | null;
-  image?: ModelSubscriptionStringInput | null;
-  images?: ModelSubscriptionStringInput | null;
-  video?: ModelSubscriptionStringInput | null;
-  nofComments?: ModelSubscriptionIntInput | null;
-  nofLikes?: ModelSubscriptionIntInput | null;
-  userID?: ModelSubscriptionIDInput | null;
-  updatedAt?: ModelSubscriptionStringInput | null;
-  and?: Array<ModelSubscriptionPostFilterInput | null> | null;
-  or?: Array<ModelSubscriptionPostFilterInput | null> | null;
-  owner?: ModelStringInput | null;
+  id?: ModelSubscriptionIDInput | null,
+  createdAt?: ModelSubscriptionStringInput | null,
+  type?: ModelSubscriptionStringInput | null,
+  description?: ModelSubscriptionStringInput | null,
+  image?: ModelSubscriptionStringInput | null,
+  images?: ModelSubscriptionStringInput | null,
+  video?: ModelSubscriptionStringInput | null,
+  nofComments?: ModelSubscriptionIntInput | null,
+  nofLikes?: ModelSubscriptionIntInput | null,
+  userID?: ModelSubscriptionIDInput | null,
+  updatedAt?: ModelSubscriptionStringInput | null,
+  and?: Array< ModelSubscriptionPostFilterInput | null > | null,
+  or?: Array< ModelSubscriptionPostFilterInput | null > | null,
+  owner?: ModelStringInput | null,
 };
 
 export type ModelSubscriptionIntInput = {
-  ne?: number | null;
-  eq?: number | null;
-  le?: number | null;
-  lt?: number | null;
-  ge?: number | null;
-  gt?: number | null;
-  between?: Array<number | null> | null;
-  in?: Array<number | null> | null;
-  notIn?: Array<number | null> | null;
+  ne?: number | null,
+  eq?: number | null,
+  le?: number | null,
+  lt?: number | null,
+  ge?: number | null,
+  gt?: number | null,
+  between?: Array< number | null > | null,
+  in?: Array< number | null > | null,
+  notIn?: Array< number | null > | null,
 };
 
 export type ModelSubscriptionUserFilterInput = {
-  id?: ModelSubscriptionIDInput | null;
-  name?: ModelSubscriptionStringInput | null;
-  email?: ModelSubscriptionStringInput | null;
-  username?: ModelSubscriptionStringInput | null;
-  bio?: ModelSubscriptionStringInput | null;
-  website?: ModelSubscriptionStringInput | null;
-  nofPosts?: ModelSubscriptionIntInput | null;
-  nofFollowers?: ModelSubscriptionIntInput | null;
-  nofFollowings?: ModelSubscriptionIntInput | null;
-  image?: ModelSubscriptionStringInput | null;
-  createdAt?: ModelSubscriptionStringInput | null;
-  updatedAt?: ModelSubscriptionStringInput | null;
-  and?: Array<ModelSubscriptionUserFilterInput | null> | null;
-  or?: Array<ModelSubscriptionUserFilterInput | null> | null;
-  owner?: ModelStringInput | null;
+  id?: ModelSubscriptionIDInput | null,
+  name?: ModelSubscriptionStringInput | null,
+  email?: ModelSubscriptionStringInput | null,
+  username?: ModelSubscriptionStringInput | null,
+  bio?: ModelSubscriptionStringInput | null,
+  website?: ModelSubscriptionStringInput | null,
+  nofPosts?: ModelSubscriptionIntInput | null,
+  nofFollowers?: ModelSubscriptionIntInput | null,
+  nofFollowings?: ModelSubscriptionIntInput | null,
+  image?: ModelSubscriptionStringInput | null,
+  createdAt?: ModelSubscriptionStringInput | null,
+  updatedAt?: ModelSubscriptionStringInput | null,
+  and?: Array< ModelSubscriptionUserFilterInput | null > | null,
+  or?: Array< ModelSubscriptionUserFilterInput | null > | null,
+  owner?: ModelStringInput | null,
 };
 
 export type CreateLikeMutationVariables = {
-  input: CreateLikeInput;
-  condition?: ModelLikeConditionInput | null;
+  input: CreateLikeInput,
+  condition?: ModelLikeConditionInput | null,
 };
 
 export type CreateLikeMutation = {
-  createLike?: {
-    __typename: 'Like';
-    id: string;
-    userID: string;
-    postID: string;
-    User?: {
-      __typename: 'User';
-      id: string;
-      name: string;
-      email?: string | null;
-      username?: string | null;
-      bio?: string | null;
-      website?: string | null;
-      nofPosts: number;
-      nofFollowers: number;
-      nofFollowings: number;
-      image?: string | null;
-      Posts?: {
-        __typename: 'ModelPostConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      createdAt: string;
-      updatedAt: string;
-      owner?: string | null;
-    } | null;
-    Post?: {
-      __typename: 'Post';
-      id: string;
-      createdAt: string;
-      type: string;
-      description?: string | null;
-      image?: string | null;
-      images?: Array<string> | null;
-      video?: string | null;
-      nofComments: number;
-      nofLikes: number;
-      userID: string;
-      User?: {
-        __typename: 'User';
-        id: string;
-        name: string;
-        email?: string | null;
-        username?: string | null;
-        bio?: string | null;
-        website?: string | null;
-        nofPosts: number;
-        nofFollowers: number;
-        nofFollowings: number;
-        image?: string | null;
-        createdAt: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      updatedAt: string;
-      owner?: string | null;
-    } | null;
-    createdAt: string;
-    updatedAt: string;
-    owner?: string | null;
-  } | null;
+  createLike?:  {
+    __typename: "Like",
+    id: string,
+    userID: string,
+    postID: string,
+    User?:  {
+      __typename: "User",
+      id: string,
+      name: string,
+      email?: string | null,
+      username?: string | null,
+      bio?: string | null,
+      website?: string | null,
+      nofPosts: number,
+      nofFollowers: number,
+      nofFollowings: number,
+      image?: string | null,
+      Posts?:  {
+        __typename: "ModelPostConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    Post?:  {
+      __typename: "Post",
+      id: string,
+      createdAt: string,
+      type: string,
+      description?: string | null,
+      image?: string | null,
+      images?: Array< string > | null,
+      video?: string | null,
+      nofComments: number,
+      nofLikes: number,
+      userID: string,
+      User?:  {
+        __typename: "User",
+        id: string,
+        name: string,
+        email?: string | null,
+        username?: string | null,
+        bio?: string | null,
+        website?: string | null,
+        nofPosts: number,
+        nofFollowers: number,
+        nofFollowings: number,
+        image?: string | null,
+        createdAt: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
 };
 
 export type UpdateLikeMutationVariables = {
-  input: UpdateLikeInput;
-  condition?: ModelLikeConditionInput | null;
+  input: UpdateLikeInput,
+  condition?: ModelLikeConditionInput | null,
 };
 
 export type UpdateLikeMutation = {
-  updateLike?: {
-    __typename: 'Like';
-    id: string;
-    userID: string;
-    postID: string;
-    User?: {
-      __typename: 'User';
-      id: string;
-      name: string;
-      email?: string | null;
-      username?: string | null;
-      bio?: string | null;
-      website?: string | null;
-      nofPosts: number;
-      nofFollowers: number;
-      nofFollowings: number;
-      image?: string | null;
-      Posts?: {
-        __typename: 'ModelPostConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      createdAt: string;
-      updatedAt: string;
-      owner?: string | null;
-    } | null;
-    Post?: {
-      __typename: 'Post';
-      id: string;
-      createdAt: string;
-      type: string;
-      description?: string | null;
-      image?: string | null;
-      images?: Array<string> | null;
-      video?: string | null;
-      nofComments: number;
-      nofLikes: number;
-      userID: string;
-      User?: {
-        __typename: 'User';
-        id: string;
-        name: string;
-        email?: string | null;
-        username?: string | null;
-        bio?: string | null;
-        website?: string | null;
-        nofPosts: number;
-        nofFollowers: number;
-        nofFollowings: number;
-        image?: string | null;
-        createdAt: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      updatedAt: string;
-      owner?: string | null;
-    } | null;
-    createdAt: string;
-    updatedAt: string;
-    owner?: string | null;
-  } | null;
+  updateLike?:  {
+    __typename: "Like",
+    id: string,
+    userID: string,
+    postID: string,
+    User?:  {
+      __typename: "User",
+      id: string,
+      name: string,
+      email?: string | null,
+      username?: string | null,
+      bio?: string | null,
+      website?: string | null,
+      nofPosts: number,
+      nofFollowers: number,
+      nofFollowings: number,
+      image?: string | null,
+      Posts?:  {
+        __typename: "ModelPostConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    Post?:  {
+      __typename: "Post",
+      id: string,
+      createdAt: string,
+      type: string,
+      description?: string | null,
+      image?: string | null,
+      images?: Array< string > | null,
+      video?: string | null,
+      nofComments: number,
+      nofLikes: number,
+      userID: string,
+      User?:  {
+        __typename: "User",
+        id: string,
+        name: string,
+        email?: string | null,
+        username?: string | null,
+        bio?: string | null,
+        website?: string | null,
+        nofPosts: number,
+        nofFollowers: number,
+        nofFollowings: number,
+        image?: string | null,
+        createdAt: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
 };
 
 export type DeleteLikeMutationVariables = {
-  input: DeleteLikeInput;
-  condition?: ModelLikeConditionInput | null;
+  input: DeleteLikeInput,
+  condition?: ModelLikeConditionInput | null,
 };
 
 export type DeleteLikeMutation = {
-  deleteLike?: {
-    __typename: 'Like';
-    id: string;
-    userID: string;
-    postID: string;
-    User?: {
-      __typename: 'User';
-      id: string;
-      name: string;
-      email?: string | null;
-      username?: string | null;
-      bio?: string | null;
-      website?: string | null;
-      nofPosts: number;
-      nofFollowers: number;
-      nofFollowings: number;
-      image?: string | null;
-      Posts?: {
-        __typename: 'ModelPostConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      createdAt: string;
-      updatedAt: string;
-      owner?: string | null;
-    } | null;
-    Post?: {
-      __typename: 'Post';
-      id: string;
-      createdAt: string;
-      type: string;
-      description?: string | null;
-      image?: string | null;
-      images?: Array<string> | null;
-      video?: string | null;
-      nofComments: number;
-      nofLikes: number;
-      userID: string;
-      User?: {
-        __typename: 'User';
-        id: string;
-        name: string;
-        email?: string | null;
-        username?: string | null;
-        bio?: string | null;
-        website?: string | null;
-        nofPosts: number;
-        nofFollowers: number;
-        nofFollowings: number;
-        image?: string | null;
-        createdAt: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      updatedAt: string;
-      owner?: string | null;
-    } | null;
-    createdAt: string;
-    updatedAt: string;
-    owner?: string | null;
-  } | null;
+  deleteLike?:  {
+    __typename: "Like",
+    id: string,
+    userID: string,
+    postID: string,
+    User?:  {
+      __typename: "User",
+      id: string,
+      name: string,
+      email?: string | null,
+      username?: string | null,
+      bio?: string | null,
+      website?: string | null,
+      nofPosts: number,
+      nofFollowers: number,
+      nofFollowings: number,
+      image?: string | null,
+      Posts?:  {
+        __typename: "ModelPostConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    Post?:  {
+      __typename: "Post",
+      id: string,
+      createdAt: string,
+      type: string,
+      description?: string | null,
+      image?: string | null,
+      images?: Array< string > | null,
+      video?: string | null,
+      nofComments: number,
+      nofLikes: number,
+      userID: string,
+      User?:  {
+        __typename: "User",
+        id: string,
+        name: string,
+        email?: string | null,
+        username?: string | null,
+        bio?: string | null,
+        website?: string | null,
+        nofPosts: number,
+        nofFollowers: number,
+        nofFollowings: number,
+        image?: string | null,
+        createdAt: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
 };
 
 export type CreateCommentMutationVariables = {
-  input: CreateCommentInput;
-  condition?: ModelCommentConditionInput | null;
+  input: CreateCommentInput,
+  condition?: ModelCommentConditionInput | null,
 };
 
 export type CreateCommentMutation = {
-  createComment?: {
-    __typename: 'Comment';
-    id: string;
-    createdAt: string;
-    comment: string;
-    userID: string;
-    postID: string;
-    User?: {
-      __typename: 'User';
-      id: string;
-      name: string;
-      email?: string | null;
-      username?: string | null;
-      bio?: string | null;
-      website?: string | null;
-      nofPosts: number;
-      nofFollowers: number;
-      nofFollowings: number;
-      image?: string | null;
-      Posts?: {
-        __typename: 'ModelPostConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      createdAt: string;
-      updatedAt: string;
-      owner?: string | null;
-    } | null;
-    Post?: {
-      __typename: 'Post';
-      id: string;
-      createdAt: string;
-      type: string;
-      description?: string | null;
-      image?: string | null;
-      images?: Array<string> | null;
-      video?: string | null;
-      nofComments: number;
-      nofLikes: number;
-      userID: string;
-      User?: {
-        __typename: 'User';
-        id: string;
-        name: string;
-        email?: string | null;
-        username?: string | null;
-        bio?: string | null;
-        website?: string | null;
-        nofPosts: number;
-        nofFollowers: number;
-        nofFollowings: number;
-        image?: string | null;
-        createdAt: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      updatedAt: string;
-      owner?: string | null;
-    } | null;
-    updatedAt: string;
-    owner?: string | null;
-  } | null;
+  createComment?:  {
+    __typename: "Comment",
+    id: string,
+    createdAt: string,
+    comment: string,
+    userID: string,
+    postID: string,
+    User?:  {
+      __typename: "User",
+      id: string,
+      name: string,
+      email?: string | null,
+      username?: string | null,
+      bio?: string | null,
+      website?: string | null,
+      nofPosts: number,
+      nofFollowers: number,
+      nofFollowings: number,
+      image?: string | null,
+      Posts?:  {
+        __typename: "ModelPostConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    Post?:  {
+      __typename: "Post",
+      id: string,
+      createdAt: string,
+      type: string,
+      description?: string | null,
+      image?: string | null,
+      images?: Array< string > | null,
+      video?: string | null,
+      nofComments: number,
+      nofLikes: number,
+      userID: string,
+      User?:  {
+        __typename: "User",
+        id: string,
+        name: string,
+        email?: string | null,
+        username?: string | null,
+        bio?: string | null,
+        website?: string | null,
+        nofPosts: number,
+        nofFollowers: number,
+        nofFollowings: number,
+        image?: string | null,
+        createdAt: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
 };
 
 export type UpdateCommentMutationVariables = {
-  input: UpdateCommentInput;
-  condition?: ModelCommentConditionInput | null;
+  input: UpdateCommentInput,
+  condition?: ModelCommentConditionInput | null,
 };
 
 export type UpdateCommentMutation = {
-  updateComment?: {
-    __typename: 'Comment';
-    id: string;
-    createdAt: string;
-    comment: string;
-    userID: string;
-    postID: string;
-    User?: {
-      __typename: 'User';
-      id: string;
-      name: string;
-      email?: string | null;
-      username?: string | null;
-      bio?: string | null;
-      website?: string | null;
-      nofPosts: number;
-      nofFollowers: number;
-      nofFollowings: number;
-      image?: string | null;
-      Posts?: {
-        __typename: 'ModelPostConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      createdAt: string;
-      updatedAt: string;
-      owner?: string | null;
-    } | null;
-    Post?: {
-      __typename: 'Post';
-      id: string;
-      createdAt: string;
-      type: string;
-      description?: string | null;
-      image?: string | null;
-      images?: Array<string> | null;
-      video?: string | null;
-      nofComments: number;
-      nofLikes: number;
-      userID: string;
-      User?: {
-        __typename: 'User';
-        id: string;
-        name: string;
-        email?: string | null;
-        username?: string | null;
-        bio?: string | null;
-        website?: string | null;
-        nofPosts: number;
-        nofFollowers: number;
-        nofFollowings: number;
-        image?: string | null;
-        createdAt: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      updatedAt: string;
-      owner?: string | null;
-    } | null;
-    updatedAt: string;
-    owner?: string | null;
-  } | null;
+  updateComment?:  {
+    __typename: "Comment",
+    id: string,
+    createdAt: string,
+    comment: string,
+    userID: string,
+    postID: string,
+    User?:  {
+      __typename: "User",
+      id: string,
+      name: string,
+      email?: string | null,
+      username?: string | null,
+      bio?: string | null,
+      website?: string | null,
+      nofPosts: number,
+      nofFollowers: number,
+      nofFollowings: number,
+      image?: string | null,
+      Posts?:  {
+        __typename: "ModelPostConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    Post?:  {
+      __typename: "Post",
+      id: string,
+      createdAt: string,
+      type: string,
+      description?: string | null,
+      image?: string | null,
+      images?: Array< string > | null,
+      video?: string | null,
+      nofComments: number,
+      nofLikes: number,
+      userID: string,
+      User?:  {
+        __typename: "User",
+        id: string,
+        name: string,
+        email?: string | null,
+        username?: string | null,
+        bio?: string | null,
+        website?: string | null,
+        nofPosts: number,
+        nofFollowers: number,
+        nofFollowings: number,
+        image?: string | null,
+        createdAt: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
 };
 
 export type DeleteCommentMutationVariables = {
-  input: DeleteCommentInput;
-  condition?: ModelCommentConditionInput | null;
+  input: DeleteCommentInput,
+  condition?: ModelCommentConditionInput | null,
 };
 
 export type DeleteCommentMutation = {
-  deleteComment?: {
-    __typename: 'Comment';
-    id: string;
-    createdAt: string;
-    comment: string;
-    userID: string;
-    postID: string;
-    User?: {
-      __typename: 'User';
-      id: string;
-      name: string;
-      email?: string | null;
-      username?: string | null;
-      bio?: string | null;
-      website?: string | null;
-      nofPosts: number;
-      nofFollowers: number;
-      nofFollowings: number;
-      image?: string | null;
-      Posts?: {
-        __typename: 'ModelPostConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      createdAt: string;
-      updatedAt: string;
-      owner?: string | null;
-    } | null;
-    Post?: {
-      __typename: 'Post';
-      id: string;
-      createdAt: string;
-      type: string;
-      description?: string | null;
-      image?: string | null;
-      images?: Array<string> | null;
-      video?: string | null;
-      nofComments: number;
-      nofLikes: number;
-      userID: string;
-      User?: {
-        __typename: 'User';
-        id: string;
-        name: string;
-        email?: string | null;
-        username?: string | null;
-        bio?: string | null;
-        website?: string | null;
-        nofPosts: number;
-        nofFollowers: number;
-        nofFollowings: number;
-        image?: string | null;
-        createdAt: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      updatedAt: string;
-      owner?: string | null;
-    } | null;
-    updatedAt: string;
-    owner?: string | null;
-  } | null;
+  deleteComment?:  {
+    __typename: "Comment",
+    id: string,
+    createdAt: string,
+    comment: string,
+    userID: string,
+    postID: string,
+    User?:  {
+      __typename: "User",
+      id: string,
+      name: string,
+      email?: string | null,
+      username?: string | null,
+      bio?: string | null,
+      website?: string | null,
+      nofPosts: number,
+      nofFollowers: number,
+      nofFollowings: number,
+      image?: string | null,
+      Posts?:  {
+        __typename: "ModelPostConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    Post?:  {
+      __typename: "Post",
+      id: string,
+      createdAt: string,
+      type: string,
+      description?: string | null,
+      image?: string | null,
+      images?: Array< string > | null,
+      video?: string | null,
+      nofComments: number,
+      nofLikes: number,
+      userID: string,
+      User?:  {
+        __typename: "User",
+        id: string,
+        name: string,
+        email?: string | null,
+        username?: string | null,
+        bio?: string | null,
+        website?: string | null,
+        nofPosts: number,
+        nofFollowers: number,
+        nofFollowings: number,
+        image?: string | null,
+        createdAt: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
 };
 
 export type CreatePostMutationVariables = {
-  input: CreatePostInput;
-  condition?: ModelPostConditionInput | null;
+  input: CreatePostInput,
+  condition?: ModelPostConditionInput | null,
 };
 
 export type CreatePostMutation = {
-  createPost?: {
-    __typename: 'Post';
-    id: string;
-    createdAt: string;
-    type: string;
-    description?: string | null;
-    image?: string | null;
-    images?: Array<string> | null;
-    video?: string | null;
-    nofComments: number;
-    nofLikes: number;
-    userID: string;
-    User?: {
-      __typename: 'User';
-      id: string;
-      name: string;
-      email?: string | null;
-      username?: string | null;
-      bio?: string | null;
-      website?: string | null;
-      nofPosts: number;
-      nofFollowers: number;
-      nofFollowings: number;
-      image?: string | null;
-      Posts?: {
-        __typename: 'ModelPostConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      createdAt: string;
-      updatedAt: string;
-      owner?: string | null;
-    } | null;
-    Likes?: {
-      __typename: 'ModelLikeConnection';
-      items: Array<{
-        __typename: 'Like';
-        id: string;
-        userID: string;
-        postID: string;
-        createdAt: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-    } | null;
-    Comments?: {
-      __typename: 'ModelCommentConnection';
-      items: Array<{
-        __typename: 'Comment';
-        id: string;
-        createdAt: string;
-        comment: string;
-        userID: string;
-        postID: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-    } | null;
-    updatedAt: string;
-    owner?: string | null;
-  } | null;
+  createPost?:  {
+    __typename: "Post",
+    id: string,
+    createdAt: string,
+    type: string,
+    description?: string | null,
+    image?: string | null,
+    images?: Array< string > | null,
+    video?: string | null,
+    nofComments: number,
+    nofLikes: number,
+    userID: string,
+    User?:  {
+      __typename: "User",
+      id: string,
+      name: string,
+      email?: string | null,
+      username?: string | null,
+      bio?: string | null,
+      website?: string | null,
+      nofPosts: number,
+      nofFollowers: number,
+      nofFollowings: number,
+      image?: string | null,
+      Posts?:  {
+        __typename: "ModelPostConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    Likes?:  {
+      __typename: "ModelLikeConnection",
+      items:  Array< {
+        __typename: "Like",
+        id: string,
+        userID: string,
+        postID: string,
+        createdAt: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    Comments?:  {
+      __typename: "ModelCommentConnection",
+      items:  Array< {
+        __typename: "Comment",
+        id: string,
+        createdAt: string,
+        comment: string,
+        userID: string,
+        postID: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
 };
 
 export type UpdatePostMutationVariables = {
-  input: UpdatePostInput;
-  condition?: ModelPostConditionInput | null;
+  input: UpdatePostInput,
+  condition?: ModelPostConditionInput | null,
 };
 
 export type UpdatePostMutation = {
-  updatePost?: {
-    __typename: 'Post';
-    id: string;
-    createdAt: string;
-    type: string;
-    description?: string | null;
-    image?: string | null;
-    images?: Array<string> | null;
-    video?: string | null;
-    nofComments: number;
-    nofLikes: number;
-    userID: string;
-    User?: {
-      __typename: 'User';
-      id: string;
-      name: string;
-      email?: string | null;
-      username?: string | null;
-      bio?: string | null;
-      website?: string | null;
-      nofPosts: number;
-      nofFollowers: number;
-      nofFollowings: number;
-      image?: string | null;
-      Posts?: {
-        __typename: 'ModelPostConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      createdAt: string;
-      updatedAt: string;
-      owner?: string | null;
-    } | null;
-    Likes?: {
-      __typename: 'ModelLikeConnection';
-      items: Array<{
-        __typename: 'Like';
-        id: string;
-        userID: string;
-        postID: string;
-        createdAt: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-    } | null;
-    Comments?: {
-      __typename: 'ModelCommentConnection';
-      items: Array<{
-        __typename: 'Comment';
-        id: string;
-        createdAt: string;
-        comment: string;
-        userID: string;
-        postID: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-    } | null;
-    updatedAt: string;
-    owner?: string | null;
-  } | null;
+  updatePost?:  {
+    __typename: "Post",
+    id: string,
+    createdAt: string,
+    type: string,
+    description?: string | null,
+    image?: string | null,
+    images?: Array< string > | null,
+    video?: string | null,
+    nofComments: number,
+    nofLikes: number,
+    userID: string,
+    User?:  {
+      __typename: "User",
+      id: string,
+      name: string,
+      email?: string | null,
+      username?: string | null,
+      bio?: string | null,
+      website?: string | null,
+      nofPosts: number,
+      nofFollowers: number,
+      nofFollowings: number,
+      image?: string | null,
+      Posts?:  {
+        __typename: "ModelPostConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    Likes?:  {
+      __typename: "ModelLikeConnection",
+      items:  Array< {
+        __typename: "Like",
+        id: string,
+        userID: string,
+        postID: string,
+        createdAt: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    Comments?:  {
+      __typename: "ModelCommentConnection",
+      items:  Array< {
+        __typename: "Comment",
+        id: string,
+        createdAt: string,
+        comment: string,
+        userID: string,
+        postID: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
 };
 
 export type DeletePostMutationVariables = {
-  input: DeletePostInput;
-  condition?: ModelPostConditionInput | null;
+  input: DeletePostInput,
+  condition?: ModelPostConditionInput | null,
 };
 
 export type DeletePostMutation = {
-  deletePost?: {
-    __typename: 'Post';
-    id: string;
-    createdAt: string;
-    type: string;
-    description?: string | null;
-    image?: string | null;
-    images?: Array<string> | null;
-    video?: string | null;
-    nofComments: number;
-    nofLikes: number;
-    userID: string;
-    User?: {
-      __typename: 'User';
-      id: string;
-      name: string;
-      email?: string | null;
-      username?: string | null;
-      bio?: string | null;
-      website?: string | null;
-      nofPosts: number;
-      nofFollowers: number;
-      nofFollowings: number;
-      image?: string | null;
-      Posts?: {
-        __typename: 'ModelPostConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      createdAt: string;
-      updatedAt: string;
-      owner?: string | null;
-    } | null;
-    Likes?: {
-      __typename: 'ModelLikeConnection';
-      items: Array<{
-        __typename: 'Like';
-        id: string;
-        userID: string;
-        postID: string;
-        createdAt: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-    } | null;
-    Comments?: {
-      __typename: 'ModelCommentConnection';
-      items: Array<{
-        __typename: 'Comment';
-        id: string;
-        createdAt: string;
-        comment: string;
-        userID: string;
-        postID: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-    } | null;
-    updatedAt: string;
-    owner?: string | null;
-  } | null;
+  deletePost?:  {
+    __typename: "Post",
+    id: string,
+    createdAt: string,
+    type: string,
+    description?: string | null,
+    image?: string | null,
+    images?: Array< string > | null,
+    video?: string | null,
+    nofComments: number,
+    nofLikes: number,
+    userID: string,
+    User?:  {
+      __typename: "User",
+      id: string,
+      name: string,
+      email?: string | null,
+      username?: string | null,
+      bio?: string | null,
+      website?: string | null,
+      nofPosts: number,
+      nofFollowers: number,
+      nofFollowings: number,
+      image?: string | null,
+      Posts?:  {
+        __typename: "ModelPostConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    Likes?:  {
+      __typename: "ModelLikeConnection",
+      items:  Array< {
+        __typename: "Like",
+        id: string,
+        userID: string,
+        postID: string,
+        createdAt: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    Comments?:  {
+      __typename: "ModelCommentConnection",
+      items:  Array< {
+        __typename: "Comment",
+        id: string,
+        createdAt: string,
+        comment: string,
+        userID: string,
+        postID: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
 };
 
 export type CreateUserMutationVariables = {
-  input: CreateUserInput;
-  condition?: ModelUserConditionInput | null;
+  input: CreateUserInput,
+  condition?: ModelUserConditionInput | null,
 };
 
 export type CreateUserMutation = {
-  createUser?: {
-    __typename: 'User';
-    id: string;
-    name: string;
-    email?: string | null;
-    username?: string | null;
-    bio?: string | null;
-    website?: string | null;
-    nofPosts: number;
-    nofFollowers: number;
-    nofFollowings: number;
-    image?: string | null;
-    Posts?: {
-      __typename: 'ModelPostConnection';
-      items: Array<{
-        __typename: 'Post';
-        id: string;
-        createdAt: string;
-        type: string;
-        description?: string | null;
-        image?: string | null;
-        images?: Array<string> | null;
-        video?: string | null;
-        nofComments: number;
-        nofLikes: number;
-        userID: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-    } | null;
-    Comments?: {
-      __typename: 'ModelCommentConnection';
-      items: Array<{
-        __typename: 'Comment';
-        id: string;
-        createdAt: string;
-        comment: string;
-        userID: string;
-        postID: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-    } | null;
-    Likes?: {
-      __typename: 'ModelLikeConnection';
-      items: Array<{
-        __typename: 'Like';
-        id: string;
-        userID: string;
-        postID: string;
-        createdAt: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-    } | null;
-    createdAt: string;
-    updatedAt: string;
-    owner?: string | null;
-  } | null;
+  createUser?:  {
+    __typename: "User",
+    id: string,
+    name: string,
+    email?: string | null,
+    username?: string | null,
+    bio?: string | null,
+    website?: string | null,
+    nofPosts: number,
+    nofFollowers: number,
+    nofFollowings: number,
+    image?: string | null,
+    Posts?:  {
+      __typename: "ModelPostConnection",
+      items:  Array< {
+        __typename: "Post",
+        id: string,
+        createdAt: string,
+        type: string,
+        description?: string | null,
+        image?: string | null,
+        images?: Array< string > | null,
+        video?: string | null,
+        nofComments: number,
+        nofLikes: number,
+        userID: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    Comments?:  {
+      __typename: "ModelCommentConnection",
+      items:  Array< {
+        __typename: "Comment",
+        id: string,
+        createdAt: string,
+        comment: string,
+        userID: string,
+        postID: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    Likes?:  {
+      __typename: "ModelLikeConnection",
+      items:  Array< {
+        __typename: "Like",
+        id: string,
+        userID: string,
+        postID: string,
+        createdAt: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
 };
 
 export type UpdateUserMutationVariables = {
-  input: UpdateUserInput;
-  condition?: ModelUserConditionInput | null;
+  input: UpdateUserInput,
+  condition?: ModelUserConditionInput | null,
 };
 
 export type UpdateUserMutation = {
-  updateUser?: {
-    __typename: 'User';
-    id: string;
-    name: string;
-    email?: string | null;
-    username?: string | null;
-    bio?: string | null;
-    website?: string | null;
-    nofPosts: number;
-    nofFollowers: number;
-    nofFollowings: number;
-    image?: string | null;
-    Posts?: {
-      __typename: 'ModelPostConnection';
-      items: Array<{
-        __typename: 'Post';
-        id: string;
-        createdAt: string;
-        type: string;
-        description?: string | null;
-        image?: string | null;
-        images?: Array<string> | null;
-        video?: string | null;
-        nofComments: number;
-        nofLikes: number;
-        userID: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-    } | null;
-    Comments?: {
-      __typename: 'ModelCommentConnection';
-      items: Array<{
-        __typename: 'Comment';
-        id: string;
-        createdAt: string;
-        comment: string;
-        userID: string;
-        postID: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-    } | null;
-    Likes?: {
-      __typename: 'ModelLikeConnection';
-      items: Array<{
-        __typename: 'Like';
-        id: string;
-        userID: string;
-        postID: string;
-        createdAt: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-    } | null;
-    createdAt: string;
-    updatedAt: string;
-    owner?: string | null;
-  } | null;
+  updateUser?:  {
+    __typename: "User",
+    id: string,
+    name: string,
+    email?: string | null,
+    username?: string | null,
+    bio?: string | null,
+    website?: string | null,
+    nofPosts: number,
+    nofFollowers: number,
+    nofFollowings: number,
+    image?: string | null,
+    Posts?:  {
+      __typename: "ModelPostConnection",
+      items:  Array< {
+        __typename: "Post",
+        id: string,
+        createdAt: string,
+        type: string,
+        description?: string | null,
+        image?: string | null,
+        images?: Array< string > | null,
+        video?: string | null,
+        nofComments: number,
+        nofLikes: number,
+        userID: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    Comments?:  {
+      __typename: "ModelCommentConnection",
+      items:  Array< {
+        __typename: "Comment",
+        id: string,
+        createdAt: string,
+        comment: string,
+        userID: string,
+        postID: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    Likes?:  {
+      __typename: "ModelLikeConnection",
+      items:  Array< {
+        __typename: "Like",
+        id: string,
+        userID: string,
+        postID: string,
+        createdAt: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
 };
 
 export type DeleteUserMutationVariables = {
-  input: DeleteUserInput;
-  condition?: ModelUserConditionInput | null;
+  input: DeleteUserInput,
+  condition?: ModelUserConditionInput | null,
 };
 
 export type DeleteUserMutation = {
-  deleteUser?: {
-    __typename: 'User';
-    id: string;
-    name: string;
-    email?: string | null;
-    username?: string | null;
-    bio?: string | null;
-    website?: string | null;
-    nofPosts: number;
-    nofFollowers: number;
-    nofFollowings: number;
-    image?: string | null;
-    Posts?: {
-      __typename: 'ModelPostConnection';
-      items: Array<{
-        __typename: 'Post';
-        id: string;
-        createdAt: string;
-        type: string;
-        description?: string | null;
-        image?: string | null;
-        images?: Array<string> | null;
-        video?: string | null;
-        nofComments: number;
-        nofLikes: number;
-        userID: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-    } | null;
-    Comments?: {
-      __typename: 'ModelCommentConnection';
-      items: Array<{
-        __typename: 'Comment';
-        id: string;
-        createdAt: string;
-        comment: string;
-        userID: string;
-        postID: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-    } | null;
-    Likes?: {
-      __typename: 'ModelLikeConnection';
-      items: Array<{
-        __typename: 'Like';
-        id: string;
-        userID: string;
-        postID: string;
-        createdAt: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-    } | null;
-    createdAt: string;
-    updatedAt: string;
-    owner?: string | null;
-  } | null;
+  deleteUser?:  {
+    __typename: "User",
+    id: string,
+    name: string,
+    email?: string | null,
+    username?: string | null,
+    bio?: string | null,
+    website?: string | null,
+    nofPosts: number,
+    nofFollowers: number,
+    nofFollowings: number,
+    image?: string | null,
+    Posts?:  {
+      __typename: "ModelPostConnection",
+      items:  Array< {
+        __typename: "Post",
+        id: string,
+        createdAt: string,
+        type: string,
+        description?: string | null,
+        image?: string | null,
+        images?: Array< string > | null,
+        video?: string | null,
+        nofComments: number,
+        nofLikes: number,
+        userID: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    Comments?:  {
+      __typename: "ModelCommentConnection",
+      items:  Array< {
+        __typename: "Comment",
+        id: string,
+        createdAt: string,
+        comment: string,
+        userID: string,
+        postID: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    Likes?:  {
+      __typename: "ModelLikeConnection",
+      items:  Array< {
+        __typename: "Like",
+        id: string,
+        userID: string,
+        postID: string,
+        createdAt: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
 };
 
 export type GetLikeQueryVariables = {
-  id: string;
+  id: string,
 };
 
 export type GetLikeQuery = {
-  getLike?: {
-    __typename: 'Like';
-    id: string;
-    userID: string;
-    postID: string;
-    User?: {
-      __typename: 'User';
-      id: string;
-      name: string;
-      email?: string | null;
-      username?: string | null;
-      bio?: string | null;
-      website?: string | null;
-      nofPosts: number;
-      nofFollowers: number;
-      nofFollowings: number;
-      image?: string | null;
-      Posts?: {
-        __typename: 'ModelPostConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      createdAt: string;
-      updatedAt: string;
-      owner?: string | null;
-    } | null;
-    Post?: {
-      __typename: 'Post';
-      id: string;
-      createdAt: string;
-      type: string;
-      description?: string | null;
-      image?: string | null;
-      images?: Array<string> | null;
-      video?: string | null;
-      nofComments: number;
-      nofLikes: number;
-      userID: string;
-      User?: {
-        __typename: 'User';
-        id: string;
-        name: string;
-        email?: string | null;
-        username?: string | null;
-        bio?: string | null;
-        website?: string | null;
-        nofPosts: number;
-        nofFollowers: number;
-        nofFollowings: number;
-        image?: string | null;
-        createdAt: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      updatedAt: string;
-      owner?: string | null;
-    } | null;
-    createdAt: string;
-    updatedAt: string;
-    owner?: string | null;
-  } | null;
+  getLike?:  {
+    __typename: "Like",
+    id: string,
+    userID: string,
+    postID: string,
+    User?:  {
+      __typename: "User",
+      id: string,
+      name: string,
+      email?: string | null,
+      username?: string | null,
+      bio?: string | null,
+      website?: string | null,
+      nofPosts: number,
+      nofFollowers: number,
+      nofFollowings: number,
+      image?: string | null,
+      Posts?:  {
+        __typename: "ModelPostConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    Post?:  {
+      __typename: "Post",
+      id: string,
+      createdAt: string,
+      type: string,
+      description?: string | null,
+      image?: string | null,
+      images?: Array< string > | null,
+      video?: string | null,
+      nofComments: number,
+      nofLikes: number,
+      userID: string,
+      User?:  {
+        __typename: "User",
+        id: string,
+        name: string,
+        email?: string | null,
+        username?: string | null,
+        bio?: string | null,
+        website?: string | null,
+        nofPosts: number,
+        nofFollowers: number,
+        nofFollowings: number,
+        image?: string | null,
+        createdAt: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
 };
 
 export type ListLikesQueryVariables = {
-  filter?: ModelLikeFilterInput | null;
-  limit?: number | null;
-  nextToken?: string | null;
+  filter?: ModelLikeFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
 };
 
 export type ListLikesQuery = {
-  listLikes?: {
-    __typename: 'ModelLikeConnection';
-    items: Array<{
-      __typename: 'Like';
-      id: string;
-      userID: string;
-      postID: string;
-      User?: {
-        __typename: 'User';
-        id: string;
-        name: string;
-        email?: string | null;
-        username?: string | null;
-        bio?: string | null;
-        website?: string | null;
-        nofPosts: number;
-        nofFollowers: number;
-        nofFollowings: number;
-        image?: string | null;
-        createdAt: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null;
-      Post?: {
-        __typename: 'Post';
-        id: string;
-        createdAt: string;
-        type: string;
-        description?: string | null;
-        image?: string | null;
-        images?: Array<string> | null;
-        video?: string | null;
-        nofComments: number;
-        nofLikes: number;
-        userID: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null;
-      createdAt: string;
-      updatedAt: string;
-      owner?: string | null;
-    } | null>;
-    nextToken?: string | null;
-  } | null;
+  listLikes?:  {
+    __typename: "ModelLikeConnection",
+    items:  Array< {
+      __typename: "Like",
+      id: string,
+      userID: string,
+      postID: string,
+      User?:  {
+        __typename: "User",
+        id: string,
+        name: string,
+        email?: string | null,
+        username?: string | null,
+        bio?: string | null,
+        website?: string | null,
+        nofPosts: number,
+        nofFollowers: number,
+        nofFollowings: number,
+        image?: string | null,
+        createdAt: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null,
+      Post?:  {
+        __typename: "Post",
+        id: string,
+        createdAt: string,
+        type: string,
+        description?: string | null,
+        image?: string | null,
+        images?: Array< string > | null,
+        video?: string | null,
+        nofComments: number,
+        nofLikes: number,
+        userID: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
 };
 
 export type LikesByUserIDQueryVariables = {
-  userID: string;
-  sortDirection?: ModelSortDirection | null;
-  filter?: ModelLikeFilterInput | null;
-  limit?: number | null;
-  nextToken?: string | null;
+  userID: string,
+  sortDirection?: ModelSortDirection | null,
+  filter?: ModelLikeFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
 };
 
 export type LikesByUserIDQuery = {
-  likesByUserID?: {
-    __typename: 'ModelLikeConnection';
-    items: Array<{
-      __typename: 'Like';
-      id: string;
-      userID: string;
-      postID: string;
-      User?: {
-        __typename: 'User';
-        id: string;
-        name: string;
-        email?: string | null;
-        username?: string | null;
-        bio?: string | null;
-        website?: string | null;
-        nofPosts: number;
-        nofFollowers: number;
-        nofFollowings: number;
-        image?: string | null;
-        createdAt: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null;
-      Post?: {
-        __typename: 'Post';
-        id: string;
-        createdAt: string;
-        type: string;
-        description?: string | null;
-        image?: string | null;
-        images?: Array<string> | null;
-        video?: string | null;
-        nofComments: number;
-        nofLikes: number;
-        userID: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null;
-      createdAt: string;
-      updatedAt: string;
-      owner?: string | null;
-    } | null>;
-    nextToken?: string | null;
-  } | null;
+  likesByUserID?:  {
+    __typename: "ModelLikeConnection",
+    items:  Array< {
+      __typename: "Like",
+      id: string,
+      userID: string,
+      postID: string,
+      User?:  {
+        __typename: "User",
+        id: string,
+        name: string,
+        email?: string | null,
+        username?: string | null,
+        bio?: string | null,
+        website?: string | null,
+        nofPosts: number,
+        nofFollowers: number,
+        nofFollowings: number,
+        image?: string | null,
+        createdAt: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null,
+      Post?:  {
+        __typename: "Post",
+        id: string,
+        createdAt: string,
+        type: string,
+        description?: string | null,
+        image?: string | null,
+        images?: Array< string > | null,
+        video?: string | null,
+        nofComments: number,
+        nofLikes: number,
+        userID: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
 };
 
 export type LikesForPostByUserQueryVariables = {
-  postID: string;
-  userID?: ModelIDKeyConditionInput | null;
-  sortDirection?: ModelSortDirection | null;
-  filter?: ModelLikeFilterInput | null;
-  limit?: number | null;
-  nextToken?: string | null;
+  postID: string,
+  userID?: ModelIDKeyConditionInput | null,
+  sortDirection?: ModelSortDirection | null,
+  filter?: ModelLikeFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
 };
 
 export type LikesForPostByUserQuery = {
-  likesForPostByUser?: {
-    __typename: 'ModelLikeConnection';
-    items: Array<{
-      __typename: 'Like';
-      id: string;
-      userID: string;
-      postID: string;
-      User?: {
-        __typename: 'User';
-        id: string;
-        name: string;
-        email?: string | null;
-        username?: string | null;
-        bio?: string | null;
-        website?: string | null;
-        nofPosts: number;
-        nofFollowers: number;
-        nofFollowings: number;
-        image?: string | null;
-        createdAt: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null;
-      Post?: {
-        __typename: 'Post';
-        id: string;
-        createdAt: string;
-        type: string;
-        description?: string | null;
-        image?: string | null;
-        images?: Array<string> | null;
-        video?: string | null;
-        nofComments: number;
-        nofLikes: number;
-        userID: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null;
-      createdAt: string;
-      updatedAt: string;
-      owner?: string | null;
-    } | null>;
-    nextToken?: string | null;
-  } | null;
+  likesForPostByUser?:  {
+    __typename: "ModelLikeConnection",
+    items:  Array< {
+      __typename: "Like",
+      id: string,
+      userID: string,
+      postID: string,
+      User?:  {
+        __typename: "User",
+        id: string,
+        name: string,
+        email?: string | null,
+        username?: string | null,
+        bio?: string | null,
+        website?: string | null,
+        nofPosts: number,
+        nofFollowers: number,
+        nofFollowings: number,
+        image?: string | null,
+        createdAt: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null,
+      Post?:  {
+        __typename: "Post",
+        id: string,
+        createdAt: string,
+        type: string,
+        description?: string | null,
+        image?: string | null,
+        images?: Array< string > | null,
+        video?: string | null,
+        nofComments: number,
+        nofLikes: number,
+        userID: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
 };
 
 export type GetCommentQueryVariables = {
-  id: string;
+  id: string,
 };
 
 export type GetCommentQuery = {
-  getComment?: {
-    __typename: 'Comment';
-    id: string;
-    createdAt: string;
-    comment: string;
-    userID: string;
-    postID: string;
-    User?: {
-      __typename: 'User';
-      id: string;
-      name: string;
-      email?: string | null;
-      username?: string | null;
-      bio?: string | null;
-      website?: string | null;
-      nofPosts: number;
-      nofFollowers: number;
-      nofFollowings: number;
-      image?: string | null;
-      Posts?: {
-        __typename: 'ModelPostConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      createdAt: string;
-      updatedAt: string;
-      owner?: string | null;
-    } | null;
-    Post?: {
-      __typename: 'Post';
-      id: string;
-      createdAt: string;
-      type: string;
-      description?: string | null;
-      image?: string | null;
-      images?: Array<string> | null;
-      video?: string | null;
-      nofComments: number;
-      nofLikes: number;
-      userID: string;
-      User?: {
-        __typename: 'User';
-        id: string;
-        name: string;
-        email?: string | null;
-        username?: string | null;
-        bio?: string | null;
-        website?: string | null;
-        nofPosts: number;
-        nofFollowers: number;
-        nofFollowings: number;
-        image?: string | null;
-        createdAt: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      updatedAt: string;
-      owner?: string | null;
-    } | null;
-    updatedAt: string;
-    owner?: string | null;
-  } | null;
+  getComment?:  {
+    __typename: "Comment",
+    id: string,
+    createdAt: string,
+    comment: string,
+    userID: string,
+    postID: string,
+    User?:  {
+      __typename: "User",
+      id: string,
+      name: string,
+      email?: string | null,
+      username?: string | null,
+      bio?: string | null,
+      website?: string | null,
+      nofPosts: number,
+      nofFollowers: number,
+      nofFollowings: number,
+      image?: string | null,
+      Posts?:  {
+        __typename: "ModelPostConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    Post?:  {
+      __typename: "Post",
+      id: string,
+      createdAt: string,
+      type: string,
+      description?: string | null,
+      image?: string | null,
+      images?: Array< string > | null,
+      video?: string | null,
+      nofComments: number,
+      nofLikes: number,
+      userID: string,
+      User?:  {
+        __typename: "User",
+        id: string,
+        name: string,
+        email?: string | null,
+        username?: string | null,
+        bio?: string | null,
+        website?: string | null,
+        nofPosts: number,
+        nofFollowers: number,
+        nofFollowings: number,
+        image?: string | null,
+        createdAt: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
 };
 
 export type ListCommentsQueryVariables = {
-  filter?: ModelCommentFilterInput | null;
-  limit?: number | null;
-  nextToken?: string | null;
+  filter?: ModelCommentFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
 };
 
 export type ListCommentsQuery = {
-  listComments?: {
-    __typename: 'ModelCommentConnection';
-    items: Array<{
-      __typename: 'Comment';
-      id: string;
-      createdAt: string;
-      comment: string;
-      userID: string;
-      postID: string;
-      User?: {
-        __typename: 'User';
-        id: string;
-        name: string;
-        email?: string | null;
-        username?: string | null;
-        bio?: string | null;
-        website?: string | null;
-        nofPosts: number;
-        nofFollowers: number;
-        nofFollowings: number;
-        image?: string | null;
-        createdAt: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null;
-      Post?: {
-        __typename: 'Post';
-        id: string;
-        createdAt: string;
-        type: string;
-        description?: string | null;
-        image?: string | null;
-        images?: Array<string> | null;
-        video?: string | null;
-        nofComments: number;
-        nofLikes: number;
-        userID: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null;
-      updatedAt: string;
-      owner?: string | null;
-    } | null>;
-    nextToken?: string | null;
-  } | null;
+  listComments?:  {
+    __typename: "ModelCommentConnection",
+    items:  Array< {
+      __typename: "Comment",
+      id: string,
+      createdAt: string,
+      comment: string,
+      userID: string,
+      postID: string,
+      User?:  {
+        __typename: "User",
+        id: string,
+        name: string,
+        email?: string | null,
+        username?: string | null,
+        bio?: string | null,
+        website?: string | null,
+        nofPosts: number,
+        nofFollowers: number,
+        nofFollowings: number,
+        image?: string | null,
+        createdAt: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null,
+      Post?:  {
+        __typename: "Post",
+        id: string,
+        createdAt: string,
+        type: string,
+        description?: string | null,
+        image?: string | null,
+        images?: Array< string > | null,
+        video?: string | null,
+        nofComments: number,
+        nofLikes: number,
+        userID: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null,
+      updatedAt: string,
+      owner?: string | null,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
 };
 
 export type CommentsByUserIDQueryVariables = {
-  userID: string;
-  sortDirection?: ModelSortDirection | null;
-  filter?: ModelCommentFilterInput | null;
-  limit?: number | null;
-  nextToken?: string | null;
+  userID: string,
+  sortDirection?: ModelSortDirection | null,
+  filter?: ModelCommentFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
 };
 
 export type CommentsByUserIDQuery = {
-  commentsByUserID?: {
-    __typename: 'ModelCommentConnection';
-    items: Array<{
-      __typename: 'Comment';
-      id: string;
-      createdAt: string;
-      comment: string;
-      userID: string;
-      postID: string;
-      User?: {
-        __typename: 'User';
-        id: string;
-        name: string;
-        email?: string | null;
-        username?: string | null;
-        bio?: string | null;
-        website?: string | null;
-        nofPosts: number;
-        nofFollowers: number;
-        nofFollowings: number;
-        image?: string | null;
-        createdAt: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null;
-      Post?: {
-        __typename: 'Post';
-        id: string;
-        createdAt: string;
-        type: string;
-        description?: string | null;
-        image?: string | null;
-        images?: Array<string> | null;
-        video?: string | null;
-        nofComments: number;
-        nofLikes: number;
-        userID: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null;
-      updatedAt: string;
-      owner?: string | null;
-    } | null>;
-    nextToken?: string | null;
-  } | null;
+  commentsByUserID?:  {
+    __typename: "ModelCommentConnection",
+    items:  Array< {
+      __typename: "Comment",
+      id: string,
+      createdAt: string,
+      comment: string,
+      userID: string,
+      postID: string,
+      User?:  {
+        __typename: "User",
+        id: string,
+        name: string,
+        email?: string | null,
+        username?: string | null,
+        bio?: string | null,
+        website?: string | null,
+        nofPosts: number,
+        nofFollowers: number,
+        nofFollowings: number,
+        image?: string | null,
+        createdAt: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null,
+      Post?:  {
+        __typename: "Post",
+        id: string,
+        createdAt: string,
+        type: string,
+        description?: string | null,
+        image?: string | null,
+        images?: Array< string > | null,
+        video?: string | null,
+        nofComments: number,
+        nofLikes: number,
+        userID: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null,
+      updatedAt: string,
+      owner?: string | null,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
 };
 
 export type CommentsByPostQueryVariables = {
-  postID: string;
-  createdAt?: ModelStringKeyConditionInput | null;
-  sortDirection?: ModelSortDirection | null;
-  filter?: ModelCommentFilterInput | null;
-  limit?: number | null;
-  nextToken?: string | null;
+  postID: string,
+  createdAt?: ModelStringKeyConditionInput | null,
+  sortDirection?: ModelSortDirection | null,
+  filter?: ModelCommentFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
 };
 
 export type CommentsByPostQuery = {
-  commentsByPost?: {
-    __typename: 'ModelCommentConnection';
-    items: Array<{
-      __typename: 'Comment';
-      id: string;
-      createdAt: string;
-      comment: string;
-      userID: string;
-      postID: string;
-      User?: {
-        __typename: 'User';
-        id: string;
-        name: string;
-        email?: string | null;
-        username?: string | null;
-        bio?: string | null;
-        website?: string | null;
-        nofPosts: number;
-        nofFollowers: number;
-        nofFollowings: number;
-        image?: string | null;
-        createdAt: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null;
-      Post?: {
-        __typename: 'Post';
-        id: string;
-        createdAt: string;
-        type: string;
-        description?: string | null;
-        image?: string | null;
-        images?: Array<string> | null;
-        video?: string | null;
-        nofComments: number;
-        nofLikes: number;
-        userID: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null;
-      updatedAt: string;
-      owner?: string | null;
-    } | null>;
-    nextToken?: string | null;
-  } | null;
+  commentsByPost?:  {
+    __typename: "ModelCommentConnection",
+    items:  Array< {
+      __typename: "Comment",
+      id: string,
+      createdAt: string,
+      comment: string,
+      userID: string,
+      postID: string,
+      User?:  {
+        __typename: "User",
+        id: string,
+        name: string,
+        email?: string | null,
+        username?: string | null,
+        bio?: string | null,
+        website?: string | null,
+        nofPosts: number,
+        nofFollowers: number,
+        nofFollowings: number,
+        image?: string | null,
+        createdAt: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null,
+      Post?:  {
+        __typename: "Post",
+        id: string,
+        createdAt: string,
+        type: string,
+        description?: string | null,
+        image?: string | null,
+        images?: Array< string > | null,
+        video?: string | null,
+        nofComments: number,
+        nofLikes: number,
+        userID: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null,
+      updatedAt: string,
+      owner?: string | null,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
 };
 
 export type GetPostQueryVariables = {
-  id: string;
+  id: string,
 };
 
 export type GetPostQuery = {
-  getPost?: {
-    __typename: 'Post';
-    id: string;
-    createdAt: string;
-    type: string;
-    description?: string | null;
-    image?: string | null;
-    images?: Array<string> | null;
-    video?: string | null;
-    nofComments: number;
-    nofLikes: number;
-    userID: string;
-    User?: {
-      __typename: 'User';
-      id: string;
-      name: string;
-      email?: string | null;
-      username?: string | null;
-      bio?: string | null;
-      website?: string | null;
-      nofPosts: number;
-      nofFollowers: number;
-      nofFollowings: number;
-      image?: string | null;
-      Posts?: {
-        __typename: 'ModelPostConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      createdAt: string;
-      updatedAt: string;
-      owner?: string | null;
-    } | null;
-    Likes?: {
-      __typename: 'ModelLikeConnection';
-      items: Array<{
-        __typename: 'Like';
-        id: string;
-        userID: string;
-        postID: string;
-        createdAt: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-    } | null;
-    Comments?: {
-      __typename: 'ModelCommentConnection';
-      items: Array<{
-        __typename: 'Comment';
-        id: string;
-        createdAt: string;
-        comment: string;
-        userID: string;
-        postID: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-    } | null;
-    updatedAt: string;
-    owner?: string | null;
-  } | null;
+  getPost?:  {
+    __typename: "Post",
+    id: string,
+    createdAt: string,
+    type: string,
+    description?: string | null,
+    image?: string | null,
+    images?: Array< string > | null,
+    video?: string | null,
+    nofComments: number,
+    nofLikes: number,
+    userID: string,
+    User?:  {
+      __typename: "User",
+      id: string,
+      name: string,
+      email?: string | null,
+      username?: string | null,
+      bio?: string | null,
+      website?: string | null,
+      nofPosts: number,
+      nofFollowers: number,
+      nofFollowings: number,
+      image?: string | null,
+      Posts?:  {
+        __typename: "ModelPostConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    Likes?:  {
+      __typename: "ModelLikeConnection",
+      items:  Array< {
+        __typename: "Like",
+        id: string,
+        userID: string,
+        postID: string,
+        createdAt: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    Comments?:  {
+      __typename: "ModelCommentConnection",
+      items:  Array< {
+        __typename: "Comment",
+        id: string,
+        createdAt: string,
+        comment: string,
+        userID: string,
+        postID: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
 };
 
 export type ListPostsQueryVariables = {
-  filter?: ModelPostFilterInput | null;
-  limit?: number | null;
-  nextToken?: string | null;
+  filter?: ModelPostFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
 };
 
 export type ListPostsQuery = {
-  listPosts?: {
-    __typename: 'ModelPostConnection';
-    items: Array<{
-      __typename: 'Post';
-      id: string;
-      createdAt: string;
-      type: string;
-      description?: string | null;
-      image?: string | null;
-      images?: Array<string> | null;
-      video?: string | null;
-      nofComments: number;
-      nofLikes: number;
-      userID: string;
-      User?: {
-        __typename: 'User';
-        id: string;
-        name: string;
-        email?: string | null;
-        username?: string | null;
-        bio?: string | null;
-        website?: string | null;
-        nofPosts: number;
-        nofFollowers: number;
-        nofFollowings: number;
-        image?: string | null;
-        createdAt: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      updatedAt: string;
-      owner?: string | null;
-    } | null>;
-    nextToken?: string | null;
-  } | null;
+  listPosts?:  {
+    __typename: "ModelPostConnection",
+    items:  Array< {
+      __typename: "Post",
+      id: string,
+      createdAt: string,
+      type: string,
+      description?: string | null,
+      image?: string | null,
+      images?: Array< string > | null,
+      video?: string | null,
+      nofComments: number,
+      nofLikes: number,
+      userID: string,
+      User?:  {
+        __typename: "User",
+        id: string,
+        name: string,
+        email?: string | null,
+        username?: string | null,
+        bio?: string | null,
+        website?: string | null,
+        nofPosts: number,
+        nofFollowers: number,
+        nofFollowings: number,
+        image?: string | null,
+        createdAt: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      updatedAt: string,
+      owner?: string | null,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
 };
 
 export type PostsByDateQueryVariables = {
-  type: string;
-  createdAt?: ModelStringKeyConditionInput | null;
-  sortDirection?: ModelSortDirection | null;
-  filter?: ModelPostFilterInput | null;
-  limit?: number | null;
-  nextToken?: string | null;
+  type: string,
+  createdAt?: ModelStringKeyConditionInput | null,
+  sortDirection?: ModelSortDirection | null,
+  filter?: ModelPostFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
 };
 
 export type PostsByDateQuery = {
-  postsByDate?: {
-    __typename: 'ModelPostConnection';
-    items: Array<{
-      __typename: 'Post';
-      id: string;
-      createdAt: string;
-      type: string;
-      description?: string | null;
-      image?: string | null;
-      images?: Array<string> | null;
-      video?: string | null;
-      nofComments: number;
-      nofLikes: number;
-      userID: string;
-      User?: {
-        __typename: 'User';
-        id: string;
-        name: string;
-        email?: string | null;
-        username?: string | null;
-        bio?: string | null;
-        website?: string | null;
-        nofPosts: number;
-        nofFollowers: number;
-        nofFollowings: number;
-        image?: string | null;
-        createdAt: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      updatedAt: string;
-      owner?: string | null;
-    } | null>;
-    nextToken?: string | null;
-  } | null;
+  postsByDate?:  {
+    __typename: "ModelPostConnection",
+    items:  Array< {
+      __typename: "Post",
+      id: string,
+      createdAt: string,
+      type: string,
+      description?: string | null,
+      image?: string | null,
+      images?: Array< string > | null,
+      video?: string | null,
+      nofComments: number,
+      nofLikes: number,
+      userID: string,
+      User?:  {
+        __typename: "User",
+        id: string,
+        name: string,
+        email?: string | null,
+        username?: string | null,
+        bio?: string | null,
+        website?: string | null,
+        nofPosts: number,
+        nofFollowers: number,
+        nofFollowings: number,
+        image?: string | null,
+        createdAt: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      updatedAt: string,
+      owner?: string | null,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
 };
 
 export type PostsByUserIDQueryVariables = {
-  userID: string;
-  sortDirection?: ModelSortDirection | null;
-  filter?: ModelPostFilterInput | null;
-  limit?: number | null;
-  nextToken?: string | null;
+  userID: string,
+  sortDirection?: ModelSortDirection | null,
+  filter?: ModelPostFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
 };
 
 export type PostsByUserIDQuery = {
-  postsByUserID?: {
-    __typename: 'ModelPostConnection';
-    items: Array<{
-      __typename: 'Post';
-      id: string;
-      createdAt: string;
-      type: string;
-      description?: string | null;
-      image?: string | null;
-      images?: Array<string> | null;
-      video?: string | null;
-      nofComments: number;
-      nofLikes: number;
-      userID: string;
-      User?: {
-        __typename: 'User';
-        id: string;
-        name: string;
-        email?: string | null;
-        username?: string | null;
-        bio?: string | null;
-        website?: string | null;
-        nofPosts: number;
-        nofFollowers: number;
-        nofFollowings: number;
-        image?: string | null;
-        createdAt: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      updatedAt: string;
-      owner?: string | null;
-    } | null>;
-    nextToken?: string | null;
-  } | null;
+  postsByUserID?:  {
+    __typename: "ModelPostConnection",
+    items:  Array< {
+      __typename: "Post",
+      id: string,
+      createdAt: string,
+      type: string,
+      description?: string | null,
+      image?: string | null,
+      images?: Array< string > | null,
+      video?: string | null,
+      nofComments: number,
+      nofLikes: number,
+      userID: string,
+      User?:  {
+        __typename: "User",
+        id: string,
+        name: string,
+        email?: string | null,
+        username?: string | null,
+        bio?: string | null,
+        website?: string | null,
+        nofPosts: number,
+        nofFollowers: number,
+        nofFollowings: number,
+        image?: string | null,
+        createdAt: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      updatedAt: string,
+      owner?: string | null,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
 };
 
 export type GetUserQueryVariables = {
-  id: string;
+  id: string,
 };
 
 export type GetUserQuery = {
-  getUser?: {
-    __typename: 'User';
-    id: string;
-    name: string;
-    email?: string | null;
-    username?: string | null;
-    bio?: string | null;
-    website?: string | null;
-    nofPosts: number;
-    nofFollowers: number;
-    nofFollowings: number;
-    image?: string | null;
-    Posts?: {
-      __typename: 'ModelPostConnection';
-      items: Array<{
-        __typename: 'Post';
-        id: string;
-        createdAt: string;
-        type: string;
-        description?: string | null;
-        image?: string | null;
-        images?: Array<string> | null;
-        video?: string | null;
-        nofComments: number;
-        nofLikes: number;
-        userID: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-    } | null;
-    Comments?: {
-      __typename: 'ModelCommentConnection';
-      items: Array<{
-        __typename: 'Comment';
-        id: string;
-        createdAt: string;
-        comment: string;
-        userID: string;
-        postID: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-    } | null;
-    Likes?: {
-      __typename: 'ModelLikeConnection';
-      items: Array<{
-        __typename: 'Like';
-        id: string;
-        userID: string;
-        postID: string;
-        createdAt: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-    } | null;
-    createdAt: string;
-    updatedAt: string;
-    owner?: string | null;
-  } | null;
+  getUser?:  {
+    __typename: "User",
+    id: string,
+    name: string,
+    email?: string | null,
+    username?: string | null,
+    bio?: string | null,
+    website?: string | null,
+    nofPosts: number,
+    nofFollowers: number,
+    nofFollowings: number,
+    image?: string | null,
+    Posts?:  {
+      __typename: "ModelPostConnection",
+      items:  Array< {
+        __typename: "Post",
+        id: string,
+        createdAt: string,
+        type: string,
+        description?: string | null,
+        image?: string | null,
+        images?: Array< string > | null,
+        video?: string | null,
+        nofComments: number,
+        nofLikes: number,
+        userID: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    Comments?:  {
+      __typename: "ModelCommentConnection",
+      items:  Array< {
+        __typename: "Comment",
+        id: string,
+        createdAt: string,
+        comment: string,
+        userID: string,
+        postID: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    Likes?:  {
+      __typename: "ModelLikeConnection",
+      items:  Array< {
+        __typename: "Like",
+        id: string,
+        userID: string,
+        postID: string,
+        createdAt: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
 };
 
 export type ListUsersQueryVariables = {
-  filter?: ModelUserFilterInput | null;
-  limit?: number | null;
-  nextToken?: string | null;
+  filter?: ModelUserFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
 };
 
 export type ListUsersQuery = {
-  listUsers?: {
-    __typename: 'ModelUserConnection';
-    items: Array<{
-      __typename: 'User';
-      id: string;
-      name: string;
-      email?: string | null;
-      username?: string | null;
-      bio?: string | null;
-      website?: string | null;
-      nofPosts: number;
-      nofFollowers: number;
-      nofFollowings: number;
-      image?: string | null;
-      Posts?: {
-        __typename: 'ModelPostConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      createdAt: string;
-      updatedAt: string;
-      owner?: string | null;
-    } | null>;
-    nextToken?: string | null;
-  } | null;
+  listUsers?:  {
+    __typename: "ModelUserConnection",
+    items:  Array< {
+      __typename: "User",
+      id: string,
+      name: string,
+      email?: string | null,
+      username?: string | null,
+      bio?: string | null,
+      website?: string | null,
+      nofPosts: number,
+      nofFollowers: number,
+      nofFollowings: number,
+      image?: string | null,
+      Posts?:  {
+        __typename: "ModelPostConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
 };
 
 export type UsersByUsernameQueryVariables = {
-  username: string;
-  sortDirection?: ModelSortDirection | null;
-  filter?: ModelUserFilterInput | null;
-  limit?: number | null;
-  nextToken?: string | null;
+  username: string,
+  sortDirection?: ModelSortDirection | null,
+  filter?: ModelUserFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
 };
 
 export type UsersByUsernameQuery = {
-  usersByUsername?: {
-    __typename: 'ModelUserConnection';
-    items: Array<{
-      __typename: 'User';
-      id: string;
-      name: string;
-      email?: string | null;
-      username?: string | null;
-      bio?: string | null;
-      website?: string | null;
-      nofPosts: number;
-      nofFollowers: number;
-      nofFollowings: number;
-      image?: string | null;
-      Posts?: {
-        __typename: 'ModelPostConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      createdAt: string;
-      updatedAt: string;
-      owner?: string | null;
-    } | null>;
-    nextToken?: string | null;
-  } | null;
+  usersByUsername?:  {
+    __typename: "ModelUserConnection",
+    items:  Array< {
+      __typename: "User",
+      id: string,
+      name: string,
+      email?: string | null,
+      username?: string | null,
+      bio?: string | null,
+      website?: string | null,
+      nofPosts: number,
+      nofFollowers: number,
+      nofFollowings: number,
+      image?: string | null,
+      Posts?:  {
+        __typename: "ModelPostConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
 };
 
 export type OnCreateCommentByPostIdSubscriptionVariables = {
-  postID: string;
+  postID: string,
 };
 
 export type OnCreateCommentByPostIdSubscription = {
-  onCreateCommentByPostId?: {
-    __typename: 'Comment';
-    id: string;
-    createdAt: string;
-    comment: string;
-    userID: string;
-    postID: string;
-    User?: {
-      __typename: 'User';
-      id: string;
-      name: string;
-      email?: string | null;
-      username?: string | null;
-      bio?: string | null;
-      website?: string | null;
-      nofPosts: number;
-      nofFollowers: number;
-      nofFollowings: number;
-      image?: string | null;
-      Posts?: {
-        __typename: 'ModelPostConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      createdAt: string;
-      updatedAt: string;
-      owner?: string | null;
-    } | null;
-    Post?: {
-      __typename: 'Post';
-      id: string;
-      createdAt: string;
-      type: string;
-      description?: string | null;
-      image?: string | null;
-      images?: Array<string> | null;
-      video?: string | null;
-      nofComments: number;
-      nofLikes: number;
-      userID: string;
-      User?: {
-        __typename: 'User';
-        id: string;
-        name: string;
-        email?: string | null;
-        username?: string | null;
-        bio?: string | null;
-        website?: string | null;
-        nofPosts: number;
-        nofFollowers: number;
-        nofFollowings: number;
-        image?: string | null;
-        createdAt: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      updatedAt: string;
-      owner?: string | null;
-    } | null;
-    updatedAt: string;
-    owner?: string | null;
-  } | null;
+  onCreateCommentByPostId?:  {
+    __typename: "Comment",
+    id: string,
+    createdAt: string,
+    comment: string,
+    userID: string,
+    postID: string,
+    User?:  {
+      __typename: "User",
+      id: string,
+      name: string,
+      email?: string | null,
+      username?: string | null,
+      bio?: string | null,
+      website?: string | null,
+      nofPosts: number,
+      nofFollowers: number,
+      nofFollowings: number,
+      image?: string | null,
+      Posts?:  {
+        __typename: "ModelPostConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    Post?:  {
+      __typename: "Post",
+      id: string,
+      createdAt: string,
+      type: string,
+      description?: string | null,
+      image?: string | null,
+      images?: Array< string > | null,
+      video?: string | null,
+      nofComments: number,
+      nofLikes: number,
+      userID: string,
+      User?:  {
+        __typename: "User",
+        id: string,
+        name: string,
+        email?: string | null,
+        username?: string | null,
+        bio?: string | null,
+        website?: string | null,
+        nofPosts: number,
+        nofFollowers: number,
+        nofFollowings: number,
+        image?: string | null,
+        createdAt: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
 };
 
 export type OnCreateLikeSubscriptionVariables = {
-  filter?: ModelSubscriptionLikeFilterInput | null;
-  owner?: string | null;
+  filter?: ModelSubscriptionLikeFilterInput | null,
+  owner?: string | null,
 };
 
 export type OnCreateLikeSubscription = {
-  onCreateLike?: {
-    __typename: 'Like';
-    id: string;
-    userID: string;
-    postID: string;
-    User?: {
-      __typename: 'User';
-      id: string;
-      name: string;
-      email?: string | null;
-      username?: string | null;
-      bio?: string | null;
-      website?: string | null;
-      nofPosts: number;
-      nofFollowers: number;
-      nofFollowings: number;
-      image?: string | null;
-      Posts?: {
-        __typename: 'ModelPostConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      createdAt: string;
-      updatedAt: string;
-      owner?: string | null;
-    } | null;
-    Post?: {
-      __typename: 'Post';
-      id: string;
-      createdAt: string;
-      type: string;
-      description?: string | null;
-      image?: string | null;
-      images?: Array<string> | null;
-      video?: string | null;
-      nofComments: number;
-      nofLikes: number;
-      userID: string;
-      User?: {
-        __typename: 'User';
-        id: string;
-        name: string;
-        email?: string | null;
-        username?: string | null;
-        bio?: string | null;
-        website?: string | null;
-        nofPosts: number;
-        nofFollowers: number;
-        nofFollowings: number;
-        image?: string | null;
-        createdAt: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      updatedAt: string;
-      owner?: string | null;
-    } | null;
-    createdAt: string;
-    updatedAt: string;
-    owner?: string | null;
-  } | null;
+  onCreateLike?:  {
+    __typename: "Like",
+    id: string,
+    userID: string,
+    postID: string,
+    User?:  {
+      __typename: "User",
+      id: string,
+      name: string,
+      email?: string | null,
+      username?: string | null,
+      bio?: string | null,
+      website?: string | null,
+      nofPosts: number,
+      nofFollowers: number,
+      nofFollowings: number,
+      image?: string | null,
+      Posts?:  {
+        __typename: "ModelPostConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    Post?:  {
+      __typename: "Post",
+      id: string,
+      createdAt: string,
+      type: string,
+      description?: string | null,
+      image?: string | null,
+      images?: Array< string > | null,
+      video?: string | null,
+      nofComments: number,
+      nofLikes: number,
+      userID: string,
+      User?:  {
+        __typename: "User",
+        id: string,
+        name: string,
+        email?: string | null,
+        username?: string | null,
+        bio?: string | null,
+        website?: string | null,
+        nofPosts: number,
+        nofFollowers: number,
+        nofFollowings: number,
+        image?: string | null,
+        createdAt: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
 };
 
 export type OnUpdateLikeSubscriptionVariables = {
-  filter?: ModelSubscriptionLikeFilterInput | null;
-  owner?: string | null;
+  filter?: ModelSubscriptionLikeFilterInput | null,
+  owner?: string | null,
 };
 
 export type OnUpdateLikeSubscription = {
-  onUpdateLike?: {
-    __typename: 'Like';
-    id: string;
-    userID: string;
-    postID: string;
-    User?: {
-      __typename: 'User';
-      id: string;
-      name: string;
-      email?: string | null;
-      username?: string | null;
-      bio?: string | null;
-      website?: string | null;
-      nofPosts: number;
-      nofFollowers: number;
-      nofFollowings: number;
-      image?: string | null;
-      Posts?: {
-        __typename: 'ModelPostConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      createdAt: string;
-      updatedAt: string;
-      owner?: string | null;
-    } | null;
-    Post?: {
-      __typename: 'Post';
-      id: string;
-      createdAt: string;
-      type: string;
-      description?: string | null;
-      image?: string | null;
-      images?: Array<string> | null;
-      video?: string | null;
-      nofComments: number;
-      nofLikes: number;
-      userID: string;
-      User?: {
-        __typename: 'User';
-        id: string;
-        name: string;
-        email?: string | null;
-        username?: string | null;
-        bio?: string | null;
-        website?: string | null;
-        nofPosts: number;
-        nofFollowers: number;
-        nofFollowings: number;
-        image?: string | null;
-        createdAt: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      updatedAt: string;
-      owner?: string | null;
-    } | null;
-    createdAt: string;
-    updatedAt: string;
-    owner?: string | null;
-  } | null;
+  onUpdateLike?:  {
+    __typename: "Like",
+    id: string,
+    userID: string,
+    postID: string,
+    User?:  {
+      __typename: "User",
+      id: string,
+      name: string,
+      email?: string | null,
+      username?: string | null,
+      bio?: string | null,
+      website?: string | null,
+      nofPosts: number,
+      nofFollowers: number,
+      nofFollowings: number,
+      image?: string | null,
+      Posts?:  {
+        __typename: "ModelPostConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    Post?:  {
+      __typename: "Post",
+      id: string,
+      createdAt: string,
+      type: string,
+      description?: string | null,
+      image?: string | null,
+      images?: Array< string > | null,
+      video?: string | null,
+      nofComments: number,
+      nofLikes: number,
+      userID: string,
+      User?:  {
+        __typename: "User",
+        id: string,
+        name: string,
+        email?: string | null,
+        username?: string | null,
+        bio?: string | null,
+        website?: string | null,
+        nofPosts: number,
+        nofFollowers: number,
+        nofFollowings: number,
+        image?: string | null,
+        createdAt: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
 };
 
 export type OnDeleteLikeSubscriptionVariables = {
-  filter?: ModelSubscriptionLikeFilterInput | null;
-  owner?: string | null;
+  filter?: ModelSubscriptionLikeFilterInput | null,
+  owner?: string | null,
 };
 
 export type OnDeleteLikeSubscription = {
-  onDeleteLike?: {
-    __typename: 'Like';
-    id: string;
-    userID: string;
-    postID: string;
-    User?: {
-      __typename: 'User';
-      id: string;
-      name: string;
-      email?: string | null;
-      username?: string | null;
-      bio?: string | null;
-      website?: string | null;
-      nofPosts: number;
-      nofFollowers: number;
-      nofFollowings: number;
-      image?: string | null;
-      Posts?: {
-        __typename: 'ModelPostConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      createdAt: string;
-      updatedAt: string;
-      owner?: string | null;
-    } | null;
-    Post?: {
-      __typename: 'Post';
-      id: string;
-      createdAt: string;
-      type: string;
-      description?: string | null;
-      image?: string | null;
-      images?: Array<string> | null;
-      video?: string | null;
-      nofComments: number;
-      nofLikes: number;
-      userID: string;
-      User?: {
-        __typename: 'User';
-        id: string;
-        name: string;
-        email?: string | null;
-        username?: string | null;
-        bio?: string | null;
-        website?: string | null;
-        nofPosts: number;
-        nofFollowers: number;
-        nofFollowings: number;
-        image?: string | null;
-        createdAt: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      updatedAt: string;
-      owner?: string | null;
-    } | null;
-    createdAt: string;
-    updatedAt: string;
-    owner?: string | null;
-  } | null;
+  onDeleteLike?:  {
+    __typename: "Like",
+    id: string,
+    userID: string,
+    postID: string,
+    User?:  {
+      __typename: "User",
+      id: string,
+      name: string,
+      email?: string | null,
+      username?: string | null,
+      bio?: string | null,
+      website?: string | null,
+      nofPosts: number,
+      nofFollowers: number,
+      nofFollowings: number,
+      image?: string | null,
+      Posts?:  {
+        __typename: "ModelPostConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    Post?:  {
+      __typename: "Post",
+      id: string,
+      createdAt: string,
+      type: string,
+      description?: string | null,
+      image?: string | null,
+      images?: Array< string > | null,
+      video?: string | null,
+      nofComments: number,
+      nofLikes: number,
+      userID: string,
+      User?:  {
+        __typename: "User",
+        id: string,
+        name: string,
+        email?: string | null,
+        username?: string | null,
+        bio?: string | null,
+        website?: string | null,
+        nofPosts: number,
+        nofFollowers: number,
+        nofFollowings: number,
+        image?: string | null,
+        createdAt: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
 };
 
 export type OnCreateCommentSubscriptionVariables = {
-  filter?: ModelSubscriptionCommentFilterInput | null;
-  owner?: string | null;
+  filter?: ModelSubscriptionCommentFilterInput | null,
+  owner?: string | null,
 };
 
 export type OnCreateCommentSubscription = {
-  onCreateComment?: {
-    __typename: 'Comment';
-    id: string;
-    createdAt: string;
-    comment: string;
-    userID: string;
-    postID: string;
-    User?: {
-      __typename: 'User';
-      id: string;
-      name: string;
-      email?: string | null;
-      username?: string | null;
-      bio?: string | null;
-      website?: string | null;
-      nofPosts: number;
-      nofFollowers: number;
-      nofFollowings: number;
-      image?: string | null;
-      Posts?: {
-        __typename: 'ModelPostConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      createdAt: string;
-      updatedAt: string;
-      owner?: string | null;
-    } | null;
-    Post?: {
-      __typename: 'Post';
-      id: string;
-      createdAt: string;
-      type: string;
-      description?: string | null;
-      image?: string | null;
-      images?: Array<string> | null;
-      video?: string | null;
-      nofComments: number;
-      nofLikes: number;
-      userID: string;
-      User?: {
-        __typename: 'User';
-        id: string;
-        name: string;
-        email?: string | null;
-        username?: string | null;
-        bio?: string | null;
-        website?: string | null;
-        nofPosts: number;
-        nofFollowers: number;
-        nofFollowings: number;
-        image?: string | null;
-        createdAt: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      updatedAt: string;
-      owner?: string | null;
-    } | null;
-    updatedAt: string;
-    owner?: string | null;
-  } | null;
+  onCreateComment?:  {
+    __typename: "Comment",
+    id: string,
+    createdAt: string,
+    comment: string,
+    userID: string,
+    postID: string,
+    User?:  {
+      __typename: "User",
+      id: string,
+      name: string,
+      email?: string | null,
+      username?: string | null,
+      bio?: string | null,
+      website?: string | null,
+      nofPosts: number,
+      nofFollowers: number,
+      nofFollowings: number,
+      image?: string | null,
+      Posts?:  {
+        __typename: "ModelPostConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    Post?:  {
+      __typename: "Post",
+      id: string,
+      createdAt: string,
+      type: string,
+      description?: string | null,
+      image?: string | null,
+      images?: Array< string > | null,
+      video?: string | null,
+      nofComments: number,
+      nofLikes: number,
+      userID: string,
+      User?:  {
+        __typename: "User",
+        id: string,
+        name: string,
+        email?: string | null,
+        username?: string | null,
+        bio?: string | null,
+        website?: string | null,
+        nofPosts: number,
+        nofFollowers: number,
+        nofFollowings: number,
+        image?: string | null,
+        createdAt: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
 };
 
 export type OnUpdateCommentSubscriptionVariables = {
-  filter?: ModelSubscriptionCommentFilterInput | null;
-  owner?: string | null;
+  filter?: ModelSubscriptionCommentFilterInput | null,
+  owner?: string | null,
 };
 
 export type OnUpdateCommentSubscription = {
-  onUpdateComment?: {
-    __typename: 'Comment';
-    id: string;
-    createdAt: string;
-    comment: string;
-    userID: string;
-    postID: string;
-    User?: {
-      __typename: 'User';
-      id: string;
-      name: string;
-      email?: string | null;
-      username?: string | null;
-      bio?: string | null;
-      website?: string | null;
-      nofPosts: number;
-      nofFollowers: number;
-      nofFollowings: number;
-      image?: string | null;
-      Posts?: {
-        __typename: 'ModelPostConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      createdAt: string;
-      updatedAt: string;
-      owner?: string | null;
-    } | null;
-    Post?: {
-      __typename: 'Post';
-      id: string;
-      createdAt: string;
-      type: string;
-      description?: string | null;
-      image?: string | null;
-      images?: Array<string> | null;
-      video?: string | null;
-      nofComments: number;
-      nofLikes: number;
-      userID: string;
-      User?: {
-        __typename: 'User';
-        id: string;
-        name: string;
-        email?: string | null;
-        username?: string | null;
-        bio?: string | null;
-        website?: string | null;
-        nofPosts: number;
-        nofFollowers: number;
-        nofFollowings: number;
-        image?: string | null;
-        createdAt: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      updatedAt: string;
-      owner?: string | null;
-    } | null;
-    updatedAt: string;
-    owner?: string | null;
-  } | null;
+  onUpdateComment?:  {
+    __typename: "Comment",
+    id: string,
+    createdAt: string,
+    comment: string,
+    userID: string,
+    postID: string,
+    User?:  {
+      __typename: "User",
+      id: string,
+      name: string,
+      email?: string | null,
+      username?: string | null,
+      bio?: string | null,
+      website?: string | null,
+      nofPosts: number,
+      nofFollowers: number,
+      nofFollowings: number,
+      image?: string | null,
+      Posts?:  {
+        __typename: "ModelPostConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    Post?:  {
+      __typename: "Post",
+      id: string,
+      createdAt: string,
+      type: string,
+      description?: string | null,
+      image?: string | null,
+      images?: Array< string > | null,
+      video?: string | null,
+      nofComments: number,
+      nofLikes: number,
+      userID: string,
+      User?:  {
+        __typename: "User",
+        id: string,
+        name: string,
+        email?: string | null,
+        username?: string | null,
+        bio?: string | null,
+        website?: string | null,
+        nofPosts: number,
+        nofFollowers: number,
+        nofFollowings: number,
+        image?: string | null,
+        createdAt: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
 };
 
 export type OnDeleteCommentSubscriptionVariables = {
-  filter?: ModelSubscriptionCommentFilterInput | null;
-  owner?: string | null;
+  filter?: ModelSubscriptionCommentFilterInput | null,
+  owner?: string | null,
 };
 
 export type OnDeleteCommentSubscription = {
-  onDeleteComment?: {
-    __typename: 'Comment';
-    id: string;
-    createdAt: string;
-    comment: string;
-    userID: string;
-    postID: string;
-    User?: {
-      __typename: 'User';
-      id: string;
-      name: string;
-      email?: string | null;
-      username?: string | null;
-      bio?: string | null;
-      website?: string | null;
-      nofPosts: number;
-      nofFollowers: number;
-      nofFollowings: number;
-      image?: string | null;
-      Posts?: {
-        __typename: 'ModelPostConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      createdAt: string;
-      updatedAt: string;
-      owner?: string | null;
-    } | null;
-    Post?: {
-      __typename: 'Post';
-      id: string;
-      createdAt: string;
-      type: string;
-      description?: string | null;
-      image?: string | null;
-      images?: Array<string> | null;
-      video?: string | null;
-      nofComments: number;
-      nofLikes: number;
-      userID: string;
-      User?: {
-        __typename: 'User';
-        id: string;
-        name: string;
-        email?: string | null;
-        username?: string | null;
-        bio?: string | null;
-        website?: string | null;
-        nofPosts: number;
-        nofFollowers: number;
-        nofFollowings: number;
-        image?: string | null;
-        createdAt: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      updatedAt: string;
-      owner?: string | null;
-    } | null;
-    updatedAt: string;
-    owner?: string | null;
-  } | null;
+  onDeleteComment?:  {
+    __typename: "Comment",
+    id: string,
+    createdAt: string,
+    comment: string,
+    userID: string,
+    postID: string,
+    User?:  {
+      __typename: "User",
+      id: string,
+      name: string,
+      email?: string | null,
+      username?: string | null,
+      bio?: string | null,
+      website?: string | null,
+      nofPosts: number,
+      nofFollowers: number,
+      nofFollowings: number,
+      image?: string | null,
+      Posts?:  {
+        __typename: "ModelPostConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    Post?:  {
+      __typename: "Post",
+      id: string,
+      createdAt: string,
+      type: string,
+      description?: string | null,
+      image?: string | null,
+      images?: Array< string > | null,
+      video?: string | null,
+      nofComments: number,
+      nofLikes: number,
+      userID: string,
+      User?:  {
+        __typename: "User",
+        id: string,
+        name: string,
+        email?: string | null,
+        username?: string | null,
+        bio?: string | null,
+        website?: string | null,
+        nofPosts: number,
+        nofFollowers: number,
+        nofFollowings: number,
+        image?: string | null,
+        createdAt: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
 };
 
 export type OnCreatePostSubscriptionVariables = {
-  filter?: ModelSubscriptionPostFilterInput | null;
-  owner?: string | null;
+  filter?: ModelSubscriptionPostFilterInput | null,
+  owner?: string | null,
 };
 
 export type OnCreatePostSubscription = {
-  onCreatePost?: {
-    __typename: 'Post';
-    id: string;
-    createdAt: string;
-    type: string;
-    description?: string | null;
-    image?: string | null;
-    images?: Array<string> | null;
-    video?: string | null;
-    nofComments: number;
-    nofLikes: number;
-    userID: string;
-    User?: {
-      __typename: 'User';
-      id: string;
-      name: string;
-      email?: string | null;
-      username?: string | null;
-      bio?: string | null;
-      website?: string | null;
-      nofPosts: number;
-      nofFollowers: number;
-      nofFollowings: number;
-      image?: string | null;
-      Posts?: {
-        __typename: 'ModelPostConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      createdAt: string;
-      updatedAt: string;
-      owner?: string | null;
-    } | null;
-    Likes?: {
-      __typename: 'ModelLikeConnection';
-      items: Array<{
-        __typename: 'Like';
-        id: string;
-        userID: string;
-        postID: string;
-        createdAt: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-    } | null;
-    Comments?: {
-      __typename: 'ModelCommentConnection';
-      items: Array<{
-        __typename: 'Comment';
-        id: string;
-        createdAt: string;
-        comment: string;
-        userID: string;
-        postID: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-    } | null;
-    updatedAt: string;
-    owner?: string | null;
-  } | null;
+  onCreatePost?:  {
+    __typename: "Post",
+    id: string,
+    createdAt: string,
+    type: string,
+    description?: string | null,
+    image?: string | null,
+    images?: Array< string > | null,
+    video?: string | null,
+    nofComments: number,
+    nofLikes: number,
+    userID: string,
+    User?:  {
+      __typename: "User",
+      id: string,
+      name: string,
+      email?: string | null,
+      username?: string | null,
+      bio?: string | null,
+      website?: string | null,
+      nofPosts: number,
+      nofFollowers: number,
+      nofFollowings: number,
+      image?: string | null,
+      Posts?:  {
+        __typename: "ModelPostConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    Likes?:  {
+      __typename: "ModelLikeConnection",
+      items:  Array< {
+        __typename: "Like",
+        id: string,
+        userID: string,
+        postID: string,
+        createdAt: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    Comments?:  {
+      __typename: "ModelCommentConnection",
+      items:  Array< {
+        __typename: "Comment",
+        id: string,
+        createdAt: string,
+        comment: string,
+        userID: string,
+        postID: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
 };
 
 export type OnUpdatePostSubscriptionVariables = {
-  filter?: ModelSubscriptionPostFilterInput | null;
-  owner?: string | null;
+  filter?: ModelSubscriptionPostFilterInput | null,
+  owner?: string | null,
 };
 
 export type OnUpdatePostSubscription = {
-  onUpdatePost?: {
-    __typename: 'Post';
-    id: string;
-    createdAt: string;
-    type: string;
-    description?: string | null;
-    image?: string | null;
-    images?: Array<string> | null;
-    video?: string | null;
-    nofComments: number;
-    nofLikes: number;
-    userID: string;
-    User?: {
-      __typename: 'User';
-      id: string;
-      name: string;
-      email?: string | null;
-      username?: string | null;
-      bio?: string | null;
-      website?: string | null;
-      nofPosts: number;
-      nofFollowers: number;
-      nofFollowings: number;
-      image?: string | null;
-      Posts?: {
-        __typename: 'ModelPostConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      createdAt: string;
-      updatedAt: string;
-      owner?: string | null;
-    } | null;
-    Likes?: {
-      __typename: 'ModelLikeConnection';
-      items: Array<{
-        __typename: 'Like';
-        id: string;
-        userID: string;
-        postID: string;
-        createdAt: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-    } | null;
-    Comments?: {
-      __typename: 'ModelCommentConnection';
-      items: Array<{
-        __typename: 'Comment';
-        id: string;
-        createdAt: string;
-        comment: string;
-        userID: string;
-        postID: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-    } | null;
-    updatedAt: string;
-    owner?: string | null;
-  } | null;
+  onUpdatePost?:  {
+    __typename: "Post",
+    id: string,
+    createdAt: string,
+    type: string,
+    description?: string | null,
+    image?: string | null,
+    images?: Array< string > | null,
+    video?: string | null,
+    nofComments: number,
+    nofLikes: number,
+    userID: string,
+    User?:  {
+      __typename: "User",
+      id: string,
+      name: string,
+      email?: string | null,
+      username?: string | null,
+      bio?: string | null,
+      website?: string | null,
+      nofPosts: number,
+      nofFollowers: number,
+      nofFollowings: number,
+      image?: string | null,
+      Posts?:  {
+        __typename: "ModelPostConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    Likes?:  {
+      __typename: "ModelLikeConnection",
+      items:  Array< {
+        __typename: "Like",
+        id: string,
+        userID: string,
+        postID: string,
+        createdAt: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    Comments?:  {
+      __typename: "ModelCommentConnection",
+      items:  Array< {
+        __typename: "Comment",
+        id: string,
+        createdAt: string,
+        comment: string,
+        userID: string,
+        postID: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
 };
 
 export type OnDeletePostSubscriptionVariables = {
-  filter?: ModelSubscriptionPostFilterInput | null;
-  owner?: string | null;
+  filter?: ModelSubscriptionPostFilterInput | null,
+  owner?: string | null,
 };
 
 export type OnDeletePostSubscription = {
-  onDeletePost?: {
-    __typename: 'Post';
-    id: string;
-    createdAt: string;
-    type: string;
-    description?: string | null;
-    image?: string | null;
-    images?: Array<string> | null;
-    video?: string | null;
-    nofComments: number;
-    nofLikes: number;
-    userID: string;
-    User?: {
-      __typename: 'User';
-      id: string;
-      name: string;
-      email?: string | null;
-      username?: string | null;
-      bio?: string | null;
-      website?: string | null;
-      nofPosts: number;
-      nofFollowers: number;
-      nofFollowings: number;
-      image?: string | null;
-      Posts?: {
-        __typename: 'ModelPostConnection';
-        nextToken?: string | null;
-      } | null;
-      Comments?: {
-        __typename: 'ModelCommentConnection';
-        nextToken?: string | null;
-      } | null;
-      Likes?: {
-        __typename: 'ModelLikeConnection';
-        nextToken?: string | null;
-      } | null;
-      createdAt: string;
-      updatedAt: string;
-      owner?: string | null;
-    } | null;
-    Likes?: {
-      __typename: 'ModelLikeConnection';
-      items: Array<{
-        __typename: 'Like';
-        id: string;
-        userID: string;
-        postID: string;
-        createdAt: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-    } | null;
-    Comments?: {
-      __typename: 'ModelCommentConnection';
-      items: Array<{
-        __typename: 'Comment';
-        id: string;
-        createdAt: string;
-        comment: string;
-        userID: string;
-        postID: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-    } | null;
-    updatedAt: string;
-    owner?: string | null;
-  } | null;
+  onDeletePost?:  {
+    __typename: "Post",
+    id: string,
+    createdAt: string,
+    type: string,
+    description?: string | null,
+    image?: string | null,
+    images?: Array< string > | null,
+    video?: string | null,
+    nofComments: number,
+    nofLikes: number,
+    userID: string,
+    User?:  {
+      __typename: "User",
+      id: string,
+      name: string,
+      email?: string | null,
+      username?: string | null,
+      bio?: string | null,
+      website?: string | null,
+      nofPosts: number,
+      nofFollowers: number,
+      nofFollowings: number,
+      image?: string | null,
+      Posts?:  {
+        __typename: "ModelPostConnection",
+        nextToken?: string | null,
+      } | null,
+      Comments?:  {
+        __typename: "ModelCommentConnection",
+        nextToken?: string | null,
+      } | null,
+      Likes?:  {
+        __typename: "ModelLikeConnection",
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    Likes?:  {
+      __typename: "ModelLikeConnection",
+      items:  Array< {
+        __typename: "Like",
+        id: string,
+        userID: string,
+        postID: string,
+        createdAt: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    Comments?:  {
+      __typename: "ModelCommentConnection",
+      items:  Array< {
+        __typename: "Comment",
+        id: string,
+        createdAt: string,
+        comment: string,
+        userID: string,
+        postID: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
 };
 
 export type OnCreateUserSubscriptionVariables = {
-  filter?: ModelSubscriptionUserFilterInput | null;
-  owner?: string | null;
+  filter?: ModelSubscriptionUserFilterInput | null,
+  owner?: string | null,
 };
 
 export type OnCreateUserSubscription = {
-  onCreateUser?: {
-    __typename: 'User';
-    id: string;
-    name: string;
-    email?: string | null;
-    username?: string | null;
-    bio?: string | null;
-    website?: string | null;
-    nofPosts: number;
-    nofFollowers: number;
-    nofFollowings: number;
-    image?: string | null;
-    Posts?: {
-      __typename: 'ModelPostConnection';
-      items: Array<{
-        __typename: 'Post';
-        id: string;
-        createdAt: string;
-        type: string;
-        description?: string | null;
-        image?: string | null;
-        images?: Array<string> | null;
-        video?: string | null;
-        nofComments: number;
-        nofLikes: number;
-        userID: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-    } | null;
-    Comments?: {
-      __typename: 'ModelCommentConnection';
-      items: Array<{
-        __typename: 'Comment';
-        id: string;
-        createdAt: string;
-        comment: string;
-        userID: string;
-        postID: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-    } | null;
-    Likes?: {
-      __typename: 'ModelLikeConnection';
-      items: Array<{
-        __typename: 'Like';
-        id: string;
-        userID: string;
-        postID: string;
-        createdAt: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-    } | null;
-    createdAt: string;
-    updatedAt: string;
-    owner?: string | null;
-  } | null;
+  onCreateUser?:  {
+    __typename: "User",
+    id: string,
+    name: string,
+    email?: string | null,
+    username?: string | null,
+    bio?: string | null,
+    website?: string | null,
+    nofPosts: number,
+    nofFollowers: number,
+    nofFollowings: number,
+    image?: string | null,
+    Posts?:  {
+      __typename: "ModelPostConnection",
+      items:  Array< {
+        __typename: "Post",
+        id: string,
+        createdAt: string,
+        type: string,
+        description?: string | null,
+        image?: string | null,
+        images?: Array< string > | null,
+        video?: string | null,
+        nofComments: number,
+        nofLikes: number,
+        userID: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    Comments?:  {
+      __typename: "ModelCommentConnection",
+      items:  Array< {
+        __typename: "Comment",
+        id: string,
+        createdAt: string,
+        comment: string,
+        userID: string,
+        postID: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    Likes?:  {
+      __typename: "ModelLikeConnection",
+      items:  Array< {
+        __typename: "Like",
+        id: string,
+        userID: string,
+        postID: string,
+        createdAt: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
 };
 
 export type OnUpdateUserSubscriptionVariables = {
-  filter?: ModelSubscriptionUserFilterInput | null;
-  owner?: string | null;
+  filter?: ModelSubscriptionUserFilterInput | null,
+  owner?: string | null,
 };
 
 export type OnUpdateUserSubscription = {
-  onUpdateUser?: {
-    __typename: 'User';
-    id: string;
-    name: string;
-    email?: string | null;
-    username?: string | null;
-    bio?: string | null;
-    website?: string | null;
-    nofPosts: number;
-    nofFollowers: number;
-    nofFollowings: number;
-    image?: string | null;
-    Posts?: {
-      __typename: 'ModelPostConnection';
-      items: Array<{
-        __typename: 'Post';
-        id: string;
-        createdAt: string;
-        type: string;
-        description?: string | null;
-        image?: string | null;
-        images?: Array<string> | null;
-        video?: string | null;
-        nofComments: number;
-        nofLikes: number;
-        userID: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-    } | null;
-    Comments?: {
-      __typename: 'ModelCommentConnection';
-      items: Array<{
-        __typename: 'Comment';
-        id: string;
-        createdAt: string;
-        comment: string;
-        userID: string;
-        postID: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-    } | null;
-    Likes?: {
-      __typename: 'ModelLikeConnection';
-      items: Array<{
-        __typename: 'Like';
-        id: string;
-        userID: string;
-        postID: string;
-        createdAt: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-    } | null;
-    createdAt: string;
-    updatedAt: string;
-    owner?: string | null;
-  } | null;
+  onUpdateUser?:  {
+    __typename: "User",
+    id: string,
+    name: string,
+    email?: string | null,
+    username?: string | null,
+    bio?: string | null,
+    website?: string | null,
+    nofPosts: number,
+    nofFollowers: number,
+    nofFollowings: number,
+    image?: string | null,
+    Posts?:  {
+      __typename: "ModelPostConnection",
+      items:  Array< {
+        __typename: "Post",
+        id: string,
+        createdAt: string,
+        type: string,
+        description?: string | null,
+        image?: string | null,
+        images?: Array< string > | null,
+        video?: string | null,
+        nofComments: number,
+        nofLikes: number,
+        userID: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    Comments?:  {
+      __typename: "ModelCommentConnection",
+      items:  Array< {
+        __typename: "Comment",
+        id: string,
+        createdAt: string,
+        comment: string,
+        userID: string,
+        postID: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    Likes?:  {
+      __typename: "ModelLikeConnection",
+      items:  Array< {
+        __typename: "Like",
+        id: string,
+        userID: string,
+        postID: string,
+        createdAt: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
 };
 
 export type OnDeleteUserSubscriptionVariables = {
-  filter?: ModelSubscriptionUserFilterInput | null;
-  owner?: string | null;
+  filter?: ModelSubscriptionUserFilterInput | null,
+  owner?: string | null,
 };
 
 export type OnDeleteUserSubscription = {
-  onDeleteUser?: {
-    __typename: 'User';
-    id: string;
-    name: string;
-    email?: string | null;
-    username?: string | null;
-    bio?: string | null;
-    website?: string | null;
-    nofPosts: number;
-    nofFollowers: number;
-    nofFollowings: number;
-    image?: string | null;
-    Posts?: {
-      __typename: 'ModelPostConnection';
-      items: Array<{
-        __typename: 'Post';
-        id: string;
-        createdAt: string;
-        type: string;
-        description?: string | null;
-        image?: string | null;
-        images?: Array<string> | null;
-        video?: string | null;
-        nofComments: number;
-        nofLikes: number;
-        userID: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-    } | null;
-    Comments?: {
-      __typename: 'ModelCommentConnection';
-      items: Array<{
-        __typename: 'Comment';
-        id: string;
-        createdAt: string;
-        comment: string;
-        userID: string;
-        postID: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-    } | null;
-    Likes?: {
-      __typename: 'ModelLikeConnection';
-      items: Array<{
-        __typename: 'Like';
-        id: string;
-        userID: string;
-        postID: string;
-        createdAt: string;
-        updatedAt: string;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-    } | null;
-    createdAt: string;
-    updatedAt: string;
-    owner?: string | null;
-  } | null;
+  onDeleteUser?:  {
+    __typename: "User",
+    id: string,
+    name: string,
+    email?: string | null,
+    username?: string | null,
+    bio?: string | null,
+    website?: string | null,
+    nofPosts: number,
+    nofFollowers: number,
+    nofFollowings: number,
+    image?: string | null,
+    Posts?:  {
+      __typename: "ModelPostConnection",
+      items:  Array< {
+        __typename: "Post",
+        id: string,
+        createdAt: string,
+        type: string,
+        description?: string | null,
+        image?: string | null,
+        images?: Array< string > | null,
+        video?: string | null,
+        nofComments: number,
+        nofLikes: number,
+        userID: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    Comments?:  {
+      __typename: "ModelCommentConnection",
+      items:  Array< {
+        __typename: "Comment",
+        id: string,
+        createdAt: string,
+        comment: string,
+        userID: string,
+        postID: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    Likes?:  {
+      __typename: "ModelLikeConnection",
+      items:  Array< {
+        __typename: "Like",
+        id: string,
+        userID: string,
+        postID: string,
+        createdAt: string,
+        updatedAt: string,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
 };
