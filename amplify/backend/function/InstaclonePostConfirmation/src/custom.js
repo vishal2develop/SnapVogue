@@ -19,7 +19,6 @@ const TableName = `User-${AppSyncId}-${env}`;
 exports.handler = async (event, context) => {
   // insert code to be executed by your lambda trigger
   console.log('Hey, Inside Post Confirmation Lambda!!!');
-  console.log(event);
   if (!event?.request?.userAttributes) {
     console.log('No User Data Available');
     return;

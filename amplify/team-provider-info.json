@@ -19,7 +19,7 @@
       "function": {
         "InstaclonePostConfirmation": {
           "deploymentBucketName": "amplify-instaclone-dev-6ebb3-deployment",
-          "s3Key": "amplify-builds/InstaclonePostConfirmation-3930523051546a307163-build.zip"
+          "s3Key": "amplify-builds/InstaclonePostConfirmation-494c307a51497547336e-build.zip"
         },
         "Instaclone": {}
       },
