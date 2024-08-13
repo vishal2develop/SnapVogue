@@ -1,36 +1,4 @@
 {
-  "staging": {
-    "awscloudformation": {
-      "AuthRoleName": "amplify-instaclone-staging-156f3-authRole",
-      "UnauthRoleArn": "arn:aws:iam::528069407197:role/amplify-instaclone-staging-156f3-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::528069407197:role/amplify-instaclone-staging-156f3-authRole",
-      "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-instaclone-staging-156f3-deployment",
-      "UnauthRoleName": "amplify-instaclone-staging-156f3-unauthRole",
-      "StackName": "amplify-instaclone-staging-156f3",
-      "StackId": "arn:aws:cloudformation:us-east-1:528069407197:stack/amplify-instaclone-staging-156f3/715bc460-f69a-11ee-bd67-1261b950bfb5",
-      "AmplifyAppId": "d37zyigviy8vc",
-      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-instaclone-staging-156f3-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
-    },
-    "categories": {
-      "auth": {
-        "Instaclone": {}
-      },
-      "function": {
-        "InstaclonePostConfirmation": {
-          "deploymentBucketName": "amplify-instaclone-staging-156f3-deployment",
-          "s3Key": "amplify-builds/InstaclonePostConfirmation-3930523051546a307163-build.zip"
-        },
-        "Instaclone": {}
-      },
-      "api": {
-        "Instaclone": {}
-      },
-      "storage": {
-        "storage": {}
-      }
-    }
-  },
   "dev": {
     "awscloudformation": {
       "AuthRoleName": "amplify-instaclone-dev-6ebb3-authRole",
@@ -83,6 +51,38 @@
       "function": {
         "InstaclonePostConfirmation": {
           "deploymentBucketName": "amplify-instaclone-prod-c29f4-deployment",
+          "s3Key": "amplify-builds/InstaclonePostConfirmation-3930523051546a307163-build.zip"
+        },
+        "Instaclone": {}
+      },
+      "api": {
+        "Instaclone": {}
+      },
+      "storage": {
+        "storage": {}
+      }
+    }
+  },
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-instaclone-staging-4ac50-authRole",
+      "UnauthRoleArn": "arn:aws:iam::730335409702:role/amplify-instaclone-staging-4ac50-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::730335409702:role/amplify-instaclone-staging-4ac50-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-instaclone-staging-4ac50-deployment",
+      "UnauthRoleName": "amplify-instaclone-staging-4ac50-unauthRole",
+      "StackName": "amplify-instaclone-staging-4ac50",
+      "StackId": "arn:aws:cloudformation:us-east-1:730335409702:stack/amplify-instaclone-staging-4ac50/a8ee8640-5998-11ef-9b83-0afff100905d",
+      "AmplifyAppId": "d3ryy4qb7dog0h",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-instaclone-staging-4ac50-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
+    },
+    "categories": {
+      "auth": {
+        "Instaclone": {}
+      },
+      "function": {
+        "InstaclonePostConfirmation": {
+          "deploymentBucketName": "amplify-instaclone-staging-4ac50-deployment",
           "s3Key": "amplify-builds/InstaclonePostConfirmation-3930523051546a307163-build.zip"
         },
         "Instaclone": {}
